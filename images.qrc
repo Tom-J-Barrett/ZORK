@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/Images">
+        <file>vampire.png</file>
+        <file>pic.jpg</file>
+        <file>attack.png</file>
+    </qresource>
+</RCC>
