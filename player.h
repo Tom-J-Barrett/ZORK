@@ -5,11 +5,10 @@
 #include <QKeyEvent>
 #include <QGraphicsPixmapItem>
 
-class Player: public QGraphicsPixmapItem{
+class Player{
 
 public:
     Player();
-    void keyPressEvent(QKeyEvent * event);
     int health;
     int getHealth();
     void decreaseHealth();

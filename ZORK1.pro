@@ -38,7 +38,8 @@ SOURCES += main.cpp \
     key.cpp \
     background.cpp \
     buttonaction.cpp \
-    mytimer.cpp
+    mytimer.cpp \
+    attack.cpp
 
 HEADERS  += \
     boss.h \
@@ -55,7 +56,8 @@ HEADERS  += \
     weapon.h \
     zork.h \
     buttonaction.h \
-    mytimer.h
+    mytimer.h \
+    attack.h
 
 FORMS    += mainwindow.ui
 

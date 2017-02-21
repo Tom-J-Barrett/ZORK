@@ -9,6 +9,7 @@
 #include "mytimer.h"
 #include "buttonaction.h"
 #include "player.h"
+#include "attack.h"
 #include <QtCore>
 #include <string>
 
@@ -19,7 +20,7 @@ public:
     QGraphicsRectItem *rect;
     explicit Background();
     Monster * vampire;
-    Player * play;
+  // Player * play;
     Room *currentRoom;
     Room * nextRoom;
     int delB1=0;
@@ -39,6 +40,7 @@ public:
     void createRect();
     void createMonster();
     void addToScene();
+    void addAttacked(Attack * item);
     //on_button1_clicked();
 
 public slots:

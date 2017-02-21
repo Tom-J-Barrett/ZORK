@@ -3,6 +3,7 @@
 #include <QKeyEvent>
 #include <QGraphicsScene>
 #include <QDebug>
+#include "attack.h"
 
 Monster::Monster()
 {
@@ -13,6 +14,8 @@ Monster::Monster()
     this->setZValue(2);
    // health=100;
 }
+
+
 
 void Monster::keyPressEvent(QKeyEvent *event)
 {
