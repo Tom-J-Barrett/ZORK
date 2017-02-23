@@ -6,8 +6,6 @@
 
 Player::Player()
 {
-    health=health+5;
-
     //this->setPixmap(QPixmap(":/Images/attack.png"));
     //this->setFlag(QGraphicsItem::ItemIsFocusable);
     //this->setPos(470,200);
@@ -23,7 +21,7 @@ int Player::getHealth()
 
 void Player::decreaseHealth()
 {
-    health=health+5;
+    
 }
 
 void Player::increaseHealth()
