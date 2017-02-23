@@ -3,5 +3,6 @@
         <file>vampire.png</file>
         <file>pic.jpg</file>
         <file>attack.png</file>
+        <file>vampireAttacked.png</file>
     </qresource>
 </RCC>

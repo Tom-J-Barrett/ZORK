@@ -13,6 +13,7 @@ public:
     int health=100;
     int getHealth();
     void decreaseHealth();
+    int z;
 
 
 };
