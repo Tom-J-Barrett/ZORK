@@ -8,6 +8,7 @@
 MyTimer::MyTimer(Monster * vampire, Player * p)
 {
     vamp=vampire;
+    qDebug () << play <<"------"<< endl;
     play=p;
     timer = new QTimer(this);
 
@@ -42,7 +43,8 @@ void MyTimer::MySlot()
         qDebug()<<"vamp is moved";
         x=vamp->move(x);
     }
-qDebug()<<"ahhhhhh";
+    qDebug()<<"ahhhhhh";
+    qDebug () << play <<"!!!!!!"<< endl;
     play->decreaseHealth();
     qDebug()<<"noooooooooo";
 }

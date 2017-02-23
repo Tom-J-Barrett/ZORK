@@ -16,6 +16,7 @@
 
 //constructor that sets blank window and creates rooms
 Background::Background(){
+    play = new Player();
     createRooms();
     createExits();
     setRoomExits(a);
@@ -24,6 +25,7 @@ Background::Background(){
     createMonster();
     addToScene();
     play = new Player();
+    qDebug () << play  <<"???"<< endl;
 }
 
 //Sets a new scne when you move rooms

@@ -24,7 +24,7 @@ int Player::getHealth()
 void Player::decreaseHealth()
 {
     qDebug()<<"oooooooooo";
-  //  health--;
+    health--;
     qDebug()<<"poooooooooo";
 }
 
