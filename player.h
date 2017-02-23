@@ -9,8 +9,8 @@ class Player{
 
 public:
     Player();
-    int health=100;
-
+    int health;
+    //int * healthPtr;
     int getHealth();
     void decreaseHealth();
     void increaseHealth();

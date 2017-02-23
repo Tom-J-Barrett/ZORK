@@ -42,6 +42,7 @@ void MyTimer::MySlot()
         qDebug()<<"vamp is moved";
         x=vamp->move(x);
     }
-
+qDebug()<<"ahhhhhh";
     play->decreaseHealth();
+    qDebug()<<"noooooooooo";
 }
