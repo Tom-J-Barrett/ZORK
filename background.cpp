@@ -208,7 +208,9 @@ void Background::addToScene(){
         vampire->setVisible(true);
         qDebug()<<"dayum";
     }
+
     this->addItem(vampire);
+    timer = new MyTimer(vampire);
     this->addItem(rect);
     vampire->setPixmap(QPixmap(":/Images/vampire.png"));
 
