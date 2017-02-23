@@ -27,8 +27,9 @@ void MyTimer::MySlot()
 
     if(health<=0)
     {
-        delete vamp;
-        vamp=NULL;
+       // delete vamp;
+       // vamp=NULL;
+        vamp->setVisible(false);
         qDebug()<<"vamp is null";
     }
     else if(vamp==NULL)
