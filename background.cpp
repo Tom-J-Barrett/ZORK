@@ -64,11 +64,15 @@ void Background::setScene(string direction)
         button4->deleteLater();
         delB4=0;
     }
-    this->removeItem(vampire);
+    if(vampire!=NULL)
+    {
+        this->removeItem(vampire);
+        delete vampire;
+         vampire=NULL;
+    }
     this->removeItem(rect);
 
-    delete vampire;
-    vampire=NULL;
+
 
     timer->StopTimer();
     delete timer;
@@ -183,6 +187,7 @@ void Background::createRect(){
 }
 
 void Background::createMonster(){
+    qDebug()<<"Test2";
     vampire = new Monster();
     //play= new Player();
     vampire->setPixmap(QPixmap(":/Images/vampire.png"));
@@ -196,7 +201,12 @@ void Background::createMonster(){
 
 //adds monster and rectangle to scene
 void Background::addToScene(){
-    this->addItem(vampire);
+    qDebug()<<"Test1";
+    if(vampire)
+    {
+        this->addItem(vampire);
+        qDebug()<<"dayum";
+    }
     this->addItem(rect);
     //this->addItem(play);
 
