@@ -184,7 +184,7 @@ void Background::createRect(){
 
 void Background::createMonster(){
     vampire = new Monster();
-    play= new Player();
+    //play= new Player();
     vampire->setPixmap(QPixmap(":/Images/vampire.png"));
     vampire->setFlag(QGraphicsItem::ItemIsFocusable);
     vampire->setFocus();
@@ -198,10 +198,14 @@ void Background::createMonster(){
 void Background::addToScene(){
     this->addItem(vampire);
     this->addItem(rect);
-    this->addItem(play);
+    //this->addItem(play);
 
 }
 
+void Background::addAttacked(Attack * item)
+{
+    this->addItem(item);
+}
 
 void Background::on_button1_clicked()
 {

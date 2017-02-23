@@ -2,6 +2,7 @@
 #define MONSTER_H
 
 #include <QGraphicsPixmapItem>
+//#include "background.h"
 
 class Monster: public QGraphicsPixmapItem{
 
