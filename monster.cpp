@@ -33,7 +33,14 @@ void Monster::keyPressEvent(QKeyEvent *event)
     }
     else if(event->key()==Qt::Key_Space)
     {
-            health=health-25;
+            if(this->scenePos()==QPointF(470,200))
+            {
+                qDebug()<< this->scenePos();
+                health=health-25;
+                this->setPixmap(QPixmap(":/Images/vampireAttacked.png"));
+                z=1;
+            }
+
     }
 }
 
@@ -41,8 +48,15 @@ int Monster::getHealth(){
     return health;
 }
 
+void Monster::resetHealth(){
+    health=100;
+}
+
 int Monster::move(int x)
 {
+    if(z=1)
+        this->setPixmap(QPixmap(":/Images/vampire.png"));
+
     if(x==0)
     {
         this->setPos(490,200);
