@@ -1,11 +1,13 @@
 #include "player.h"
-#include "background.h"
+
 #include <QKeyEvent>
 #include <QGraphicsScene>
 #include <QDebug>
 
 Player::Player()
 {
+    health=100;
+
     //this->setPixmap(QPixmap(":/Images/attack.png"));
     //this->setFlag(QGraphicsItem::ItemIsFocusable);
     //this->setPos(470,200);
@@ -16,12 +18,14 @@ Player::Player()
 
 int Player::getHealth()
 {
-
+    return health;
 }
 
 void Player::decreaseHealth()
 {
-
+    qDebug()<<"oooooooooo";
+  //  health--;
+    qDebug()<<"poooooooooo";
 }
 
 void Player::increaseHealth()
