@@ -76,6 +76,7 @@ void Background::setScene(string direction)
     vampire->resetHealth();
 
     timer->StopTimer();
+    qDebug()<<"Timer stopped";
     delete timer;
     timer=NULL;
 
@@ -208,7 +209,7 @@ void Background::addToScene(){
         vampire->setVisible(true);
         qDebug()<<"dayum";
     }
-
+    vampire->setFocus();
     this->addItem(vampire);
     timer = new MyTimer(vampire);
     this->addItem(rect);
