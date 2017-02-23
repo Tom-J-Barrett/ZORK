@@ -5,9 +5,10 @@
 #include <Monster.h>
 #include <QSignalMapper>
 
-MyTimer::MyTimer(Monster * vampire)
+MyTimer::MyTimer(Monster * vampire, Player * p)
 {
     vamp=vampire;
+    play=p;
     timer = new QTimer(this);
 
     connect(timer,SIGNAL(timeout()),this, SLOT(MySlot()));
@@ -41,4 +42,6 @@ void MyTimer::MySlot()
         qDebug()<<"vamp is moved";
         x=vamp->move(x);
     }
+
+    play->decreaseHealth();
 }

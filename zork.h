@@ -13,7 +13,7 @@ class Zork : public QGraphicsView
 public:
     Zork(QWidget * parent=0);
     Background * backg;
-    Player * play;
+
    // monster * vampire;
 
 

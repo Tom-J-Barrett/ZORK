@@ -23,6 +23,7 @@ Background::Background(){
     createRect();
     createMonster();
     addToScene();
+    play = new Player();
 }
 
 //Sets a new scne when you move rooms
@@ -197,7 +198,7 @@ void Background::createMonster(){
     vampire->setFocus();
     vampire->setPos(470,200);
     vampire->setZValue(2);
-    timer = new MyTimer(vampire);
+    //timer = new MyTimer(vampire,play);
 
 }
 
@@ -211,7 +212,7 @@ void Background::addToScene(){
     }
     vampire->setFocus();
     this->addItem(vampire);
-    timer = new MyTimer(vampire);
+    timer = new MyTimer(vampire, play);
     this->addItem(rect);
     vampire->setPixmap(QPixmap(":/Images/vampire.png"));
 

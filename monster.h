@@ -3,11 +3,14 @@
 
 #include <QGraphicsPixmapItem>
 //#include "background.h"
+#include "player.h"
 
 class Monster: public QGraphicsPixmapItem{
 
 public:
     Monster();
+    Monster(Player * play);
+    Player *p;
     void keyPressEvent(QKeyEvent * event);
     int move(int x);
     int health=100;

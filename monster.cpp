@@ -14,8 +14,16 @@ Monster::Monster()
     this->setZValue(2);
    // health=100;
 }
-
-
+Monster::Monster(Player * play)
+{
+    p=play;
+    this->setPixmap(QPixmap(":/Images/vampire.png"));
+    this->setFlag(QGraphicsItem::ItemIsFocusable);
+    this->setFocus();
+    this->setPos(470,200);
+    this->setZValue(2);
+   // health=100;
+}
 
 void Monster::keyPressEvent(QKeyEvent *event)
 {
@@ -107,5 +115,6 @@ int Monster::move(int x)
     }
 
 }
+
 
 

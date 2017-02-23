@@ -23,6 +23,7 @@ public:
   // Player * play;
     Room *currentRoom;
     Room * nextRoom;
+    Player * play;
     int delB1=0;
     int delB2=0;
     int delB3=0;

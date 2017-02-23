@@ -6,7 +6,7 @@ Zork::Zork(QWidget *parent)
 {
     this->setAttribute(Qt::WA_DeleteOnClose);
     backg = new Background();
-    play = new Player();
+
    // backg->createRect();
   //  backg->createMonster();
   //  backg->addToScene();

@@ -9,7 +9,7 @@ class Player{
 
 public:
     Player();
-    int health;
+    int health=100;
     int getHealth();
     void decreaseHealth();
     void increaseHealth();
