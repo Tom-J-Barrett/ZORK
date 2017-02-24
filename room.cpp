@@ -39,6 +39,11 @@ bool Room::monsterInRoom()
     return monster;
 }
 
+string Room::getDescription()
+{
+    return description;
+}
+
 vector<Room> Room::rooms()
 {
     vector<Room> list;

@@ -10,14 +10,16 @@ using std::vector;
 
 class Room {
 private:
-    string description;
+
     map<string, Room*> exits;
     bool monster;
 public:
+    string description;
     Room(string description);
     void setExits(Room *north, Room *east, Room *south, Room *west);
     void setMonster(bool);
     vector<string> exitString();
+    string getDescription();
     bool monsterInRoom();
     vector<Room> rooms();
     Room* nextRoom(string direction);

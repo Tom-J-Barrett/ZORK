@@ -203,10 +203,11 @@ void Background::createMonster(){
     vampire->setPos(470,200);
     vampire->setZValue(2);
     //timer = new MyTimer(vampire,play);
+    string x=currentRoom->getDescription();
     smallEditor = new QTextEdit;
-    smallEditor->setPlainText(tr("This widget takes up about two thirds of the "
-                                 "grid layout."));
+    smallEditor->setPlainText(tr("jn"));
     smallEditor->move(250,400);
+    smallEditor->setReadOnly(true);
 
 }
 
@@ -223,6 +224,7 @@ void Background::addToScene(){
 
 
     this->addWidget(smallEditor);
+
     this->addItem(vampire);
     timer = new MyTimer(vampire, play);
     this->addItem(rect);
