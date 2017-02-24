@@ -23,9 +23,15 @@ int Player::getHealth()
 
 void Player::decreaseHealth()
 {
-    qDebug()<<"oooooooooo";
-    health--;
-    qDebug()<<"poooooooooo";
+    if(health>=1)
+        health--;
+    else
+    {
+        qDebug()<<"You're dead";
+        exit(EXIT_FAILURE);
+
+    }
+
 }
 
 void Player::increaseHealth()

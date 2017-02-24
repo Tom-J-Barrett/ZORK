@@ -42,37 +42,24 @@ void Background::setScene(string direction)
     if(delB1)
     {
         button1->deleteLater();
-       // delete button1;
-       // button1=NULL;
         delB1=0;
     }
     if(delB2)
     {
-        //delete button2;
-       // button2=NULL;
         button2->deleteLater();
         delB2=0;
     }
     if(delB3)
     {
-       // delete button3;
-       // button3=NULL;
        button3->deleteLater();
         delB3=0;
     }
     if(delB4)
     {
-        //delete button4;
-       // button4=NULL;
         button4->deleteLater();
         delB4=0;
     }
-   /* if(vampire!=NULL)
-    {
-        this->removeItem(vampire);
-        delete vampire;
-         vampire=NULL;
-    }*/
+
     this->removeItem(vampire);
     this->removeItem(rect);
 
@@ -115,17 +102,28 @@ void Background::createExits(){
 
     //         (N, E, S, W)
     a->setExits(f, b, d, c);
+    a->setMonster(true);
+
     b->setExits(NULL, NULL, NULL, a);
+
     c->setExits(NULL, a, NULL, NULL);
+    c->setMonster(true);
+
     d->setExits(a, e, NULL, i);
+
     e->setExits(NULL, NULL, NULL, d);
+    e->setMonster(true);
+
     f->setExits(NULL, g, a, h);
     g->setExits(NULL, NULL, NULL, f);
+    g->setMonster(true);
+
     h->setExits(NULL, f, NULL, NULL);
+
     i->setExits(NULL, d, j, NULL);
+    i->setMonster(true);
+
     j->setExits(i, NULL, NULL, NULL);
-
-
 }
 
 //creates buttons depending on room exits
@@ -144,7 +142,9 @@ void Background::setRoomExits(Room * r){
             button1->setText("North");
             delB1=1;
             this->addWidget(button1);
+
             connect(button1,SIGNAL(released()),this, SLOT(on_button1_clicked()));
+
 
         }
         else if(listOfExits[i]=="south")
@@ -156,6 +156,7 @@ void Background::setRoomExits(Room * r){
             delB2=1;
             connect(button2,SIGNAL(released()),this, SLOT(on_button2_clicked()));
             this->addWidget(button2);
+
         }
         else if(listOfExits.at(i)=="east")
         {
@@ -166,6 +167,7 @@ void Background::setRoomExits(Room * r){
             delB3=1;
             connect(button3,SIGNAL(released()),this, SLOT(on_button3_clicked()));
             this->addWidget(button3);
+
         }
         else if(listOfExits.at(i)=="west")
         {
@@ -201,23 +203,31 @@ void Background::createMonster(){
     vampire->setPos(470,200);
     vampire->setZValue(2);
     //timer = new MyTimer(vampire,play);
+    smallEditor = new QTextEdit;
+    smallEditor->setPlainText(tr("This widget takes up about two thirds of the "
+                                 "grid layout."));
+    smallEditor->move(250,400);
 
 }
 
 //adds monster and rectangle to scene
 void Background::addToScene(){
     qDebug()<<"Test1";
-    if(!(vampire->isVisible()))
+    if(!(vampire->isVisible() ) && currentRoom->monsterInRoom())
     {
         vampire->setVisible(true);
         qDebug()<<"dayum";
     }
-    vampire->setFocus();
+    if(!(currentRoom->monsterInRoom()))
+        vampire->setVisible(false);
+
+
+    this->addWidget(smallEditor);
     this->addItem(vampire);
     timer = new MyTimer(vampire, play);
     this->addItem(rect);
     vampire->setPixmap(QPixmap(":/Images/vampire.png"));
-
+    vampire->setFocus();
     //this->addItem(play);
 
 }

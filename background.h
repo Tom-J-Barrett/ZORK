@@ -12,6 +12,7 @@
 #include "attack.h"
 #include <QtCore>
 #include <string>
+#include <QTextEdit>
 
 class Background : public QGraphicsScene
 {
@@ -20,6 +21,7 @@ public:
     QGraphicsRectItem *rect;
     explicit Background();
     Monster * vampire;
+    QTextEdit * smallEditor;
   // Player * play;
     Room *currentRoom;
     Room * nextRoom;
