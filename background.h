@@ -21,7 +21,7 @@ public:
     QGraphicsRectItem *rect;
     explicit Background(Player * play);
     Monster * vampire;
-    QTextEdit * smallEditor;
+     QTextEdit * smallEditor;
     Room *currentRoom;
     Room * nextRoom;
     Player * player;

@@ -152,12 +152,8 @@ void Background:: createTextBox(){
 }
 
 void Background:: addText(){
-    // string x=currentRoom->getDescription();
-     QString x="hgv";
-   // smallEditor->clear();
-    // smallEditor->document()->setPlainText(x);
-     //smallEditor->textCursor().insertText(x);
-     smallEditor->setPlainText(x);
+     string x="You are in Room "+currentRoom->getDescription();
+     smallEditor->setPlainText(QString::fromStdString(x));
 }
 
 //adds monster and rectangle to scene
