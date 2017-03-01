@@ -13,11 +13,13 @@ private:
 
     map<string, Room*> exits;
     bool monster;
+    bool bossMonster;
 public:
     string description;
     Room(string description);
     void setExits(Room *north, Room *east, Room *south, Room *west);
     void setMonster(bool);
+    void setBoss(bool);
     vector<string> exitString();
     string getDescription();
     bool monsterInRoom();

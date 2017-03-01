@@ -25,6 +25,14 @@ void Room::setMonster(bool monst)
 
 }
 
+void Room::setBoss(bool boss)
+{
+    if(boss)
+        bossMonster=true;
+    else
+        bossMonster=false;
+}
+
 vector<string> Room::exitString()
 {
     vector<string> list;

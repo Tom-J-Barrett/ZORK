@@ -14,6 +14,7 @@
 #include "player.h"
 #include <QString>
 #include <string>
+#include "boss.h"
 
 
 //constructor that sets blank window and creates rooms
@@ -58,6 +59,7 @@ void Background::createExits(){
     a->setMonster(true);
 
     b->setExits(NULL, NULL, NULL, a);
+    b->setBoss(true);
 
     c->setExits(NULL, a, NULL, NULL);
     c->setMonster(true);
@@ -142,7 +144,16 @@ void Background::createMonster(){
     vampire->setFlag(QGraphicsItem::ItemIsFocusable);
     vampire->setFocus();
     vampire->setPos(470,200);
-    vampire->setZValue(2);
+    vampire->setZValue(3);
+}
+
+void Background::createBoss(){
+    dragon = new Boss();
+    dragon->setPixmap(QPixmap(":/Images/dragon.jpeg"));
+    dragon->setFlag(QGraphicsItem::ItemIsFocusable);
+    dragon->setFocus();
+    dragon->setPos(470,200);
+    dragon->setZValue(2);
 }
 
 void Background:: createTextBox(){
