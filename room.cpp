@@ -16,6 +16,15 @@ void Room::setExits(Room *north, Room *east, Room *south, Room *west) {
         exits["west"] = west;
 }
 
+void Room::setMonster(bool monst)
+{
+    if(monst)
+        monster=true;
+    else
+        monster=false;
+
+}
+
 vector<string> Room::exitString()
 {
     vector<string> list;
@@ -23,6 +32,16 @@ vector<string> Room::exitString()
     for (map<string, Room*>::iterator i = exits.begin(); i != exits.end(); i++)
         list.push_back(i->first);	// access the "first" element of the pair (direction as a string)
     return list;
+}
+
+bool Room::monsterInRoom()
+{
+    return monster;
+}
+
+string Room::getDescription()
+{
+    return description;
 }
 
 vector<Room> Room::rooms()

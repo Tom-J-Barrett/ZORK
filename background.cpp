@@ -12,88 +12,30 @@
 #include "mytimer.h"
 #include "background.h"
 #include "player.h"
+#include <QString>
 #include <string>
 
+
 //constructor that sets blank window and creates rooms
-Background::Background(){
-    createRooms();
-    createExits();
-    setRoomExits(a);
-    this->setSceneRect(0,0,1000,500);
-    createRect();
-    createMonster();
-    addToScene();
-    play = new Player();
+Background::Background(Player * play){
+    player=play;
 }
 
 //Sets a new scne when you move rooms
 void Background::setScene(string direction)
 {
-
-    //button1->move(400,125);
-   // button1->move(400,125);
-    //delete button1;
     nextRoom = currentRoom->nextRoom(direction);
 
     currentRoom=nextRoom;
 
-    if(delB1)
-    {
-        button1->deleteLater();
-       // delete button1;
-       // button1=NULL;
-        delB1=0;
-    }
-    if(delB2)
-    {
-        //delete button2;
-       // button2=NULL;
-        button2->deleteLater();
-        delB2=0;
-    }
-    if(delB3)
-    {
-       // delete button3;
-       // button3=NULL;
-       button3->deleteLater();
-        delB3=0;
-    }
-    if(delB4)
-    {
-        //delete button4;
-       // button4=NULL;
-        button4->deleteLater();
-        delB4=0;
-    }
-   /* if(vampire!=NULL)
-    {
-        this->removeItem(vampire);
-        delete vampire;
-         vampire=NULL;
-    }*/
-    this->removeItem(vampire);
-    this->removeItem(rect);
-
-    vampire->resetHealth();
-
-    timer->StopTimer();
-    qDebug()<<"Timer stopped";
-    delete timer;
-    timer=NULL;
-
-    //delete rect;
-   // rect=NULL;
-
-   // createRect();
-
-   // createMonster();
+    clearBackground();
 
     setRoomExits(currentRoom);
 
     addToScene();
 }
 
-void Background::createRooms(){
+Room * Background::createRooms(){
 
     a= new Room("a");
     b= new Room("b");
@@ -105,7 +47,7 @@ void Background::createRooms(){
     h= new Room("h");
     i= new Room("i");
     j= new Room("j");
-    //setRoomExits(a);
+    return a;
 
 }
 
@@ -113,17 +55,28 @@ void Background::createExits(){
 
     //         (N, E, S, W)
     a->setExits(f, b, d, c);
+    a->setMonster(true);
+
     b->setExits(NULL, NULL, NULL, a);
+
     c->setExits(NULL, a, NULL, NULL);
+    c->setMonster(true);
+
     d->setExits(a, e, NULL, i);
+
     e->setExits(NULL, NULL, NULL, d);
+    e->setMonster(true);
+
     f->setExits(NULL, g, a, h);
     g->setExits(NULL, NULL, NULL, f);
+    g->setMonster(true);
+
     h->setExits(NULL, f, NULL, NULL);
+
     i->setExits(NULL, d, j, NULL);
+    i->setMonster(true);
+
     j->setExits(i, NULL, NULL, NULL);
-
-
 }
 
 //creates buttons depending on room exits
@@ -134,19 +87,17 @@ void Background::setRoomExits(Room * r){
     vector<Room> roomsToExit= currentRoom->rooms();
     for(int i=0;i<listOfExits.size();i++)
     {
-        if(listOfExits[i]=="north")
-        {
+        if(listOfExits[i]=="north"){
             button1= new QPushButton();
             button1->move(300,125);
             button1->raise();
             button1->setText("North");
             delB1=1;
             this->addWidget(button1);
-            connect(button1,SIGNAL(released()),this, SLOT(on_button1_clicked()));
 
+            connect(button1,SIGNAL(released()),this, SLOT(on_button1_clicked()));
         }
-        else if(listOfExits[i]=="south")
-        {
+        else if(listOfExits[i]=="south"){
             button2= new QPushButton();
             button2->move(625,125);
             button2->setText("South");
@@ -155,8 +106,7 @@ void Background::setRoomExits(Room * r){
             connect(button2,SIGNAL(released()),this, SLOT(on_button2_clicked()));
             this->addWidget(button2);
         }
-        else if(listOfExits.at(i)=="east")
-        {
+        else if(listOfExits.at(i)=="east"){
             button3= new QPushButton();
             button3->move(300,335);
             button3->setText("East");
@@ -165,8 +115,7 @@ void Background::setRoomExits(Room * r){
             connect(button3,SIGNAL(released()),this, SLOT(on_button3_clicked()));
             this->addWidget(button3);
         }
-        else if(listOfExits.at(i)=="west")
-        {
+        else if(listOfExits.at(i)=="west"){
             button4= new QPushButton();
             button4->move(625,335);
             button4->setText("West");
@@ -174,14 +123,11 @@ void Background::setRoomExits(Room * r){
             delB4=1;
             this->addWidget(button4);
             connect(button4,SIGNAL(released()),this, SLOT(on_button4_clicked()));
-
         }
 
     }
 }
 void Background::createRect(){
-
-
     rect= new QGraphicsRectItem();
     rect->setRect(250,100,500,300);
     rect->setBrush(Qt::green);
@@ -192,38 +138,40 @@ void Background::createRect(){
 void Background::createMonster(){
     qDebug()<<"Test2";
     vampire = new Monster();
-    //play= new Player();
     vampire->setPixmap(QPixmap(":/Images/vampire.png"));
     vampire->setFlag(QGraphicsItem::ItemIsFocusable);
     vampire->setFocus();
     vampire->setPos(470,200);
     vampire->setZValue(2);
-    //timer = new MyTimer(vampire,play);
+}
 
+void Background:: createTextBox(){
+    smallEditor = new QTextEdit;
+    smallEditor->move(250,400);
+    smallEditor->setReadOnly(true);
+}
+
+void Background:: addText(){
+     string x="You are in Room "+currentRoom->getDescription();
+     smallEditor->setPlainText(QString::fromStdString(x));
 }
 
 //adds monster and rectangle to scene
 void Background::addToScene(){
-    qDebug()<<"Test1";
-    if(!(vampire->isVisible()))
-    {
+    if(!(vampire->isVisible() ) && currentRoom->monsterInRoom()){
         vampire->setVisible(true);
-        qDebug()<<"dayum";
     }
-    vampire->setFocus();
+    if(!(currentRoom->monsterInRoom()))
+        vampire->setVisible(false);
+
+    this->addWidget(smallEditor);
     this->addItem(vampire);
-    timer = new MyTimer(vampire, play);
+    timer = new MyTimer(vampire, player, currentRoom);
     this->addItem(rect);
     vampire->setPixmap(QPixmap(":/Images/vampire.png"));
-
-    //this->addItem(play);
-
+    vampire->setFocus();
 }
 
-void Background::addAttacked(Attack * item)
-{
-    this->addItem(item);
-}
 
 void Background::on_button1_clicked()
 {
@@ -245,6 +193,41 @@ void Background::on_button4_clicked()
 {
 
     setScene("west");
+}
+
+void Background::clearBackground(){
+
+    if(delB1)
+    {
+        button1->deleteLater();
+        delB1=0;
+    }
+    if(delB2)
+    {
+        button2->deleteLater();
+        delB2=0;
+    }
+    if(delB3)
+    {
+       button3->deleteLater();
+        delB3=0;
+    }
+    if(delB4)
+    {
+        button4->deleteLater();
+        delB4=0;
+    }
+
+    this->removeItem(vampire);
+    this->removeItem(rect);
+
+    addText();
+
+    vampire->resetHealth();
+
+    timer->StopTimer();
+    delete timer;
+
 }
 
 

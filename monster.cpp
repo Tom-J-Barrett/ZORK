@@ -39,7 +39,7 @@ void Monster::keyPressEvent(QKeyEvent *event)
     else if(event->key()==Qt::Key_Down && y()<=310){
        setPos(x(),y()+10);
     }
-    else if(event->key()==Qt::Key_Space)
+    else if(event->key()==Qt::Key_X)
     {
             if(this->scenePos()==QPointF(470,200))
             {
