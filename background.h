@@ -19,13 +19,12 @@ class Background : public QGraphicsScene
     Q_OBJECT
 public:
     QGraphicsRectItem *rect;
-    explicit Background();
+    explicit Background(Player * play);
     Monster * vampire;
     QTextEdit * smallEditor;
-  // Player * play;
     Room *currentRoom;
     Room * nextRoom;
-    Player * play;
+    Player * player;
     int delB1=0;
     int delB2=0;
     int delB3=0;
@@ -36,15 +35,16 @@ public:
     QPushButton * button3;
     QPushButton * button4;
     MyTimer * timer;
-    void createRooms();
+    Room * createRooms();
     void setScene(string direction);
     void createExits();
     void setRoomExits(Room * r);
     void createRect();
     void createMonster();
+    void createTextBox();
     void addToScene();
-    void addAttacked(Attack * item);
-    //on_button1_clicked();
+    void clearBackground();
+    void addText();
 
 public slots:
     void on_button1_clicked();
