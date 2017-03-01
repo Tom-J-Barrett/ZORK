@@ -26,7 +26,7 @@ void MyTimer::MySlot()
 {
     if(vamp)
         health=vamp->getHealth();
-
+    qDebug()<<vamp->getHealth();
     if(health<=0){
         vamp->setVisible(false);
         room->setMonster(false);

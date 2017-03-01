@@ -9,10 +9,12 @@
 #include "mytimer.h"
 #include "buttonaction.h"
 #include "player.h"
+#include "boss.h"
 #include "attack.h"
 #include <QtCore>
 #include <string>
 #include <QTextEdit>
+#include "character.h"
 
 class Background : public QGraphicsScene
 {
@@ -20,8 +22,9 @@ class Background : public QGraphicsScene
 public:
     QGraphicsRectItem *rect;
     explicit Background(Player * play);
-    Monster * vampire;
-     QTextEdit * smallEditor;
+    Monster* vampire;
+    Boss * dragon;
+    QTextEdit * smallEditor;
     Room *currentRoom;
     Room * nextRoom;
     Player * player;
@@ -41,6 +44,7 @@ public:
     void setRoomExits(Room * r);
     void createRect();
     void createMonster();
+    void createBoss();
     void createTextBox();
     void addToScene();
     void clearBackground();

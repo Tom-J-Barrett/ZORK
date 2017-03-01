@@ -27,7 +27,6 @@ SOURCES += main.cpp \
     zork.cpp \
     room.cpp \
     character.cpp \
-    enemy.cpp \
     monster.cpp \
     boss.cpp \
     player.cpp \
@@ -45,7 +44,6 @@ HEADERS  += \
     boss.h \
     background.h \
     character.h \
-    enemy.h \
     item.h \
     key.h \
     monster.h \

@@ -21,6 +21,7 @@ void Zork:: play(){
     backg->setSceneRect(0,0,1000,500);
     backg->createRect();
     backg->createMonster();
+    backg->createBoss();
     backg->createTextBox();
     backg->addText();
     backg->addToScene();
