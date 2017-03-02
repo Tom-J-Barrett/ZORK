@@ -28,8 +28,7 @@ int Character::getHealth(){
 
 int Character::move(int x)
 {
-    if(z=1)
-        this->setPixmap(QPixmap(":/Images/vampire.png"));
+    this->setPixmap(QPixmap(":/Images/vampire.png"));
 
     if(x==0)
     {
@@ -89,7 +88,6 @@ void Character::keyPressEvent(QKeyEvent *event)
             if(this->scenePos()==QPointF(470,200)){
                 decreaseHealth();
                 this->setPixmap(QPixmap(":/Images/vampireAttacked.png"));
-                z=1;
             }
 
     }

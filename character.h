@@ -9,13 +9,13 @@ public:
     Character();
     void keyPressEvent(QKeyEvent * event);
     int move(int x);
-    int health=100;
     int getHealth();
     void decreaseHealth();
     void resetHealth();
     void increaseHealth();
-    int z;
 
+private:
+    int health=100;
 };
 
 #endif // CHARACTER_H

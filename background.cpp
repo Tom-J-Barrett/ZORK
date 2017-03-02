@@ -238,7 +238,6 @@ void Background::clearBackground(){
 
     timer->StopTimer();
     delete timer;
-
 }
 
 
