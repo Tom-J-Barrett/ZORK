@@ -16,6 +16,23 @@ void Room::setExits(Room *north, Room *east, Room *south, Room *west) {
         exits["west"] = west;
 }
 
+void Room::setMonster(bool monst)
+{
+    if(monst)
+        monster=true;
+    else
+        monster=false;
+
+}
+
+void Room::setBoss(bool boss)
+{
+    if(boss)
+        bossMonster=true;
+    else
+        bossMonster=false;
+}
+
 vector<string> Room::exitString()
 {
     vector<string> list;
@@ -23,6 +40,16 @@ vector<string> Room::exitString()
     for (map<string, Room*>::iterator i = exits.begin(); i != exits.end(); i++)
         list.push_back(i->first);	// access the "first" element of the pair (direction as a string)
     return list;
+}
+
+bool Room::monsterInRoom()
+{
+    return monster;
+}
+
+string Room::getDescription()
+{
+    return description;
 }
 
 vector<Room> Room::rooms()
@@ -47,6 +74,14 @@ Room* Room::nextRoom(string direction) {
                 // part of the "pair" (<string, Room*>) and return it.
 }
 
+void Room::addItem(Item *inItem) {
+    this->item = inItem;
+    itemsInRoom.push_back(inItem);
+}
+
+int Room::numberOfItems() {
+    return itemsInRoom.size();
+}
 /*void Room::addItem(Item *inItem) {
     //cout <<endl;
     //cout << "Just added" + inItem->getLongDescription();
@@ -93,3 +128,9 @@ int Room::isItemInRoom(string inString)
         }
     return -1;
 }*/
+void addItemToRoom(Room room){
+//if(room.item != NULL)
+//{
+
+//}
+}

@@ -1,11 +1,13 @@
 #include "player.h"
-#include "background.h"
 #include <QKeyEvent>
 #include <QGraphicsScene>
 #include <QDebug>
 
 Player::Player()
 {
+    health=100;
+    //inventory = new Inventory();
+
     //this->setPixmap(QPixmap(":/Images/attack.png"));
     //this->setFlag(QGraphicsItem::ItemIsFocusable);
     //this->setPos(470,200);
@@ -16,11 +18,19 @@ Player::Player()
 
 int Player::getHealth()
 {
-
+    return health;
 }
 
 void Player::decreaseHealth()
 {
+    if(health>=1)
+        health--;
+    else
+    {
+        qDebug()<<"You're dead";
+        exit(EXIT_FAILURE);
+
+    }
 
 }
 
@@ -28,3 +38,6 @@ void Player::increaseHealth()
 {
 
 }
+
+
+

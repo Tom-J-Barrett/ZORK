@@ -1,10 +1,27 @@
 #include "item.h"
 #include <iostream>
+#include <QGraphicsPixmapItem>
+#include <QDebug>
 using namespace std;
 
+Item::Item(){
+
+}
+
 Item::Item (string description, int inWeight) {
+
     description = description;
     setWeight(inWeight);
+    this->setPixmap(QPixmap(":/Images/key.png"));
+    this->setPos(470,200);
+    this->setZValue(4);
+    this->setScale(.1);
+    //mousePressEvent(event);
+}
+
+void Item::mousePressEvent(QGraphicsSceneMouseEvent *event){
+    qDebug()<<"clicked";
+
 }
 
 Item::Item(string description) {
