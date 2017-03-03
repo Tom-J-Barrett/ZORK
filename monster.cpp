@@ -14,11 +14,11 @@ Monster::Monster()
     this->setZValue(2);
 }
 
+
 /*string Monster::getimage()
 {
     return ":/Images/vampire.png";
 }*/
-
 
 
 

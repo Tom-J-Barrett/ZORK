@@ -1,6 +1,8 @@
 #include "zork.h"
 #include <QImage>
 #include <QGraphicsPixmapItem>
+#include "background.h"
+#include "player.h"
 
 Zork::Zork(QWidget *parent)
 {

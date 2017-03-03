@@ -1,4 +1,3 @@
-#include "background.h"
 #include "monster.h"
 #include "room.h"
 #include <QGraphicsPixmapItem>
@@ -39,6 +38,7 @@ void Background::setScene(string direction)
 Room * Background::createRooms(){
 
     a= new Room("a");
+    a->addItem(new Item("description", 20));
     b= new Room("b");
     c= new Room("c");
     d= new Room("d");
@@ -181,6 +181,11 @@ void Background::addToScene(){
     this->addItem(rect);
     vampire->setPixmap(QPixmap(":/Images/vampire.png"));
     vampire->setFocus();
+
+    if(currentRoom->numberOfItems() > 0){
+    this->addItem(currentRoom->item);
+    }
+
 }
 
 
@@ -229,8 +234,13 @@ void Background::clearBackground(){
         delB4=0;
     }
 
+
     this->removeItem(vampire);
     this->removeItem(rect);
+ 
+    this->removeItem(vampire);
+    this->removeItem(rect);
+
 
     addText();
 
@@ -238,6 +248,7 @@ void Background::clearBackground(){
 
     timer->StopTimer();
     delete timer;
+
 }
 
 

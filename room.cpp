@@ -74,6 +74,14 @@ Room* Room::nextRoom(string direction) {
                 // part of the "pair" (<string, Room*>) and return it.
 }
 
+void Room::addItem(Item *inItem) {
+    this->item = inItem;
+    itemsInRoom.push_back(inItem);
+}
+
+int Room::numberOfItems() {
+    return itemsInRoom.size();
+}
 /*void Room::addItem(Item *inItem) {
     //cout <<endl;
     //cout << "Just added" + inItem->getLongDescription();
@@ -120,3 +128,9 @@ int Room::isItemInRoom(string inString)
         }
     return -1;
 }*/
+void addItemToRoom(Room room){
+//if(room.item != NULL)
+//{
+
+//}
+}
