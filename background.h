@@ -20,9 +20,28 @@ class Background : public QGraphicsScene
 {
     Q_OBJECT
 public:
-    QGraphicsRectItem *rect;
     explicit Background(Player * play);
-    Monster* vampire;
+    void setScene(string direction);
+    void createExits();
+    void setRoomExits(Room * r);
+    void createRect();
+    void createMonster();
+    void createBoss();
+    void createTextBox();
+    void addToScene();
+    void clearBackground();
+    void addText();
+    Room * createRooms();
+
+public slots:
+    void on_button1_clicked();
+    void on_button2_clicked();
+    void on_button3_clicked();
+    void on_button4_clicked();
+
+private:
+    QGraphicsRectItem *rect;
+    Monster * vampire;
     Boss * dragon;
     QTextEdit * smallEditor;
     Room *currentRoom;
@@ -38,23 +57,6 @@ public:
     QPushButton * button3;
     QPushButton * button4;
     MyTimer * timer;
-    Room * createRooms();
-    void setScene(string direction);
-    void createExits();
-    void setRoomExits(Room * r);
-    void createRect();
-    void createMonster();
-    void createBoss();
-    void createTextBox();
-    void addToScene();
-    void clearBackground();
-    void addText();
-
-public slots:
-    void on_button1_clicked();
-    void on_button2_clicked();
-    void on_button3_clicked();
-    void on_button4_clicked();
 
 };
 
