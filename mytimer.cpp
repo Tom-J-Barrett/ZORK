@@ -5,9 +5,11 @@
 #include <Monster.h>
 #include <QSignalMapper>
 
-MyTimer::MyTimer(Monster * vampire, Player * p)
+MyTimer::MyTimer(Character * enemy, Player * p, Room* r)
 {
-    vamp=vampire;
+    vamp=enemy;
+
+    room=r;
     play=p;
     timer = new QTimer(this);
 
@@ -23,23 +25,15 @@ void MyTimer::StopTimer()
 
 void MyTimer::MySlot()
 {
+    //vamp->setPixmap(QPixmap(":/Images/vampire.png"));
     if(vamp)
         health=vamp->getHealth();
-
-    if(health<=0)
-    {
-       // delete vamp;
-       // vamp=NULL;
+    qDebug()<<vamp->getHealth();
+    if(health<=0){
         vamp->setVisible(false);
-        qDebug()<<"vamp is null";
+        room->setMonster(false);
     }
-    else if(vamp==NULL)
-    {
-        qDebug()<<"vamp is deleted";
-    }
-    else
-    {
-        qDebug()<<"vamp is moved";
+    else{
         x=vamp->move(x);
     }
 

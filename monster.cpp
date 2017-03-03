@@ -15,6 +15,11 @@ Monster::Monster()
 }
 
 
+/*string Monster::getimage()
+{
+    return ":/Images/vampire.png";
+}*/
+
 
 
 

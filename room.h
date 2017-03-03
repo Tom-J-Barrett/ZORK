@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include "item.h"
+
 using namespace std;
 using std::vector;
 
@@ -15,14 +16,18 @@ private:
     bool bossMonster;
 public:
     string description;
+
     vector<Item*> itemsInRoom;
+
     Room(string description);
     void setExits(Room *north, Room *east, Room *south, Room *west);
     void setMonster(bool);
     void setBoss(bool);
     vector<string> exitString();
     string getDescription();
+
     Item *item;
+
     bool monsterInRoom();
     vector<Room> rooms();
     Room* nextRoom(string direction);

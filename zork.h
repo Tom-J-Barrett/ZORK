@@ -12,12 +12,14 @@ class Zork : public QGraphicsView
 {
 public:
     Zork(QWidget * parent=0);
-    Background * backg;
-    Room * currentRoom;
-    Player * player;
-   // monster * vampire;
+
     void play();
 
-};
+private:
+Background * backg;
+Room * currentRoom;
+Player * player;
 
+
+};
 #endif // ZORK_H

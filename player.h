@@ -11,7 +11,7 @@ class Player{
 public:
     Player();
     int health;
-    //Inventory inventory;
+
     //int * healthPtr;
     int getHealth();
     void decreaseHealth();

@@ -9,6 +9,11 @@ Character::Character(){
 
 }
 
+
+void getImage(){
+
+}
+
 void Character::decreaseHealth(){
     health=health-25;
 }
@@ -28,6 +33,7 @@ int Character::getHealth(){
 
 int Character::move(int x)
 {
+
     if(z=1)
         this->setPixmap(QPixmap(":/Images/vampire.png"));
 

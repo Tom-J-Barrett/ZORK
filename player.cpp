@@ -1,4 +1,5 @@
 #include "player.h"
+
 #include <QKeyEvent>
 #include <QGraphicsScene>
 #include <QDebug>
@@ -6,7 +7,6 @@
 Player::Player()
 {
     health=100;
-    //inventory = new Inventory();
 
     //this->setPixmap(QPixmap(":/Images/attack.png"));
     //this->setFlag(QGraphicsItem::ItemIsFocusable);
