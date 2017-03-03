@@ -4,12 +4,14 @@
 #include <QObject>
 #include <QKeyEvent>
 #include <QGraphicsPixmapItem>
+#include "inventory.h"
 
 class Player{
 
 public:
     Player();
     int health;
+
     //int * healthPtr;
     int getHealth();
     void decreaseHealth();
