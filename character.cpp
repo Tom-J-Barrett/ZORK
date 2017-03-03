@@ -9,6 +9,10 @@ Character::Character(){
 
 }
 
+void getImage(){
+
+}
+
 void Character::decreaseHealth(){
     health=health-25;
 }

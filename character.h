@@ -13,6 +13,7 @@ public:
     void decreaseHealth();
     void resetHealth();
     void increaseHealth();
+    void getImage();
 
 private:
     int health=100;

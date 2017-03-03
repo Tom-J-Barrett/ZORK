@@ -5,9 +5,9 @@
 #include <Monster.h>
 #include <QSignalMapper>
 
-MyTimer::MyTimer(Character * vampire, Player * p, Room* r)
+MyTimer::MyTimer(Character * enemy, Player * p, Room* r)
 {
-    vamp=vampire;
+    vamp=enemy;
 
     room=r;
     play=p;

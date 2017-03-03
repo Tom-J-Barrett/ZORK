@@ -10,7 +10,7 @@ class MyTimer : public QObject
 {
     Q_OBJECT
 public:
-    MyTimer(Character * vampire, Player * p, Room* r);
+    MyTimer(Character * enemy, Player * p, Room* r);
     void StopTimer();
 
 public slots:
