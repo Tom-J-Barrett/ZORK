@@ -13,4 +13,5 @@ public:
     void addToInventory(Item *item);
     void removeFromInventory(Item item);
     int inventoryQty();
+    vector<Item *> getInventoryList();
 };

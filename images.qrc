@@ -12,6 +12,7 @@
         <file>sword.jpg</file>
         <file>sword2.jpg</file>
         <file>potion.jpg</file>
+        <file>cave.jpg</file>
     </qresource>
     <qresource prefix="/">
         <file>sword.jpg</file>

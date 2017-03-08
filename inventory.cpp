@@ -24,6 +24,10 @@ void Inventory::addToInventory(Item *item){
 
 }
 
+vector<Item*> Inventory:: getInventoryList(){
+    return itemsInInventory;
+}
+
 void Inventory::removeFromInventory(Item item){
 
 }

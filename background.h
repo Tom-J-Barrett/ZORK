@@ -16,6 +16,7 @@
 #include <string>
 #include <QTextEdit>
 #include "character.h"
+#include <vector>
 
 class Background : public QGraphicsScene
 {
@@ -24,6 +25,7 @@ public:
     string inventoryContString;
     explicit Background(Player * play);
     void setScene(string direction);
+    void refreshScene();
     void createExits();
     void setRoomExits(Room * r);
     void createRect();
@@ -44,7 +46,7 @@ public slots:
     void on_button4_clicked();
 
 private:
-    QGraphicsRectItem *rect;
+    QGraphicsPixmapItem *rect;
     Monster* vampire;
     Boss * dragon;
     string inventoryString;
@@ -65,6 +67,8 @@ private:
     MyTimer * timer;
     Inventory * inventory;
     Item * item;
+    Item * itemToDrop;
+    vector<Item*> itemsInInventory;
 };
 
 #endif // BACKGROUND_H

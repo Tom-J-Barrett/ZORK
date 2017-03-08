@@ -40,6 +40,14 @@ void Background::setScene(string direction)
     addToScene();
 }
 
+void Background::refreshScene(){
+    clearBackground();
+
+    setRoomExits(currentRoom);
+
+    addToScene();
+}
+
 Room * Background::createRooms(){
 
     a= new Room("a");
@@ -107,7 +115,7 @@ void Background::setRoomExits(Room * r){
     {
         if(listOfExits[i]=="north"){
             button1= new QPushButton();
-            button1->move(450,125);
+            button1->move(450,50);
             button1->raise();
             button1->setText("North");
             delB1=1;
@@ -117,7 +125,7 @@ void Background::setRoomExits(Room * r){
         }
         else if(listOfExits[i]=="south"){
             button2= new QPushButton();
-            button2->move(450,335);
+            button2->move(450,435);
             button2->setText("South");
             button2->raise();
             delB2=1;
@@ -126,7 +134,7 @@ void Background::setRoomExits(Room * r){
         }
         else if(listOfExits.at(i)=="east"){
             button3= new QPushButton();
-            button3->move(650,225);
+            button3->move(750,225);
             button3->setText("East");
             button3->raise();
             delB3=1;
@@ -135,7 +143,7 @@ void Background::setRoomExits(Room * r){
         }
         else if(listOfExits.at(i)=="west"){
             button4= new QPushButton();
-            button4->move(275,225);
+            button4->move(175,225);
             button4->setText("West");
             button4->raise();
             delB4=1;
@@ -146,9 +154,11 @@ void Background::setRoomExits(Room * r){
     }
 }
 void Background::createRect(){
-    rect= new QGraphicsRectItem();
-    rect->setRect(250,100,500,300);
-    rect->setBrush(Qt::green);
+    rect= new QGraphicsPixmapItem();
+    rect->setPos(50,25);
+    rect->setPixmap(QPixmap(":/Images/cave.jpg"));
+    //rect->setRect(250,100,500,300);
+   // rect->setBrush(Qt::green);
     rect->setZValue(-1);
 
 }
@@ -174,15 +184,15 @@ void Background::createBoss(){
 
 void Background:: createTextBox(){
     smallEditor = new QTextEdit;
-    smallEditor->move(250,400);
+    smallEditor->move(250,475);
     smallEditor->setReadOnly(true);
 }
 
 void Background:: createInventoryBox(string inventoryString){
     inventoryEditor = new QTextEdit;
-    inventoryEditor->move(400,400);
+    inventoryEditor->move(400,475);
     inventoryEditor->setReadOnly(true);
-    inventoryContString += inventoryString;
+    inventoryContString += "Inventory";
     inventoryEditor->setPlainText(QString::fromStdString(inventoryContString));
 }
 
@@ -330,8 +340,22 @@ void Background::keyPressEvent(QKeyEvent *event)
                 this->addWidget(inventoryEditor);
                 item->setVisible(false);
                 currentRoom->setItem(false);
+                inventoryContString = item->getDescription();
+                inventoryEditor->setPlainText(QString::fromStdString(inventoryContString));
             }
 
+    }
+
+    if(event->key()==Qt::Key_D)
+    {
+        if(currentRoom->itemInRoom()==false){
+            itemsInInventory=player->getInventory()->getInventoryList();
+            itemToDrop=itemsInInventory.back();
+            itemsInInventory.pop_back();
+            currentRoom->addItem(itemToDrop);
+            currentRoom->setItem(true);
+            refreshScene();
+        }
     }
 }
 

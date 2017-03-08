@@ -7,6 +7,7 @@ class Potion: public Item
 {
 public:
     Potion(string description, int inWeight);
+    string getDescription();
 private:
     string description;
     int weight;
