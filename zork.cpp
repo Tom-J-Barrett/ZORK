@@ -21,7 +21,8 @@ void Zork:: play(){
     backg->createExits();
     backg->setRoomExits(currentRoom);
     backg->setSceneRect(0,0,1000,500);
-    backg->createRect();
+    backg->createCave();
+    backg->createMapGUI();
     backg->createMonster();
     backg->createBoss();
     backg->createTextBox();

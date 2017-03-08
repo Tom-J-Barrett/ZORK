@@ -149,11 +149,14 @@ void Background::setRoomExits(Room * r){
             delB4=1;
             this->addWidget(button4);
             connect(button4,SIGNAL(released()),this, SLOT(on_button4_clicked()));
+
+
+
         }
 
     }
 }
-void Background::createRect(){
+void Background::createCave(){
     rect= new QGraphicsPixmapItem();
     rect->setPos(50,25);
     rect->setPixmap(QPixmap(":/Images/cave.jpg"));
@@ -186,6 +189,95 @@ void Background:: createTextBox(){
     smallEditor = new QTextEdit;
     smallEditor->move(250,475);
     smallEditor->setReadOnly(true);
+}
+
+void Background::createMapGUI()
+{
+
+    RoomA= new QGraphicsRectItem();
+    RoomB= new QGraphicsRectItem();
+    RoomC= new QGraphicsRectItem();
+    RoomD= new QGraphicsRectItem();
+    RoomE= new QGraphicsRectItem();
+    RoomF= new QGraphicsRectItem();
+    RoomG= new QGraphicsRectItem();
+    RoomH= new QGraphicsRectItem();
+    RoomI= new QGraphicsRectItem();
+    RoomJ= new QGraphicsRectItem();
+
+    /*mapRooms.push_back(RoomA);
+    mapRooms.push_back(RoomB);
+    mapRooms.push_back(RoomC);
+    mapRooms.push_back(RoomD);
+    mapRooms.push_back(RoomE);
+    mapRooms.push_back(RoomF);
+    mapRooms.push_back(RoomG);
+    mapRooms.push_back(RoomH);
+    mapRooms.push_back(RoomI);
+    mapRooms.push_back(RoomJ);*/
+
+    RoomA->setRect(0,10,10,10);
+   // RoomA->setBrush(Qt::green);
+    RoomA->setZValue(4);
+    this->addItem(RoomA);
+
+    RoomB->setRect(10,10,10,10);
+    //RoomB->setBrush(Qt::green);
+    RoomB->setZValue(5);
+    this->addItem(RoomB);
+
+    RoomC->setRect(10,10,10,10);
+   // RoomC->setBrush(Qt::green);
+    RoomC->setZValue(5);
+    this->addItem(RoomC);
+
+    RoomD->setRect(10,10,10,10);
+    //RoomD->setBrush(Qt::green);
+    RoomD->setZValue(5);
+    this->addItem(RoomD);
+
+    RoomE->setRect(10,10,10,10);
+   // RoomE->setBrush(Qt::green);
+    RoomE->setZValue(5);
+    this->addItem(RoomE);
+
+    RoomF->setRect(10,10,10,10);
+   // RoomF->setBrush(Qt::green);
+    RoomF->setZValue(5);
+    this->addItem(RoomF);
+
+    RoomG->setRect(10,10,10,10);
+  //  RoomG->setBrush(Qt::green);
+    RoomG->setZValue(5);
+    this->addItem(RoomG);
+
+    RoomH->setRect(10,10,10,10);
+   // RoomH->setBrush(Qt::green);
+    RoomH->setZValue(5);
+    this->addItem(RoomH);
+
+    RoomI->setRect(10,10,10,10);
+   // RoomI->setBrush(Qt::green);
+    RoomI->setZValue(5);
+    this->addItem(RoomI);
+
+    RoomJ->setRect(10,10,10,10);
+   // RoomJ->setBrush(Qt::green);
+    RoomJ->setZValue(5);
+    this->addItem(RoomJ);
+
+    /*switch(stoi(currentRoom->getDescription())){
+        case stoi("a"): RoomA->setBrush(Qt::green); break;
+        case stoi("b"): RoomB->setBrush(Qt::green); break;
+        case stoi("c"): RoomC->setBrush(Qt::green); break;
+        case stoi("d"): RoomD->setBrush(Qt::green); break;
+        case stoi("e"): RoomE->setBrush(Qt::green); break;
+        case stoi("f"): RoomF->setBrush(Qt::green); break;
+        case stoi("g"): RoomG->setBrush(Qt::green); break;
+        case stoi("h"): RoomH->setBrush(Qt::green); break;
+        case stoi("i"): RoomI->setBrush(Qt::green); break;
+        case stoi("j"): RoomJ->setBrush(Qt::green); break;
+    }*/
 }
 
 void Background:: createInventoryBox(string inventoryString){
@@ -229,6 +321,7 @@ void Background::addToScene(){
     this->addItem(vampire);
     this->addItem(dragon);
     this->addItem(rect);
+
 
     if(currentRoom->itemInRoom()){
         item=currentRoom->item;

@@ -28,10 +28,11 @@ public:
     void refreshScene();
     void createExits();
     void setRoomExits(Room * r);
-    void createRect();
+    void createCave();
     void createMonster();
     void createBoss();
     void createTextBox();
+    void createMapGUI();
     void addToScene();
     void clearBackground();
     void addText();
@@ -69,6 +70,8 @@ private:
     Item * item;
     Item * itemToDrop;
     vector<Item*> itemsInInventory;
+    vector<QGraphicsPixmapItem> mapRooms;
+    QGraphicsRectItem *RoomA,*RoomB,*RoomC,*RoomD,*RoomE,*RoomF,*RoomG,*RoomH,*RoomI,*RoomJ;
 };
 
 #endif // BACKGROUND_H
