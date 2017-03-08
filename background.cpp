@@ -151,7 +151,7 @@ void Background::createMonster(){
 
 void Background::createBoss(){
     dragon = new Boss();
-    dragon->setPixmap(QPixmap(":/Images/dragon.jpeg"));
+    dragon->setPixmap(QPixmap(":/Images/dragon.png"));
     dragon->setFlag(QGraphicsItem::ItemIsFocusable);
     dragon->setFocus();
     dragon->setPos(470,200);
@@ -180,19 +180,31 @@ void Background:: addText(){
 
 //adds monster and rectangle to scene
 void Background::addToScene(){
-    if(!(vampire->isVisible() ) && currentRoom->monsterInRoom()){
+    if(currentRoom->monsterInRoom()){
         vampire->setVisible(true);
+        vampire->setFocus();
+        timer = new MyTimer(vampire, player, currentRoom);
+        qDebug()<<"ukhv";
     }
+
     if(!(currentRoom->monsterInRoom()))
         vampire->setVisible(false);
+
+    if(!(dragon->isVisible() ) && currentRoom->bossInRoom()){
+        dragon->setVisible(true);
+        dragon->setFocus();
+        timer = new MyTimer(dragon, player, currentRoom);
+    }
+
+    if(!(currentRoom->bossInRoom())){
+        dragon->setVisible(false);
+    }
 
     this->addWidget(smallEditor);
     this->addWidget(inventoryEditor);
     this->addItem(vampire);
-    timer = new MyTimer(vampire, player, currentRoom);
+    this->addItem(dragon);
     this->addItem(rect);
-    vampire->setPixmap(QPixmap(":/Images/vampire.png"));
-    vampire->setFocus();
 
     if(currentRoom->numberOfItems() > 0){
     this->addItem(currentRoom->item);
@@ -249,14 +261,13 @@ void Background::clearBackground(){
 
     this->removeItem(vampire);
     this->removeItem(rect);
- 
-    this->removeItem(vampire);
-    this->removeItem(rect);
+    this->removeItem(dragon);
 
 
     addText();
 
     vampire->resetHealth();
+    dragon->resetHealth();
 
     timer->StopTimer();
     delete timer;
@@ -265,6 +276,30 @@ void Background::clearBackground(){
 
 void Background::keyPressEvent(QKeyEvent *event)
 {
+    if(currentRoom->monsterInRoom()){
+        if(event->key()==Qt::Key_X)
+        {
+                if(vampire->scenePos()==QPointF(470,200)){
+                    vampire->decreaseHealth();
+                    vampire->setPixmap(QPixmap(":/Images/vampireAttacked.png"));
+                    vampire->z=1;
+                }
+
+        }
+    }
+    else if(currentRoom->bossInRoom()){
+        if(event->key()==Qt::Key_X)
+        {
+                if(dragon->scenePos()==QPointF(470,200)){
+                    dragon->decreaseHealth();
+                    dragon->setPixmap(QPixmap(":/Images/dragon.png"));
+                    dragon->z=1;
+                }
+        }
+    }
+
+
+
     if(event->key()==Qt::Key_P)
     {
             if(currentRoom->itemsInRoom.size() > 0)

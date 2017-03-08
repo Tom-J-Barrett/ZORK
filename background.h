@@ -34,6 +34,7 @@ public:
     void addText();
     void createInventoryBox(string inventoryString);
     Room * createRooms();
+    void keyPressEvent(QKeyEvent *event);
 
 public slots:
     void on_button1_clicked();
@@ -61,8 +62,6 @@ private:
     QPushButton * button3;
     QPushButton * button4;
     MyTimer * timer;
-    void keyPressEvent(QKeyEvent *event);
-
 };
 
 #endif // BACKGROUND_H

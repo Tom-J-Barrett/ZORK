@@ -10,15 +10,82 @@
 
 Boss::Boss()
 {
-    this->setPixmap(QPixmap(":/Images/dragon.jpg"));
+    this->setPixmap(QPixmap(":/Images/dragon.png"));
     this->setFlag(QGraphicsItem::ItemIsFocusable);
     this->setFocus();
     this->setPos(470,200);
     this->setZValue(2);
 }
 
-/*string Boss::getimage()
+string Boss::getImage()
 {
     return ":/Images/dragon.jpg";
-}*/
+}
 
+int Boss::move(int x){
+    if(z==1)
+        this->setPixmap(QPixmap(":/Images/dragon.png"));
+
+    if(x==0)
+    {
+        this->setPos(490,200);
+        x=1;
+        return x;
+    }
+    else if(x==1)
+    {
+       this->setPos(470,200);
+       x=-1;
+       return x;
+    }
+    else if(x==-1)
+    {
+        this->setPos(450,200);
+        x=2;
+        return x;
+    }
+    else if(x==2)
+    {
+        this->setPos(470,200);
+        x=3;
+        return x;
+    }
+    else if(x==3)
+    {
+        this->setPos(470,220);
+        x=4;
+        return x;
+    }
+    else if(x==4)
+    {
+        this->setPos(470,200);
+        x=5;
+        return x;
+    }
+    else if(x==5)
+    {
+        this->setPos(470,180);
+        x=6;
+        return x;
+    }
+    else if(x==6)
+    {
+        this->setPos(470,200);
+        x=0;
+        return x;
+    }
+
+}
+
+/*void Boss::keyPressEvent(QKeyEvent *event)
+{
+    if(event->key()==Qt::Key_X)
+    {
+            if(this->scenePos()==QPointF(470,200)){
+                decreaseHealth();
+                this->setPixmap(QPixmap(":/Images/dragon.png"));
+                z=1;
+            }
+
+    }
+}*/

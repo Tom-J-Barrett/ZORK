@@ -5,5 +5,7 @@
         <file>attack.png</file>
         <file>vampireAttacked.png</file>
         <file>dragon.jpg</file>
+        <file>key.png</file>
+        <file>dragon.png</file>
     </qresource>
 </RCC>
