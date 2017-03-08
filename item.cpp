@@ -10,12 +10,12 @@ Item::Item(){
 
 Item::Item (string description, int inWeight) {
 
-    description = description;
+    this->description = description;
     setWeight(inWeight);
-    this->setPixmap(QPixmap(":/Images/key.png"));
-    this->setPos(470,200);
-    this->setZValue(4);
-    this->setScale(.1);
+//    this->setPixmap(QPixmap(":/Images/key.png"));
+//    this->setPos(470,200);
+//    this->setZValue(4);
+//    this->setScale(.1);
     //mousePressEvent(event);
 }
 
@@ -25,7 +25,7 @@ void Item::mousePressEvent(QGraphicsSceneMouseEvent *event){
 }
 
 Item::Item(string description) {
-    description = description;
+    this->description = description;
 }
 
 void Item::setWeight(int inWeight)

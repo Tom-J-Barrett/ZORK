@@ -19,6 +19,7 @@
 //constructor that sets blank window and creates rooms
 Background::Background(Player * play){
     player=play;
+    inventoryContString = "";
 }
 
 //Sets a new scne when you move rooms
@@ -38,10 +39,11 @@ void Background::setScene(string direction)
 Room * Background::createRooms(){
 
     a= new Room("a");
-    a->addItem(new Item("description", 20));
+    a->addItem(new Item("item a", 20));
     b= new Room("b");
     c= new Room("c");
     d= new Room("d");
+    d->addItem(new Item("item d",20));
     e= new Room("e");
     f= new Room("f");
     g= new Room("g");
@@ -162,10 +164,19 @@ void Background:: createTextBox(){
     smallEditor->setReadOnly(true);
 }
 
+void Background:: createInventoryBox(string inventoryString){
+    inventoryEditor = new QTextEdit;
+    inventoryEditor->move(400,400);
+    inventoryEditor->setReadOnly(true);
+    inventoryContString += inventoryString;
+    inventoryEditor->setPlainText(QString::fromStdString(inventoryContString));
+}
+
 void Background:: addText(){
      string x="You are in Room "+currentRoom->getDescription();
      smallEditor->setPlainText(QString::fromStdString(x));
 }
+
 
 //adds monster and rectangle to scene
 void Background::addToScene(){
@@ -176,6 +187,7 @@ void Background::addToScene(){
         vampire->setVisible(false);
 
     this->addWidget(smallEditor);
+    this->addWidget(inventoryEditor);
     this->addItem(vampire);
     timer = new MyTimer(vampire, player, currentRoom);
     this->addItem(rect);
@@ -251,7 +263,19 @@ void Background::clearBackground(){
 
 }
 
+void Background::keyPressEvent(QKeyEvent *event)
+{
+    if(event->key()==Qt::Key_P)
+    {
+            if(currentRoom->itemsInRoom.size() > 0)
+            {
+                player->inventory.addToInventory(currentRoom->item);
+                createInventoryBox(currentRoom->item->getDescription());
+                this->addWidget(inventoryEditor);
+            }
 
+    }
+}
 
 
 

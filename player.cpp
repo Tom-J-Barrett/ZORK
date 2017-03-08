@@ -7,7 +7,7 @@
 Player::Player()
 {
     health=100;
-
+    inventory = Inventory();
     //this->setPixmap(QPixmap(":/Images/attack.png"));
     //this->setFlag(QGraphicsItem::ItemIsFocusable);
     //this->setPos(470,200);

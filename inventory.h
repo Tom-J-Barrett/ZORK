@@ -4,11 +4,13 @@
 #include "item.h"
 class Inventory{
 private:
-    vector<Item> itemsInInventory;
 
 public:
-//    Inventory();
-//    void showInventory();
-//    void addToInventory(Item item);
-//    void removeFromInventory(Item item);
+
+    vector<Item*> itemsInInventory;
+    Inventory();
+    void showInventory();
+    void addToInventory(Item *item);
+    void removeFromInventory(Item item);
+    int inventoryQty();
 };
