@@ -20,6 +20,7 @@ class Background : public QGraphicsScene
 {
     Q_OBJECT
 public:
+    string inventoryContString;
     explicit Background(Player * play);
     void setScene(string direction);
     void createExits();
@@ -31,6 +32,7 @@ public:
     void addToScene();
     void clearBackground();
     void addText();
+    void createInventoryBox(string inventoryString);
     Room * createRooms();
     void keyPressEvent(QKeyEvent *event);
 
@@ -42,10 +44,11 @@ public slots:
 
 private:
     QGraphicsRectItem *rect;
-
     Monster* vampire;
     Boss * dragon;
+    string inventoryString;
     QTextEdit * smallEditor;
+    QTextEdit * inventoryEditor;
     Room *currentRoom;
     Room * nextRoom;
     Player * player;
@@ -59,8 +62,6 @@ private:
     QPushButton * button3;
     QPushButton * button4;
     MyTimer * timer;
-
-
 };
 
 #endif // BACKGROUND_H

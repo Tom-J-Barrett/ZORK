@@ -80,7 +80,7 @@ Room* Room::nextRoom(string direction) {
 }
 
 void Room::addItem(Item *inItem) {
-    this->item = inItem;
+    this->item =inItem;
     itemsInRoom.push_back(inItem);
 }
 

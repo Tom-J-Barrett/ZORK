@@ -13,6 +13,7 @@ public:
     int health;
 
     //int * healthPtr;
+    Inventory inventory;
     int getHealth();
     void decreaseHealth();
     void increaseHealth();
