@@ -13,7 +13,11 @@
 #include "player.h"
 #include <QString>
 #include <string>
+#include <key.h>
 #include "boss.h"
+#include "treasure.h"
+#include "weapon.h"
+#include "potion.h"
 
 
 //constructor that sets blank window and creates rooms
@@ -39,11 +43,21 @@ void Background::setScene(string direction)
 Room * Background::createRooms(){
 
     a= new Room("a");
-    a->addItem(new Item("item a", 20));
+    a->addItem(new Key("item a", 20));
+    a->setItem(true);
+
     b= new Room("b");
+    b->addItem(new Potion("Potion capable of restoring 20 hearts!",10));
+    b->setItem(true);
+
     c= new Room("c");
+    c->addItem(new Weapon("Hero's sword",30));
+    c->setItem(true);
+
     d= new Room("d");
-    d->addItem(new Item("item d",20));
+    d->addItem(new Treasure("Treasure!!!!!",50));
+    d->setItem(true);
+
     e= new Room("e");
     f= new Room("f");
     g= new Room("g");
@@ -93,7 +107,7 @@ void Background::setRoomExits(Room * r){
     {
         if(listOfExits[i]=="north"){
             button1= new QPushButton();
-            button1->move(300,125);
+            button1->move(450,125);
             button1->raise();
             button1->setText("North");
             delB1=1;
@@ -103,7 +117,7 @@ void Background::setRoomExits(Room * r){
         }
         else if(listOfExits[i]=="south"){
             button2= new QPushButton();
-            button2->move(625,125);
+            button2->move(450,335);
             button2->setText("South");
             button2->raise();
             delB2=1;
@@ -112,7 +126,7 @@ void Background::setRoomExits(Room * r){
         }
         else if(listOfExits.at(i)=="east"){
             button3= new QPushButton();
-            button3->move(300,335);
+            button3->move(650,225);
             button3->setText("East");
             button3->raise();
             delB3=1;
@@ -121,7 +135,7 @@ void Background::setRoomExits(Room * r){
         }
         else if(listOfExits.at(i)=="west"){
             button4= new QPushButton();
-            button4->move(625,335);
+            button4->move(275,225);
             button4->setText("West");
             button4->raise();
             delB4=1;
@@ -206,8 +220,10 @@ void Background::addToScene(){
     this->addItem(dragon);
     this->addItem(rect);
 
-    if(currentRoom->numberOfItems() > 0){
-    this->addItem(currentRoom->item);
+    if(currentRoom->itemInRoom()){
+        item=currentRoom->item;
+        item->setVisible(true);
+        this->addItem(item);
     }
 
 }
@@ -263,6 +279,10 @@ void Background::clearBackground(){
     this->removeItem(rect);
     this->removeItem(dragon);
 
+    if(item){
+        this->removeItem(item);
+
+    }
 
     addText();
 
@@ -304,9 +324,12 @@ void Background::keyPressEvent(QKeyEvent *event)
     {
             if(currentRoom->itemsInRoom.size() > 0)
             {
-                player->inventory.addToInventory(currentRoom->item);
+                inventory=player->getInventory();
+                inventory->addToInventory(currentRoom->item);
                 createInventoryBox(currentRoom->item->getDescription());
                 this->addWidget(inventoryEditor);
+                item->setVisible(false);
+                currentRoom->setItem(false);
             }
 
     }

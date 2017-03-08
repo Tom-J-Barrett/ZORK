@@ -1,10 +1,10 @@
-#include "potion.h"
+#include "treasure.h"
 
-Potion::Potion(string description, int inWeight)
+Treasure::Treasure(string description, int inWeight)
 {
     this->description = description;
     this->weight=inWeight;
-    this->setPixmap(QPixmap(":/Images/potion.jpg"));
+    this->setPixmap(QPixmap(":/Images/Treasure.jpeg"));
     this->setPos(470,200);
     this->setZValue(4);
     this->setScale(.1);

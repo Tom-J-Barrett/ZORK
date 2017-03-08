@@ -7,6 +7,7 @@
 #include "monster.h"
 #include "room.h"
 #include "mytimer.h"
+#include "item.h"
 #include "buttonaction.h"
 #include "player.h"
 #include "boss.h"
@@ -62,6 +63,8 @@ private:
     QPushButton * button3;
     QPushButton * button4;
     MyTimer * timer;
+    Inventory * inventory;
+    Item * item;
 };
 
 #endif // BACKGROUND_H

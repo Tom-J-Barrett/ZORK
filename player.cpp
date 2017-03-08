@@ -7,7 +7,7 @@
 Player::Player()
 {
     health=100;
-    inventory = Inventory();
+   inventory = new Inventory();
     //this->setPixmap(QPixmap(":/Images/attack.png"));
     //this->setFlag(QGraphicsItem::ItemIsFocusable);
     //this->setPos(470,200);
@@ -19,6 +19,10 @@ Player::Player()
 int Player::getHealth()
 {
     return health;
+}
+
+Inventory * Player::getInventory(){
+    return inventory;
 }
 
 void Player::decreaseHealth()

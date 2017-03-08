@@ -11,12 +11,12 @@ class Player{
 public:
     Player();
     int health;
-
     //int * healthPtr;
-    Inventory inventory;
+    Inventory* inventory;
     int getHealth();
     void decreaseHealth();
     void increaseHealth();
+    Inventory * getInventory();
 };
 
 #endif // PLAYER_H
