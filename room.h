@@ -29,6 +29,7 @@ public:
     Item *item;
 
     bool monsterInRoom();
+    bool bossInRoom();
     vector<Room> rooms();
     Room* nextRoom(string direction);
     void addItem(Item *inItem);
