@@ -38,7 +38,9 @@ SOURCES += main.cpp \
     background.cpp \
     buttonaction.cpp \
     mytimer.cpp \
-    attack.cpp
+    attack.cpp \
+    inventory.cpp \
+    treasure.cpp
 
 HEADERS  += \
     boss.h \
@@ -55,7 +57,9 @@ HEADERS  += \
     zork.h \
     buttonaction.h \
     mytimer.h \
-    attack.h
+    attack.h \
+    inventory.h \
+    treasure.h
 
 FORMS    += mainwindow.ui
 

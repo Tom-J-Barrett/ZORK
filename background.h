@@ -7,6 +7,7 @@
 #include "monster.h"
 #include "room.h"
 #include "mytimer.h"
+#include "item.h"
 #include "buttonaction.h"
 #include "player.h"
 #include "boss.h"
@@ -15,13 +16,16 @@
 #include <string>
 #include <QTextEdit>
 #include "character.h"
+#include <vector>
 
 class Background : public QGraphicsScene
 {
     Q_OBJECT
 public:
+    string inventoryContString;
     explicit Background(Player * play);
     void setScene(string direction);
+    void refreshScene();
     void createExits();
     void setRoomExits(Room * r);
     void createRect();
@@ -31,6 +35,7 @@ public:
     void addToScene();
     void clearBackground();
     void addText();
+    void createInventoryBox(string inventoryString);
     Room * createRooms();
     void keyPressEvent(QKeyEvent *event);
 
@@ -41,11 +46,12 @@ public slots:
     void on_button4_clicked();
 
 private:
-    QGraphicsRectItem *rect;
-
+    QGraphicsPixmapItem *rect;
     Monster* vampire;
     Boss * dragon;
+    string inventoryString;
     QTextEdit * smallEditor;
+    QTextEdit * inventoryEditor;
     Room *currentRoom;
     Room * nextRoom;
     Player * player;
@@ -59,8 +65,10 @@ private:
     QPushButton * button3;
     QPushButton * button4;
     MyTimer * timer;
-
-
+    Inventory * inventory;
+    Item * item;
+    Item * itemToDrop;
+    vector<Item*> itemsInInventory;
 };
 
 #endif // BACKGROUND_H

@@ -13,12 +13,17 @@
 #include "player.h"
 #include <QString>
 #include <string>
+#include <key.h>
 #include "boss.h"
+#include "treasure.h"
+#include "weapon.h"
+#include "potion.h"
 
 
 //constructor that sets blank window and creates rooms
 Background::Background(Player * play){
     player=play;
+    inventoryContString = "";
 }
 
 //Sets a new scne when you move rooms
@@ -35,13 +40,32 @@ void Background::setScene(string direction)
     addToScene();
 }
 
+void Background::refreshScene(){
+    clearBackground();
+
+    setRoomExits(currentRoom);
+
+    addToScene();
+}
+
 Room * Background::createRooms(){
 
     a= new Room("a");
-    a->addItem(new Item("description", 20));
+    a->addItem(new Key("item a", 20));
+    a->setItem(true);
+
     b= new Room("b");
+    b->addItem(new Potion("Potion capable of restoring 20 hearts!",10));
+    b->setItem(true);
+
     c= new Room("c");
+    c->addItem(new Weapon("Hero's sword",30));
+    c->setItem(true);
+
     d= new Room("d");
+    d->addItem(new Treasure("Treasure!!!!!",50));
+    d->setItem(true);
+
     e= new Room("e");
     f= new Room("f");
     g= new Room("g");
@@ -91,7 +115,7 @@ void Background::setRoomExits(Room * r){
     {
         if(listOfExits[i]=="north"){
             button1= new QPushButton();
-            button1->move(300,125);
+            button1->move(450,50);
             button1->raise();
             button1->setText("North");
             delB1=1;
@@ -101,7 +125,7 @@ void Background::setRoomExits(Room * r){
         }
         else if(listOfExits[i]=="south"){
             button2= new QPushButton();
-            button2->move(625,125);
+            button2->move(450,435);
             button2->setText("South");
             button2->raise();
             delB2=1;
@@ -110,7 +134,7 @@ void Background::setRoomExits(Room * r){
         }
         else if(listOfExits.at(i)=="east"){
             button3= new QPushButton();
-            button3->move(300,335);
+            button3->move(750,225);
             button3->setText("East");
             button3->raise();
             delB3=1;
@@ -119,7 +143,7 @@ void Background::setRoomExits(Room * r){
         }
         else if(listOfExits.at(i)=="west"){
             button4= new QPushButton();
-            button4->move(625,335);
+            button4->move(175,225);
             button4->setText("West");
             button4->raise();
             delB4=1;
@@ -130,9 +154,11 @@ void Background::setRoomExits(Room * r){
     }
 }
 void Background::createRect(){
-    rect= new QGraphicsRectItem();
-    rect->setRect(250,100,500,300);
-    rect->setBrush(Qt::green);
+    rect= new QGraphicsPixmapItem();
+    rect->setPos(50,25);
+    rect->setPixmap(QPixmap(":/Images/cave.jpg"));
+    //rect->setRect(250,100,500,300);
+   // rect->setBrush(Qt::green);
     rect->setZValue(-1);
 
 }
@@ -158,14 +184,23 @@ void Background::createBoss(){
 
 void Background:: createTextBox(){
     smallEditor = new QTextEdit;
-    smallEditor->move(250,400);
+    smallEditor->move(250,475);
     smallEditor->setReadOnly(true);
+}
+
+void Background:: createInventoryBox(string inventoryString){
+    inventoryEditor = new QTextEdit;
+    inventoryEditor->move(400,475);
+    inventoryEditor->setReadOnly(true);
+    inventoryContString += "Inventory";
+    inventoryEditor->setPlainText(QString::fromStdString(inventoryContString));
 }
 
 void Background:: addText(){
      string x="You are in Room "+currentRoom->getDescription();
      smallEditor->setPlainText(QString::fromStdString(x));
 }
+
 
 //adds monster and rectangle to scene
 void Background::addToScene(){
@@ -190,12 +225,15 @@ void Background::addToScene(){
     }
 
     this->addWidget(smallEditor);
+    this->addWidget(inventoryEditor);
     this->addItem(vampire);
     this->addItem(dragon);
     this->addItem(rect);
 
-    if(currentRoom->numberOfItems() > 0){
-    this->addItem(currentRoom->item);
+    if(currentRoom->itemInRoom()){
+        item=currentRoom->item;
+        item->setVisible(true);
+        this->addItem(item);
     }
 
 }
@@ -251,6 +289,10 @@ void Background::clearBackground(){
     this->removeItem(rect);
     this->removeItem(dragon);
 
+    if(item){
+        this->removeItem(item);
+
+    }
 
     addText();
 
@@ -287,9 +329,35 @@ void Background::keyPressEvent(QKeyEvent *event)
     }
 
 
+
+    if(event->key()==Qt::Key_P)
+    {
+            if(currentRoom->itemsInRoom.size() > 0)
+            {
+                inventory=player->getInventory();
+                inventory->addToInventory(currentRoom->item);
+                createInventoryBox(currentRoom->item->getDescription());
+                this->addWidget(inventoryEditor);
+                item->setVisible(false);
+                currentRoom->setItem(false);
+                inventoryContString = item->getDescription();
+                inventoryEditor->setPlainText(QString::fromStdString(inventoryContString));
+            }
+
+    }
+
+    if(event->key()==Qt::Key_D)
+    {
+        if(currentRoom->itemInRoom()==false){
+            itemsInInventory=player->getInventory()->getInventoryList();
+            itemToDrop=itemsInInventory.back();
+            itemsInInventory.pop_back();
+            currentRoom->addItem(itemToDrop);
+            currentRoom->setItem(true);
+            refreshScene();
+        }
+    }
 }
-
-
 
 
 

@@ -18,6 +18,7 @@ public:
 
 private:
     int health=100;
+    //int z=0;
 };
 
 #endif // CHARACTER_H

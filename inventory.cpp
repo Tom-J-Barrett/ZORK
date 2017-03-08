@@ -3,22 +3,35 @@
 #include <QGraphicsScene>
 #include <QDebug>
 
-//Inventory::Inventory(){
+Inventory::Inventory(){
 
-//}
+}
 
-//void Inventory::showInventory()
-//{
-//    for( int i = 0; i < itemsInInventory.size(); i++){
-//       qDebug() << "itemsInInventory[i]" << endl;
-//    }
-//}
+void Inventory::showInventory()
+{
+    Item *itemDesc;
+    string itemDesc1;
+    for( int i = 0; i < itemsInInventory.size(); i++){
+       itemDesc = itemsInInventory[i];
+       itemDesc1 = itemDesc->getDescription();
+       qDebug () << QString::fromStdString(itemDesc1);
 
-//void Inventory::addToInventory(Item item){
-//    itemsInInventory.push_back(item);
+    }
+}
 
-//}
+void Inventory::addToInventory(Item *item){
+    itemsInInventory.push_back(item);
 
-//void Inventory::removeFromInventory(Item item){
+}
 
-//}
+vector<Item*> Inventory:: getInventoryList(){
+    return itemsInInventory;
+}
+
+void Inventory::removeFromInventory(Item item){
+
+}
+
+int Inventory::inventoryQty(){
+    return itemsInInventory.size();
+}

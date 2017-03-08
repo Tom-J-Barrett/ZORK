@@ -25,6 +25,15 @@ void Room::setMonster(bool monst)
 
 }
 
+void Room::setItem(bool i)
+{
+    if(i)
+        itemPresent=true;
+    else
+        itemPresent=false;
+
+}
+
 void Room::setBoss(bool boss)
 {
     if(boss)
@@ -57,6 +66,11 @@ string Room::getDescription()
     return description;
 }
 
+bool Room::itemInRoom()
+{
+    return itemPresent;
+}
+
 vector<Room> Room::rooms()
 {
     vector<Room> list;
@@ -80,7 +94,7 @@ Room* Room::nextRoom(string direction) {
 }
 
 void Room::addItem(Item *inItem) {
-    this->item = inItem;
+    this->item =inItem;
     itemsInRoom.push_back(inItem);
 }
 
