@@ -32,6 +32,7 @@ public:
     void clearBackground();
     void addText();
     Room * createRooms();
+    void keyPressEvent(QKeyEvent *event);
 
 public slots:
     void on_button1_clicked();
@@ -41,7 +42,7 @@ public slots:
 
 private:
     QGraphicsRectItem *rect;
-    explicit Background(Player * play);
+
     Monster* vampire;
     Boss * dragon;
     QTextEdit * smallEditor;
@@ -58,23 +59,6 @@ private:
     QPushButton * button3;
     QPushButton * button4;
     MyTimer * timer;
-    Room * createRooms();
-    void setScene(string direction);
-    void createExits();
-    void setRoomExits(Room * r);
-    void createRect();
-    void createMonster();
-    void createBoss();
-    void createTextBox();
-    void addToScene();
-    void clearBackground();
-    void addText();
-
-public slots:
-    void on_button1_clicked();
-    void on_button2_clicked();
-    void on_button3_clicked();
-    void on_button4_clicked();
 
 
 };

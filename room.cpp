@@ -47,6 +47,11 @@ bool Room::monsterInRoom()
     return monster;
 }
 
+bool Room::bossInRoom()
+{
+    return bossMonster;
+}
+
 string Room::getDescription()
 {
     return description;

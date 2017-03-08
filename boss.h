@@ -10,6 +10,8 @@ class Boss: public Character
 public:
     Boss();
     string getImage();
+    int move(int x);
+   // void keyPressEvent(QKeyEvent *event);
 };
 
 #endif // BOSS_H
