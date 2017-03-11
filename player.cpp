@@ -7,12 +7,8 @@
 Player::Player()
 {
     health=100;
-   inventory = new Inventory();
-    //this->setPixmap(QPixmap(":/Images/attack.png"));
-    //this->setFlag(QGraphicsItem::ItemIsFocusable);
-    //this->setPos(470,200);
-    //this->setScale(50);
-   // this->setZValue(3);
+    inventory = new Inventory();
+    damage=25;
 }
 
 
@@ -33,7 +29,6 @@ void Player::decreaseHealth()
     {
         qDebug()<<"You're dead";
         exit(EXIT_FAILURE);
-
     }
 
 }
@@ -42,6 +37,15 @@ void Player::increaseHealth()
 {
 
 }
+
+int Player::getDamage(){
+
+}
+
+void Player::setDamage(int damage){
+    this->damage=damage;
+}
+
 
 
 

@@ -5,5 +5,4 @@
 
 void buttonaction :: clicked(bool check)
 {
-    qDebug() << "clicked";
 }

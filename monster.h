@@ -9,7 +9,7 @@ class Monster: public Character{
 
 public:
     Monster();
-    string getimage();
+    QString getImage();
     int move(int x);
    // void keyPressEvent(QKeyEvent *event);
 };

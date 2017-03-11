@@ -6,17 +6,15 @@ using namespace std;
 
 class Item: public QGraphicsPixmapItem {
 private:
-    string description;
+    QString description;
     int weight;
 
 public:
     Item();
-    Item(string description, int inWeight);
-    Item(string description);
-    //void pickUpItem(Item item);
-    //void dropItem(Item item);
+    Item(QString description, int inWeight);
+    Item(QString description);
     int getWeight();
-    string getDescription();
+    QString getDescription();
     void setWeight(int inWeight);
 };
 

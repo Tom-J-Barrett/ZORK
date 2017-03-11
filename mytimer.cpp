@@ -5,68 +5,46 @@
 #include <Monster.h>
 #include <QSignalMapper>
 
-MyTimer::MyTimer(Monster * enemy, Player * p, Room* r)
+MyTimer::MyTimer(Character * enemy, Player * p, Room* r)
 {
-    vampire=enemy;
+    villian=enemy;
 
     room=r;
     play=p;
     timer = new QTimer(this);
 
-    connect(timer,SIGNAL(timeout()),this, SLOT(monsterSlot()));
+    connect(timer,SIGNAL(timeout()),this, SLOT(villianSlot()));
     timer->start(1000);
     x=0;
 }
 
-MyTimer::MyTimer(Boss * enemy, Player * p, Room* r)
+MyTimer::~MyTimer()
 {
-    dragon=enemy;
-
-    room=r;
-    play=p;
-    timer = new QTimer(this);
-
-    connect(timer,SIGNAL(timeout()),this, SLOT(dragonSlot()));
-    timer->start(1000);
-    x=0;
+    stopTimer();
 }
 
-void MyTimer::StopTimer()
+void MyTimer::stopTimer()
 {
     timer->stop();
+    qDebug()<<"Timer stopped";
 }
 
-void MyTimer::monsterSlot()
+void MyTimer::villianSlot()
 {
-    vampire->setPixmap(QPixmap(":/Images/vampire.png"));
-    if(vampire)
-        health=vampire->getHealth();
-    qDebug()<<vampire->getHealth();
+    villian->setPixmap(QPixmap(villian->getImage()));
+    if(villian)
+        health=villian->getHealth();
+
     if(health<=0){
-        vampire->setVisible(false);
+        villian->setVisible(false);
         room->setMonster(false);
     }
     else{
-        x=vampire->move(x);
+        x=villian->move(x);
     }
 
     play->decreaseHealth();
 }
 
-void MyTimer::dragonSlot()
-{
-    dragon->setPixmap(QPixmap(":/Images/dragon.png"));
-    if(dragon)
-        health=dragon->getHealth();
-    qDebug()<<dragon->getHealth();
-    if(health<=0){
-        dragon->setVisible(false);
-        room->setMonster(false);
-    }
-    else{
-        x=dragon->move(x);
-    }
 
-    play->decreaseHealth();
-}
 

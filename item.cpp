@@ -5,17 +5,20 @@
 using namespace std;
 
 Item::Item(){
-
+    qDebug()<<"Item created3";
 }
 
-Item::Item (string description, int inWeight) {
+Item::Item (QString description, int inWeight) {
 
     this->description = description;
     this->weight=inWeight;
+    qDebug()<<"Item created";
+    qDebug()<<description;
 }
 
-Item::Item(string description) {
+Item::Item(QString description) {
     this->description = description;
+    qDebug()<<"Item created2";
 }
 
 void Item::setWeight(int inWeight)
@@ -31,8 +34,9 @@ int Item::getWeight()
     return weight;
 }
 
-string Item::getDescription()
+QString Item::getDescription()
 {
+    qDebug()<<"Get description";
     return description;
 }
 

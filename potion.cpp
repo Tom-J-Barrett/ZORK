@@ -1,7 +1,7 @@
 #include "potion.h"
 #include <string>
 
-Potion::Potion(string description, int inWeight)
+Potion::Potion(QString description, int inWeight)
 {
     this->description = description;
     this->weight=inWeight;
@@ -11,7 +11,7 @@ Potion::Potion(string description, int inWeight)
     this->setScale(.1);
 }
 
-string Potion:: getDescription(){
+QString Potion:: getDescription(){
     return description;
 }
 

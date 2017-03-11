@@ -17,7 +17,7 @@ Boss::Boss()
     this->setZValue(2);
 }
 
-string Boss::getImage()
+QString Boss::getImage()
 {
     return ":/Images/dragon.jpg";
 }
@@ -76,16 +76,3 @@ int Boss::move(int x){
     }
 
 }
-
-/*void Boss::keyPressEvent(QKeyEvent *event)
-{
-    if(event->key()==Qt::Key_X)
-    {
-            if(this->scenePos()==QPointF(470,200)){
-                decreaseHealth();
-                this->setPixmap(QPixmap(":/Images/dragon.png"));
-                z=1;
-            }
-
-    }
-}*/

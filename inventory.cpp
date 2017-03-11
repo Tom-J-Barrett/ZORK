@@ -10,12 +10,10 @@ Inventory::Inventory(){
 void Inventory::showInventory()
 {
     Item *itemDesc;
-    string itemDesc1;
+    QString itemDesc1;
     for( int i = 0; i < itemsInInventory.size(); i++){
        itemDesc = itemsInInventory[i];
        itemDesc1 = itemDesc->getDescription();
-       qDebug () << QString::fromStdString(itemDesc1);
-
     }
 }
 

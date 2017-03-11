@@ -5,9 +5,9 @@
 class Treasure: public Item
 {
 public:
-    Treasure(string description, int inWeight);
+    Treasure(QString description, int inWeight);
 private:
-    string description;
+    QString description;
     int weight;
 };
 

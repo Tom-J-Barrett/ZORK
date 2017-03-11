@@ -1,6 +1,6 @@
 #include "key.h"
 
-Key::Key(string description, int inWeight)
+Key::Key(QString description, int inWeight)
 {
     this->description = description;
     this->weight=inWeight;

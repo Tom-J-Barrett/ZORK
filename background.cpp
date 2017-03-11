@@ -29,15 +29,17 @@ Background::Background(Player * play){
 //Sets a new scne when you move rooms
 void Background::setScene(string direction)
 {
+    clearBackground();
+
     nextRoom = currentRoom->nextRoom(direction);
 
     currentRoom=nextRoom;
 
-    clearBackground();
-
     setRoomExits(currentRoom);
 
     addToScene();
+
+    createMapGUI();
 }
 
 void Background::refreshScene(){
@@ -46,24 +48,31 @@ void Background::refreshScene(){
     setRoomExits(currentRoom);
 
     addToScene();
+
+    createMapGUI();
 }
 
 Room * Background::createRooms(){
 
     a= new Room("a");
-    a->addItem(new Key("item a", 20));
+    key=new Key("Rusty Key",20);
+    a->addItem(key);
     a->setItem(true);
 
+
     b= new Room("b");
-    b->addItem(new Potion("Potion capable of restoring 20 hearts!",10));
+    potion= new Potion("Potion capable of restoring 20 hearts!",10);
+    b->addItem(potion);
     b->setItem(true);
 
     c= new Room("c");
-    c->addItem(new Weapon("Hero's sword",30));
+    weapon=new Weapon("Hero's sword",30);
+    c->addItem(weapon);
     c->setItem(true);
 
     d= new Room("d");
-    d->addItem(new Treasure("Treasure!!!!!",50));
+    treasure=new Treasure("Gold and jewels",50);
+    d->addItem(treasure);
     d->setItem(true);
 
     e= new Room("e");
@@ -72,7 +81,7 @@ Room * Background::createRooms(){
     h= new Room("h");
     i= new Room("i");
     j= new Room("j");
-    return a;
+    return j;
 
 }
 
@@ -149,9 +158,6 @@ void Background::setRoomExits(Room * r){
             delB4=1;
             this->addWidget(button4);
             connect(button4,SIGNAL(released()),this, SLOT(on_button4_clicked()));
-
-
-
         }
 
     }
@@ -160,8 +166,6 @@ void Background::createCave(){
     rect= new QGraphicsPixmapItem();
     rect->setPos(50,25);
     rect->setPixmap(QPixmap(":/Images/cave.jpg"));
-    //rect->setRect(250,100,500,300);
-   // rect->setBrush(Qt::green);
     rect->setZValue(-1);
 
 }
@@ -189,6 +193,7 @@ void Background:: createTextBox(){
     smallEditor = new QTextEdit;
     smallEditor->move(250,475);
     smallEditor->setReadOnly(true);
+    this->addWidget(smallEditor);
 }
 
 void Background::createMapGUI()
@@ -205,87 +210,75 @@ void Background::createMapGUI()
     RoomI= new QGraphicsRectItem();
     RoomJ= new QGraphicsRectItem();
 
-    /*mapRooms.push_back(RoomA);
-    mapRooms.push_back(RoomB);
-    mapRooms.push_back(RoomC);
-    mapRooms.push_back(RoomD);
-    mapRooms.push_back(RoomE);
-    mapRooms.push_back(RoomF);
-    mapRooms.push_back(RoomG);
-    mapRooms.push_back(RoomH);
-    mapRooms.push_back(RoomI);
-    mapRooms.push_back(RoomJ);*/
-
-    RoomA->setRect(0,10,10,10);
-   // RoomA->setBrush(Qt::green);
+    RoomA->setRect(10,10,10,10);
     RoomA->setZValue(4);
     this->addItem(RoomA);
 
-    RoomB->setRect(10,10,10,10);
-    //RoomB->setBrush(Qt::green);
+    RoomB->setRect(20,10,10,10);
     RoomB->setZValue(5);
     this->addItem(RoomB);
 
-    RoomC->setRect(10,10,10,10);
-   // RoomC->setBrush(Qt::green);
+    RoomC->setRect(0,10,10,10);
     RoomC->setZValue(5);
     this->addItem(RoomC);
 
-    RoomD->setRect(10,10,10,10);
-    //RoomD->setBrush(Qt::green);
+    RoomD->setRect(10,20,10,10);
     RoomD->setZValue(5);
     this->addItem(RoomD);
 
-    RoomE->setRect(10,10,10,10);
-   // RoomE->setBrush(Qt::green);
+    RoomE->setRect(20,20,10,10);
     RoomE->setZValue(5);
     this->addItem(RoomE);
 
-    RoomF->setRect(10,10,10,10);
-   // RoomF->setBrush(Qt::green);
+    RoomF->setRect(10,0,10,10);
     RoomF->setZValue(5);
     this->addItem(RoomF);
 
-    RoomG->setRect(10,10,10,10);
-  //  RoomG->setBrush(Qt::green);
+    RoomG->setRect(20,0,10,10);
     RoomG->setZValue(5);
     this->addItem(RoomG);
 
-    RoomH->setRect(10,10,10,10);
-   // RoomH->setBrush(Qt::green);
+    RoomH->setRect(0,0,10,10);
     RoomH->setZValue(5);
     this->addItem(RoomH);
 
-    RoomI->setRect(10,10,10,10);
-   // RoomI->setBrush(Qt::green);
+    RoomI->setRect(0,20,10,10);
     RoomI->setZValue(5);
     this->addItem(RoomI);
 
-    RoomJ->setRect(10,10,10,10);
-   // RoomJ->setBrush(Qt::green);
+    RoomJ->setRect(0,30,10,10);
     RoomJ->setZValue(5);
     this->addItem(RoomJ);
 
-    /*switch(stoi(currentRoom->getDescription())){
-        case stoi("a"): RoomA->setBrush(Qt::green); break;
-        case stoi("b"): RoomB->setBrush(Qt::green); break;
-        case stoi("c"): RoomC->setBrush(Qt::green); break;
-        case stoi("d"): RoomD->setBrush(Qt::green); break;
-        case stoi("e"): RoomE->setBrush(Qt::green); break;
-        case stoi("f"): RoomF->setBrush(Qt::green); break;
-        case stoi("g"): RoomG->setBrush(Qt::green); break;
-        case stoi("h"): RoomH->setBrush(Qt::green); break;
-        case stoi("i"): RoomI->setBrush(Qt::green); break;
-        case stoi("j"): RoomJ->setBrush(Qt::green); break;
-    }*/
+    if(currentRoom->getDescription()=="a")
+        RoomA->setBrush(Qt::green);
+    else if(currentRoom->getDescription()=="b")
+        RoomB->setBrush(Qt::green);
+    else if(currentRoom->getDescription()=="c")
+        RoomC->setBrush(Qt::green);
+    else if(currentRoom->getDescription()=="d")
+        RoomD->setBrush(Qt::green);
+    else if(currentRoom->getDescription()=="e")
+        RoomE->setBrush(Qt::green);
+    else if(currentRoom->getDescription()=="f")
+        RoomF->setBrush(Qt::green);
+    else if(currentRoom->getDescription()=="g")
+        RoomG->setBrush(Qt::green);
+    else if(currentRoom->getDescription()=="h")
+        RoomH->setBrush(Qt::green);
+    else if(currentRoom->getDescription()=="i")
+        RoomI->setBrush(Qt::green);
+    else if(currentRoom->getDescription()=="j")
+        RoomJ->setBrush(Qt::green);
 }
 
-void Background:: createInventoryBox(string inventoryString){
+void Background:: createInventoryBox(QString inventoryString){
     inventoryEditor = new QTextEdit;
     inventoryEditor->move(400,475);
     inventoryEditor->setReadOnly(true);
     inventoryContString += "Inventory";
-    inventoryEditor->setPlainText(QString::fromStdString(inventoryContString));
+    inventoryEditor->setPlainText(inventoryContString);
+    this->addWidget(inventoryEditor);
 }
 
 void Background:: addText(){
@@ -300,7 +293,6 @@ void Background::addToScene(){
         vampire->setVisible(true);
         vampire->setFocus();
         timer = new MyTimer(vampire, player, currentRoom);
-        qDebug()<<"ukhv";
     }
 
     if(!(currentRoom->monsterInRoom()))
@@ -316,8 +308,6 @@ void Background::addToScene(){
         dragon->setVisible(false);
     }
 
-    this->addWidget(smallEditor);
-    this->addWidget(inventoryEditor);
     this->addItem(vampire);
     this->addItem(dragon);
     this->addItem(rect);
@@ -327,6 +317,8 @@ void Background::addToScene(){
         item=currentRoom->item;
         item->setVisible(true);
         this->addItem(item);
+        qDebug()<<"kjdbasihg";
+        qDebug()<<item->getDescription();
     }
 
 }
@@ -355,6 +347,16 @@ void Background::on_button4_clicked()
 }
 
 void Background::clearBackground(){
+    RoomA->setBrush(Qt::white);
+    RoomB->setBrush(Qt::white);
+    RoomC->setBrush(Qt::white);
+    RoomD->setBrush(Qt::white);
+    RoomE->setBrush(Qt::white);
+    RoomF->setBrush(Qt::white);
+    RoomG->setBrush(Qt::white);
+    RoomH->setBrush(Qt::white);
+    RoomI->setBrush(Qt::white);
+    RoomJ->setBrush(Qt::white);
 
     if(delB1)
     {
@@ -382,9 +384,9 @@ void Background::clearBackground(){
     this->removeItem(rect);
     this->removeItem(dragon);
 
-    if(item){
-        this->removeItem(item);
 
+    if(currentRoom->itemInRoom()==true && item){
+        this->removeItem(item);
     }
 
     addText();
@@ -392,9 +394,7 @@ void Background::clearBackground(){
     vampire->resetHealth();
     dragon->resetHealth();
 
-    timer->StopTimer();
     delete timer;
-
 }
 
 void Background::keyPressEvent(QKeyEvent *event)
@@ -403,9 +403,12 @@ void Background::keyPressEvent(QKeyEvent *event)
         if(event->key()==Qt::Key_X)
         {
                 if(vampire->scenePos()==QPointF(470,200)){
-                    vampire->decreaseHealth();
+                    player->setDamage(10);
+                    vampire->decreaseHealthByAttack(10);
                     vampire->setPixmap(QPixmap(":/Images/vampireAttacked.png"));
                     vampire->z=1;
+                    int x=player->getDamage();
+                    qDebug()<<x<<"damage";
                 }
 
         }
@@ -414,9 +417,10 @@ void Background::keyPressEvent(QKeyEvent *event)
         if(event->key()==Qt::Key_X)
         {
                 if(dragon->scenePos()==QPointF(470,200)){
-                    dragon->decreaseHealth();
+                    dragon->decreaseHealthByAttack(player->getDamage());
                     dragon->setPixmap(QPixmap(":/Images/dragon.png"));
                     dragon->z=1;
+
                 }
         }
     }
@@ -429,12 +433,11 @@ void Background::keyPressEvent(QKeyEvent *event)
             {
                 inventory=player->getInventory();
                 inventory->addToInventory(currentRoom->item);
-                createInventoryBox(currentRoom->item->getDescription());
-                this->addWidget(inventoryEditor);
                 item->setVisible(false);
                 currentRoom->setItem(false);
                 inventoryContString = item->getDescription();
-                inventoryEditor->setPlainText(QString::fromStdString(inventoryContString));
+                qDebug()<<inventoryContString;
+                inventoryEditor->setPlainText(inventoryContString);
             }
 
     }

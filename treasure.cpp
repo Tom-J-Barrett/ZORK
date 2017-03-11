@@ -1,6 +1,6 @@
 #include "treasure.h"
 
-Treasure::Treasure(string description, int inWeight)
+Treasure::Treasure(QString description, int inWeight)
 {
     this->description = description;
     this->weight=inWeight;

@@ -16,6 +16,7 @@ Zork::Zork(QWidget *parent)
 
 void Zork:: play(){
     player = new Player();
+    player->setDamage(25);
     backg = new Background(player);
     currentRoom=backg->createRooms();
     backg->createExits();

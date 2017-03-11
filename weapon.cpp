@@ -1,6 +1,6 @@
 #include "weapon.h"
 
-Weapon::Weapon(string description, int inWeight)
+Weapon::Weapon(QString description, int inWeight)
 {
     this->description = description;
     this->weight=inWeight;

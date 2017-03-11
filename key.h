@@ -6,9 +6,9 @@
 class Key: public Item
 {
 public:
-    Key(string description, int inWeight);
+    Key(QString description, int inWeight);
 private:
-    string description;
+    QString description;
     int weight;
 };
 

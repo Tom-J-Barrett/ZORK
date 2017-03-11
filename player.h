@@ -17,6 +17,9 @@ public:
     void decreaseHealth();
     void increaseHealth();
     Inventory * getInventory();
+    int damage;
+    int getDamage();
+    void setDamage(int damage);
 };
 
 #endif // PLAYER_H

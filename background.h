@@ -12,6 +12,10 @@
 #include "player.h"
 #include "boss.h"
 #include "attack.h"
+#include "key.h"
+#include "weapon.h"
+#include "treasure.h"
+#include "potion.h"
 #include <QtCore>
 #include <string>
 #include <QTextEdit>
@@ -22,7 +26,7 @@ class Background : public QGraphicsScene
 {
     Q_OBJECT
 public:
-    string inventoryContString;
+    QString inventoryContString;
     explicit Background(Player * play);
     void setScene(string direction);
     void refreshScene();
@@ -36,7 +40,7 @@ public:
     void addToScene();
     void clearBackground();
     void addText();
-    void createInventoryBox(string inventoryString);
+    void createInventoryBox(QString inventoryString);
     Room * createRooms();
     void keyPressEvent(QKeyEvent *event);
 
@@ -50,7 +54,7 @@ private:
     QGraphicsPixmapItem *rect;
     Monster* vampire;
     Boss * dragon;
-    string inventoryString;
+    QString inventoryString;
     QTextEdit * smallEditor;
     QTextEdit * inventoryEditor;
     Room *currentRoom;
@@ -69,6 +73,10 @@ private:
     Inventory * inventory;
     Item * item;
     Item * itemToDrop;
+    Key * key;
+    Treasure * treasure;
+    Potion * potion;
+    Weapon * weapon;
     vector<Item*> itemsInInventory;
     vector<QGraphicsPixmapItem> mapRooms;
     QGraphicsRectItem *RoomA,*RoomB,*RoomC,*RoomD,*RoomE,*RoomF,*RoomG,*RoomH,*RoomI,*RoomJ;

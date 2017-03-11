@@ -10,12 +10,15 @@ Character::Character(){
 }
 
 
-void getImage(){
-
+QString Character::getImage(){
 }
 
 void Character::decreaseHealth(){
     health=health-25;
+}
+
+void Character::decreaseHealthByAttack(int damage){
+    health=health-damage;
 }
 
 void Character::resetHealth(){
@@ -33,10 +36,7 @@ int Character::getHealth(){
 
 int Character::move(int x)
 {
-    qDebug()<<"Character moving";
+
 }
 
-/*void Character::keyPressEvent(QKeyEvent *event)
-{
 
-}*/

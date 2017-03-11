@@ -6,10 +6,10 @@
 class Potion: public Item
 {
 public:
-    Potion(string description, int inWeight);
-    string getDescription();
+    Potion(QString description, int inWeight);
+    QString getDescription();
 private:
-    string description;
+    QString description;
     int weight;
 };
 

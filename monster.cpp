@@ -15,13 +15,13 @@ Monster::Monster()
 }
 
 
-string Monster::getimage()
+QString Monster::getImage()
 {
     return ":/Images/vampire.png";
+
 }
 
 int Monster::move(int x){
-    qDebug()<<"Monster moving";
     if(z==1)
         this->setPixmap(QPixmap(":/Images/vampire.png"));
 
@@ -76,17 +76,6 @@ int Monster::move(int x){
 
 }
 
-/*void Monster::keyPressEvent(QKeyEvent *event){
-    if(event->key()==Qt::Key_X)
-    {
-            if(this->scenePos()==QPointF(470,200)){
-                decreaseHealth();
-                this->setPixmap(QPixmap(":/Images/vampireAttacked.png"));
-                z=1;
-            }
-
-    }
-}*/
 
 
 

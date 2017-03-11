@@ -9,7 +9,7 @@ class Boss: public Character
 {
 public:
     Boss();
-    string getImage();
+    QString getImage();
     int move(int x);
    // void keyPressEvent(QKeyEvent *event);
 };

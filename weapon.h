@@ -5,9 +5,9 @@
 class Weapon: public Item
 {
 public:
-    Weapon(string description, int inWeight);
+    Weapon(QString description, int inWeight);
 private:
-    string description;
+    QString description;
     int weight;
 };
 
