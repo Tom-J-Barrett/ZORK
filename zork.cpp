@@ -27,7 +27,7 @@ void Zork:: play(){
     backg->createMonster();
     backg->createBoss();
     backg->createTextBox();
-    backg->createInventoryBox("");
+    backg->createInventoryBox("Inventory");
     backg->addText();
     backg->addToScene();
 }

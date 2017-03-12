@@ -1,4 +1,5 @@
 #include "key.h"
+#include <QDebug>
 
 Key::Key(QString description, int inWeight)
 {
@@ -8,4 +9,5 @@ Key::Key(QString description, int inWeight)
     this->setPos(470,100);
     this->setZValue(4);
     this->setScale(.1);
+    qDebug()<<"Key created";
 }

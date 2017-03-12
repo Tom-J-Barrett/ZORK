@@ -11,6 +11,7 @@ Character::Character(){
 
 
 QString Character::getImage(){
+    return "";
 }
 
 void Character::decreaseHealth(){
@@ -36,7 +37,7 @@ int Character::getHealth(){
 
 int Character::move(int x)
 {
-
+    return x;
 }
 
 

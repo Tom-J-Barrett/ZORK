@@ -38,9 +38,6 @@ public:
     void addItem(Item *inItem);
     void addItemToRoom(Room *room);
     int numberOfItems();
-    /*void addItem(Item *inItem);
-    string displayItem();
-    int isItemInRoom(string inString);*/
 };
 
 #endif // ROOM_H

@@ -30,49 +30,41 @@ int Boss::move(int x){
     {
         this->setPos(490,200);
         x=1;
-        return x;
     }
     else if(x==1)
     {
        this->setPos(470,200);
        x=-1;
-       return x;
     }
     else if(x==-1)
     {
         this->setPos(450,200);
         x=2;
-        return x;
     }
     else if(x==2)
     {
         this->setPos(470,200);
         x=3;
-        return x;
     }
     else if(x==3)
     {
         this->setPos(470,220);
         x=4;
-        return x;
     }
     else if(x==4)
     {
         this->setPos(470,200);
         x=5;
-        return x;
     }
     else if(x==5)
     {
         this->setPos(470,180);
         x=6;
-        return x;
     }
     else if(x==6)
     {
         this->setPos(470,200);
         x=0;
-        return x;
     }
-
+    return x;
 }

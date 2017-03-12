@@ -58,6 +58,7 @@ Room * Background::createRooms(){
     key=new Key("Rusty Key",20);
     a->addItem(key);
     a->setItem(true);
+    qDebug()<<key->getDescription();
 
 
     b= new Room("b");
@@ -119,7 +120,6 @@ void Background::setRoomExits(Room * r){
     currentRoom = r;
 
     vector<string> listOfExits= currentRoom->exitString();
-    vector<Room> roomsToExit= currentRoom->rooms();
     for(int i=0;i<listOfExits.size();i++)
     {
         if(listOfExits[i]=="north"){
@@ -276,7 +276,7 @@ void Background:: createInventoryBox(QString inventoryString){
     inventoryEditor = new QTextEdit;
     inventoryEditor->move(400,475);
     inventoryEditor->setReadOnly(true);
-    inventoryContString += "Inventory";
+    inventoryContString += inventoryString;
     inventoryEditor->setPlainText(inventoryContString);
     this->addWidget(inventoryEditor);
 }

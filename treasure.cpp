@@ -1,4 +1,5 @@
 #include "treasure.h"
+#include <QDebug>
 
 Treasure::Treasure(QString description, int inWeight)
 {
@@ -8,4 +9,5 @@ Treasure::Treasure(QString description, int inWeight)
     this->setPos(470,100);
     this->setZValue(4);
     this->setScale(.1);
+    qDebug()<<"Treasure craeted";
 }

@@ -1,5 +1,6 @@
 #include "potion.h"
 #include <string>
+#include <QDebug>
 
 Potion::Potion(QString description, int inWeight)
 {
@@ -9,6 +10,7 @@ Potion::Potion(QString description, int inWeight)
     this->setPos(470,100);
     this->setZValue(4);
     this->setScale(.1);
+    qDebug()<<"Potion created";
 }
 
 QString Potion:: getDescription(){
