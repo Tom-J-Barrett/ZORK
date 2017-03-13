@@ -9,5 +9,9 @@ Key::Key(QString description, int inWeight)
     this->setPos(470,100);
     this->setZValue(4);
     this->setScale(.1);
-    qDebug()<<"Key created";
+    qDebug()<<"Key created"<<description;
+}
+
+QString Key:: getDescription(){
+    return description;
 }

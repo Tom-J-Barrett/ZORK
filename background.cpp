@@ -40,15 +40,14 @@ void Background::setScene(string direction)
     addToScene();
 
     createMapGUI();
+
+    addText();
 }
 
 void Background::refreshScene(){
     clearBackground();
-
     setRoomExits(currentRoom);
-
     addToScene();
-
     createMapGUI();
 }
 
@@ -317,8 +316,6 @@ void Background::addToScene(){
         item=currentRoom->item;
         item->setVisible(true);
         this->addItem(item);
-        qDebug()<<"kjdbasihg";
-        qDebug()<<item->getDescription();
     }
 
 }
@@ -385,11 +382,9 @@ void Background::clearBackground(){
     this->removeItem(dragon);
 
 
-    if(currentRoom->itemInRoom()==true && item){
+    if(currentRoom->itemInRoom()){
         this->removeItem(item);
     }
-
-    addText();
 
     vampire->resetHealth();
     dragon->resetHealth();
@@ -435,6 +430,7 @@ void Background::keyPressEvent(QKeyEvent *event)
                 inventory->addToInventory(currentRoom->item);
                 item->setVisible(false);
                 currentRoom->setItem(false);
+
                 inventoryContString = item->getDescription();
                 qDebug()<<inventoryContString;
                 inventoryEditor->setPlainText(inventoryContString);
@@ -450,7 +446,9 @@ void Background::keyPressEvent(QKeyEvent *event)
             itemsInInventory.pop_back();
             currentRoom->addItem(itemToDrop);
             currentRoom->setItem(true);
+            qDebug()<<"Before refresh";
             refreshScene();
+            qDebug()<<"After refresh";
         }
     }
 }

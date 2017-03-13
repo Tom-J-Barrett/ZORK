@@ -36,7 +36,6 @@ int Item::getWeight()
 
 QString Item::getDescription()
 {
-    qDebug()<<"Get description";
     return description;
 }
 

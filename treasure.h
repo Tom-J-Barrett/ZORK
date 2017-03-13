@@ -6,6 +6,7 @@ class Treasure: public Item
 {
 public:
     Treasure(QString description, int inWeight);
+    QString getDescription();
 private:
     QString description;
     int weight;

@@ -7,6 +7,7 @@ class Weapon: public Item
 {
 public:
     Weapon(QString description, int inWeight);
+    QString getDescription();
 private:
     QString description;
     int weight;

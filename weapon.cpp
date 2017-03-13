@@ -11,3 +11,8 @@ Weapon::Weapon(QString description, int inWeight)
     this->setScale(.1);
     qDebug()<<"Weapon created";
 }
+
+QString Weapon::getDescription()
+{
+    return description;
+}

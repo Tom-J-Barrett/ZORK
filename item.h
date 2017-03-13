@@ -14,7 +14,7 @@ public:
     Item(QString description, int inWeight);
     Item(QString description);
     int getWeight();
-    QString getDescription();
+    virtual QString getDescription();
     void setWeight(int inWeight);
 };
 
