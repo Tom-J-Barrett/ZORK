@@ -21,6 +21,7 @@
 #include <QTextEdit>
 #include "character.h"
 #include <vector>
+#include <QComboBox>
 
 class Background : public QGraphicsScene
 {
@@ -40,6 +41,7 @@ public:
     void addToScene();
     void clearBackground();
     void addText();
+    void inventoryBox();
     void createInventoryBox(QString inventoryString);
     Room * createRooms();
     void keyPressEvent(QKeyEvent *event);
@@ -80,6 +82,7 @@ private:
     vector<Item*> itemsInInventory;
     vector<QGraphicsPixmapItem> mapRooms;
     QGraphicsRectItem *RoomA,*RoomB,*RoomC,*RoomD,*RoomE,*RoomF,*RoomG,*RoomH,*RoomI,*RoomJ;
+    QComboBox *inventoryComboBox;
 };
 
 #endif // BACKGROUND_H

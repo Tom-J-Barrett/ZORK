@@ -30,4 +30,5 @@ void Zork:: play(){
     backg->createInventoryBox("Inventory");
     backg->addText();
     backg->addToScene();
+    backg->inventoryBox();
 }

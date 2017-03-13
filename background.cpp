@@ -30,18 +30,19 @@ Background::Background(Player * play){
 void Background::setScene(string direction)
 {
     clearBackground();
-
+    qDebug()<<"Problem 1";
     nextRoom = currentRoom->nextRoom(direction);
-
+    qDebug()<<"Problem 2";
     currentRoom=nextRoom;
-
+    qDebug()<<"Problem 3";
     setRoomExits(currentRoom);
-
+    qDebug()<<"Problem 4";
     addToScene();
-
+    qDebug()<<"Problem 5";
     createMapGUI();
-
+    qDebug()<<"Problem 6";
     addText();
+    qDebug()<<"Problem 7";
 }
 
 void Background::refreshScene(){
@@ -285,6 +286,17 @@ void Background:: addText(){
      smallEditor->setPlainText(QString::fromStdString(x));
 }
 
+void Background::inventoryBox()
+{
+    inventoryComboBox=new QComboBox();
+
+    inventoryComboBox->setVisible(true);
+    inventoryComboBox->move(1500,1500);
+    inventoryComboBox->addItem("True","True");
+    inventoryComboBox->addItem("False","False");
+    inventoryComboBox->setCurrentIndex(inventoryComboBox->findData("False"));
+}
+
 
 //adds monster and rectangle to scene
 void Background::addToScene(){
@@ -311,7 +323,7 @@ void Background::addToScene(){
     this->addItem(dragon);
     this->addItem(rect);
 
-
+    this->addWidget(inventoryComboBox);
     if(currentRoom->itemInRoom()){
         item=currentRoom->item;
         item->setVisible(true);

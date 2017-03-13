@@ -42,8 +42,8 @@ void MyTimer::villianSlot()
     else{
         x=villian->move(x);
     }
-
-    play->decreaseHealth();
+    if(-1==x)
+        play->decreaseHealth();
 }
 
 
