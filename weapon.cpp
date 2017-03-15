@@ -8,7 +8,7 @@ Weapon::Weapon(QString description, int inWeight)
     this->setPixmap(QPixmap(":/Images/sword2.jpg"));
     this->setPos(470,100);
     this->setZValue(4);
-    this->setScale(.1);
+    this->setScale(.4);
     qDebug()<<"Weapon created";
 }
 

@@ -82,7 +82,7 @@ Room * Background::createRooms(){
     h= new Room("h");
     i= new Room("i");
     j= new Room("j");
-    return j;
+    return b;
 
 }
 
@@ -272,14 +272,14 @@ void Background::createMapGUI()
         RoomJ->setBrush(Qt::green);
 }
 
-void Background:: createInventoryBox(QString inventoryString){
+/*void Background:: createInventoryBox(QString inventoryString){
     inventoryEditor = new QTextEdit;
     inventoryEditor->move(400,475);
     inventoryEditor->setReadOnly(true);
     inventoryContString += inventoryString;
     inventoryEditor->setPlainText(inventoryContString);
     this->addWidget(inventoryEditor);
-}
+}*/
 
 void Background:: addText(){
      string x="You are in Room "+currentRoom->getDescription();
@@ -289,12 +289,9 @@ void Background:: addText(){
 void Background::inventoryBox()
 {
     inventoryComboBox=new QComboBox();
-
-    inventoryComboBox->setVisible(true);
-    inventoryComboBox->move(1500,1500);
-    inventoryComboBox->addItem("True","True");
-    inventoryComboBox->addItem("False","False");
-    inventoryComboBox->setCurrentIndex(inventoryComboBox->findData("False"));
+    inventoryComboBox->move(550,475);
+    inventoryComboBox->setSizeAdjustPolicy(QComboBox::AdjustToContents);
+    this->addWidget(inventoryComboBox);
 }
 
 
@@ -323,7 +320,6 @@ void Background::addToScene(){
     this->addItem(dragon);
     this->addItem(rect);
 
-    this->addWidget(inventoryComboBox);
     if(currentRoom->itemInRoom()){
         item=currentRoom->item;
         item->setVisible(true);
@@ -445,7 +441,7 @@ void Background::keyPressEvent(QKeyEvent *event)
 
                 inventoryContString = item->getDescription();
                 qDebug()<<inventoryContString;
-                inventoryEditor->setPlainText(inventoryContString);
+                inventoryComboBox->addItem(inventoryContString);
             }
 
     }

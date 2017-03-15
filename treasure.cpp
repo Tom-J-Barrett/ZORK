@@ -8,7 +8,7 @@ Treasure::Treasure(QString description, int inWeight)
     this->setPixmap(QPixmap(":/Images/Treasure.jpeg"));
     this->setPos(470,100);
     this->setZValue(4);
-    this->setScale(.1);
+    this->setScale(.2);
     qDebug()<<"Treasure created"<<description;
 }
 
