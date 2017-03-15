@@ -18,6 +18,7 @@
 #include "treasure.h"
 #include "weapon.h"
 #include "potion.h"
+#include "addobjects.h"
 
 
 //constructor that sets blank window and creates rooms
@@ -76,12 +77,17 @@ Room * Background::createRooms(){
     d->addItem(treasure);
     d->setItem(true);
 
+    //AddObjects<int> addRoomObjects(1,2);
+   // addRoomObjects.test();
+
+
     e= new Room("e");
     f= new Room("f");
     g= new Room("g");
     h= new Room("h");
     i= new Room("i");
     j= new Room("j");
+
     return b;
 
 }
@@ -464,3 +470,10 @@ void Background::keyPressEvent(QKeyEvent *event)
 }
 
 
+
+/*template<class T>
+QString &T::operator++(T object)
+{
+    QString description= object.getDescription();
+    qDebug()<<description;
+}*/

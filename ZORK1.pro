@@ -40,7 +40,8 @@ SOURCES += main.cpp \
     mytimer.cpp \
     attack.cpp \
     inventory.cpp \
-    treasure.cpp
+    treasure.cpp \
+    addobjects.cpp
 
 HEADERS  += \
     boss.h \
@@ -59,7 +60,8 @@ HEADERS  += \
     mytimer.h \
     attack.h \
     inventory.h \
-    treasure.h
+    treasure.h \
+    addobjects.h
 
 FORMS    += mainwindow.ui
 

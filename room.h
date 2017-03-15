@@ -4,11 +4,13 @@
 #include <string>
 #include <vector>
 #include "item.h"
+#include "addobjects.h"
 
 using namespace std;
 using std::vector;
 
 class Room {
+
 private:
 
     map<string, Room*> exits;
