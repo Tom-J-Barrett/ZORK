@@ -15,7 +15,7 @@ public:
     void decreaseHealth();
     void resetHealth();
     void increaseHealth();
-    virtual QString getImage();
+    virtual QString getImage()=0;
     int z=0;
     void decreaseHealthByAttack(int damage);
 

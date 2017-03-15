@@ -14,4 +14,5 @@ public:
     void removeFromInventory(Item item);
     int inventoryQty();
     vector<Item *> getInventoryList();
+    void setInventoryList(vector<Item *> InventoryList);
 };

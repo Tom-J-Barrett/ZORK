@@ -46,6 +46,8 @@ public:
     Room * createRooms();
     void keyPressEvent(QKeyEvent *event);
 
+    template<class T> QString &operator++(T);
+
 public slots:
     void on_button1_clicked();
     void on_button2_clicked();

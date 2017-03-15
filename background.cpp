@@ -449,19 +449,18 @@ void Background::keyPressEvent(QKeyEvent *event)
     if(event->key()==Qt::Key_D)
     {
         if(currentRoom->itemInRoom()==false){
+            qDebug()<<"Can drop";
             itemsInInventory=player->getInventory()->getInventoryList();
             itemToDrop=itemsInInventory.back();
+            qDebug()<<itemToDrop->getDescription()<<"Yawwwwwww";
             itemsInInventory.pop_back();
             currentRoom->addItem(itemToDrop);
             currentRoom->setItem(true);
-            qDebug()<<"Before refresh";
+            inventoryComboBox->removeItem(inventoryComboBox->count()-1);
+            player->getInventory()->setInventoryList(itemsInInventory);
             refreshScene();
-            qDebug()<<"After refresh";
         }
     }
 }
-
-
-
 
 

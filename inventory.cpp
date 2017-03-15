@@ -26,6 +26,11 @@ vector<Item*> Inventory:: getInventoryList(){
     return itemsInInventory;
 }
 
+void Inventory::setInventoryList(vector<Item *> InventoryList)
+{
+    this->itemsInInventory=InventoryList;
+}
+
 void Inventory::removeFromInventory(Item item){
 
 }
