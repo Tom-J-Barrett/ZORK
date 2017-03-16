@@ -11,7 +11,6 @@ public:
     Boss();
     QString getImage();
     int move(int x);
-   // void keyPressEvent(QKeyEvent *event);
 };
 
 #endif // BOSS_H

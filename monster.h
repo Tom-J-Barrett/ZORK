@@ -11,6 +11,5 @@ public:
     Monster();
     QString getImage();
     int move(int x);
-   // void keyPressEvent(QKeyEvent *event);
 };
 #endif // MONSTER_H

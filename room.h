@@ -16,25 +16,25 @@ private:
     map<string, Room*> exits;
     bool monster;
     bool bossMonster;
+    bool princess;
     bool itemPresent=false;
-public:
     string description;
-
     vector<Item*> itemsInRoom;
+    Item *item;
 
+public:
     Room(string description);
     void setExits(Room *north, Room *east, Room *south, Room *west);
     void setMonster(bool);
     void setItem(bool i);
     void setBoss(bool);
+    void setPrincess(bool);
     vector<string> exitString();
     string getDescription();
-
-    Item *item;
     bool itemInRoom();
-
     bool monsterInRoom();
     bool bossInRoom();
+    bool princessInRoom();
     vector<Room> rooms();
     Room* nextRoom(string direction);
     void addItem(Item *inItem);

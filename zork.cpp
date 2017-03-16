@@ -25,6 +25,7 @@ void Zork:: play(){
     backg->createCave();
     backg->createMapGUI();
     backg->createMonster();
+    backg->createPrincess();
     backg->createBoss();
     backg->createTextBox();
     backg->inventoryBox();

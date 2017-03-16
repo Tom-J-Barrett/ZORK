@@ -42,6 +42,14 @@ void Room::setBoss(bool boss)
         bossMonster=false;
 }
 
+void Room::setPrincess(bool prin)
+{
+    if(prin)
+        princess=true;
+    else
+        princess=false;
+}
+
 vector<string> Room::exitString()
 {
     vector<string> list;
@@ -59,6 +67,11 @@ bool Room::monsterInRoom()
 bool Room::bossInRoom()
 {
     return bossMonster;
+}
+
+bool Room::princessInRoom()
+{
+    return princess;
 }
 
 string Room::getDescription()

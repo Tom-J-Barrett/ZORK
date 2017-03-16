@@ -110,6 +110,8 @@ void Background::createExits(){
     e->setMonster(true);
 
     f->setExits(NULL, g, a, h);
+    f->setPrincess(true);
+
     g->setExits(NULL, NULL, NULL, f);
     g->setMonster(true);
 
@@ -177,22 +179,16 @@ void Background::createCave(){
 }
 
 void Background::createMonster(){
-    qDebug()<<"Test2";
     vampire = new Monster();
-    vampire->setPixmap(QPixmap(":/Images/vampire.png"));
-    vampire->setFlag(QGraphicsItem::ItemIsFocusable);
-    vampire->setFocus();
-    vampire->setPos(470,200);
-    vampire->setZValue(3);
 }
 
 void Background::createBoss(){
     dragon = new Boss();
-    dragon->setPixmap(QPixmap(":/Images/dragon.png"));
-    dragon->setFlag(QGraphicsItem::ItemIsFocusable);
-    dragon->setFocus();
-    dragon->setPos(470,200);
-    dragon->setZValue(2);
+}
+
+void Background::createPrincess()
+{
+    princess = new Princess();
 }
 
 void Background:: createTextBox(){
@@ -278,15 +274,6 @@ void Background::createMapGUI()
         RoomJ->setBrush(Qt::green);
 }
 
-/*void Background:: createInventoryBox(QString inventoryString){
-    inventoryEditor = new QTextEdit;
-    inventoryEditor->move(400,475);
-    inventoryEditor->setReadOnly(true);
-    inventoryContString += inventoryString;
-    inventoryEditor->setPlainText(inventoryContString);
-    this->addWidget(inventoryEditor);
-}*/
-
 void Background:: addText(){
      string x="You are in Room "+currentRoom->getDescription();
      smallEditor->setPlainText(QString::fromStdString(x));
@@ -312,6 +299,11 @@ void Background::addToScene(){
     if(!(currentRoom->monsterInRoom()))
         vampire->setVisible(false);
 
+    if(!(currentRoom->princessInRoom())){
+        qDebug()<<"checking for princess";
+        princess->setVisible(false);
+    }
+
     if(!(dragon->isVisible() ) && currentRoom->bossInRoom()){
         dragon->setVisible(true);
         dragon->setFocus();
@@ -325,6 +317,7 @@ void Background::addToScene(){
     this->addItem(vampire);
     this->addItem(dragon);
     this->addItem(rect);
+    this->addItem(princess);
 
     if(currentRoom->itemInRoom()){
         item=currentRoom->item;
@@ -394,6 +387,7 @@ void Background::clearBackground(){
     this->removeItem(vampire);
     this->removeItem(rect);
     this->removeItem(dragon);
+    this->removeItem(princess);
 
 
     if(currentRoom->itemInRoom()){
@@ -465,6 +459,20 @@ void Background::keyPressEvent(QKeyEvent *event)
             inventoryComboBox->removeItem(inventoryComboBox->count()-1);
             player->getInventory()->setInventoryList(itemsInInventory);
             refreshScene();
+        }
+    }
+
+    if(event->key()==Qt::Key_K){
+        if(currentRoom->princessInRoom()){
+        qDebug()<<"Kissed";
+        exit(1);
+        }
+    }
+
+    if(event->key()==Qt::Key_X){
+        if(currentRoom->princessInRoom()){
+        qDebug()<<"You killed the princess, you bastard!";
+        exit(1);
         }
     }
 }

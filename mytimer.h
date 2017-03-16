@@ -12,13 +12,10 @@ class MyTimer : public QObject
     Q_OBJECT
 public:
     MyTimer(Character * enemy, Player * p, Room* r);
-  //  MyTimer(Boss * enemy, Player * p, Room* r);
     ~MyTimer();
     void stopTimer();
 
 public slots:
-    //void monsterSlot();
-    //void dragonSlot();
     void villianSlot();
 
 private:

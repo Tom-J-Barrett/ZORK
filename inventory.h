@@ -4,10 +4,8 @@
 #include "item.h"
 class Inventory{
 private:
-
-public:
-
     vector<Item*> itemsInInventory;
+public:  
     Inventory();
     void showInventory();
     void addToInventory(Item *item);

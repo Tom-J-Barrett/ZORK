@@ -11,6 +11,7 @@
 #include "buttonaction.h"
 #include "player.h"
 #include "boss.h"
+#include "princess.h"
 #include "attack.h"
 #include "key.h"
 #include "weapon.h"
@@ -27,7 +28,6 @@ class Background : public QGraphicsScene
 {
     Q_OBJECT
 public:
-    QString inventoryContString;
     explicit Background(Player * play);
     void setScene(string direction);
     void refreshScene();
@@ -36,6 +36,7 @@ public:
     void createCave();
     void createMonster();
     void createBoss();
+    void createPrincess();
     void createTextBox();
     void createMapGUI();
     void addToScene();
@@ -46,8 +47,6 @@ public:
     Room * createRooms();
     void keyPressEvent(QKeyEvent *event);
 
-   // template<class T> QString &operator++(T object);
-
 public slots:
     void on_button1_clicked();
     void on_button2_clicked();
@@ -55,9 +54,11 @@ public slots:
     void on_button4_clicked();
 
 private:
+    QString inventoryContString;
     QGraphicsPixmapItem *rect;
     Monster* vampire;
     Boss * dragon;
+    Character * princess;
     QString inventoryString;
     QTextEdit * smallEditor;
     QTextEdit * inventoryEditor;
