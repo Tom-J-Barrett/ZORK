@@ -5,7 +5,12 @@
 #include <QGraphicsPixmapItem>
 #include <QGraphicsRectItem>
 #include <QMainWindow>
+#include <QDebug>
 
+template<class FIRST, class SECOND>
+FIRST smaller(FIRST a, SECOND b){
+    qDebug()<<"Template";
+}
 
 int main(int argc, char *argv[])
 {

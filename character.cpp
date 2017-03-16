@@ -22,6 +22,11 @@ void Character::decreaseHealthByAttack(int damage){
     health=health-damage;
 }
 
+void Character::operator +(Character *c1)
+{
+    qDebug()<<c1->getHealth();
+}
+
 void Character::resetHealth(){
     health=100;
 }

@@ -477,3 +477,6 @@ QString &T::operator++(T object)
     QString description= object.getDescription();
     qDebug()<<description;
 }*/
+
+
+
