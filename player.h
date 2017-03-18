@@ -12,7 +12,7 @@ public:
     Player();
     int getHealth();
     void decreaseHealth();
-    void increaseHealth();
+    void increaseHealth(int x);
     Inventory * getInventory();
     int getDamage();
     void setDamage(int damage);

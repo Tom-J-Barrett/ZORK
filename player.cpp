@@ -33,9 +33,9 @@ void Player::decreaseHealth()
 
 }
 
-void Player::increaseHealth()
+void Player::increaseHealth(int x)
 {
-    health+=20;
+    health+=x;
 }
 
 int Player::getDamage(){

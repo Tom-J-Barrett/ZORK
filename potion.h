@@ -8,6 +8,7 @@ class Potion: public Item
 public:
     Potion(QString description, int inWeight);
     QString getDescription();
+    QString setDescription(QString);
 private:
     QString description;
     int weight;

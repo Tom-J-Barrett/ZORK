@@ -17,4 +17,9 @@ QString Potion:: getDescription(){
     return description;
 }
 
+QString Potion::setDescription(QString description)
+{
+    this->description=description;
+}
+
 

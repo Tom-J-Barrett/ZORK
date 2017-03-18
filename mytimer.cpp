@@ -20,7 +20,7 @@ MyTimer::MyTimer(Character * enemy, Player * p, Room* r)
 
 MyTimer::~MyTimer()
 {
-    stopTimer();
+    timer->deleteLater();
 }
 
 void MyTimer::stopTimer()
@@ -40,6 +40,7 @@ void MyTimer::villianSlot()
         room->setMonster(false);
     }
     else{
+        qDebug()<<"MOOOOOOVe";
         x=villian->move(x);
     }
     if(-1==x)

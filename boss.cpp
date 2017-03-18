@@ -19,7 +19,7 @@ Boss::Boss()
 
 QString Boss::getImage()
 {
-    return ":/Images/dragon.jpg";
+    return ":/Images/dragon.png";
 }
 
 int Boss::move(int x){

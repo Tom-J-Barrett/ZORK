@@ -30,6 +30,7 @@ Background::Background(Player * play){
 //Sets a new scne when you move rooms
 void Background::setScene(string direction)
 {
+    qDebug()<<"Problem 0";
     clearBackground();
     qDebug()<<"Problem 1";
     nextRoom = currentRoom->nextRoom(direction);
@@ -88,7 +89,7 @@ Room * Background::createRooms(){
     i= new Room("i");
     j= new Room("j");
 
-    return b;
+    return j;
 
 }
 
@@ -294,30 +295,34 @@ void Background::addToScene(){
         vampire->setVisible(true);
         vampire->setFocus();
         timer = new MyTimer(vampire, player, currentRoom);
+        this->addItem(vampire);
     }
-
-    if(!(currentRoom->monsterInRoom()))
-        vampire->setVisible(false);
-
-    if(!(currentRoom->princessInRoom())){
-        qDebug()<<"checking for princess";
-        princess->setVisible(false);
-    }
-
-    if(!(dragon->isVisible() ) && currentRoom->bossInRoom()){
+    else if(currentRoom->bossInRoom()){
         dragon->setVisible(true);
         dragon->setFocus();
         timer = new MyTimer(dragon, player, currentRoom);
+        this->addItem(dragon);
     }
+    else if(currentRoom->princessInRoom()){
+        princess->setVisible(true);
+        princess->setFocus();
+        qDebug()<<"Princess in room";
+        this->addItem(princess);
+    }
+
+    /*if(!(currentRoom->monsterInRoom()))
+        vampire->setVisible(false);
+
+    if(!(currentRoom->princessInRoom())){
+        princess->setVisible(false);
+        qDebug()<<"Princess invisible";
+     }
 
     if(!(currentRoom->bossInRoom())){
         dragon->setVisible(false);
-    }
+    }*/
 
-    this->addItem(vampire);
-    this->addItem(dragon);
     this->addItem(rect);
-    this->addItem(princess);
 
     if(currentRoom->itemInRoom()){
         item=currentRoom->item;
@@ -330,23 +335,23 @@ void Background::addToScene(){
 
 void Background::on_button1_clicked()
 {
-
+    qDebug()<<"On button click";
     setScene("north");
 }
 
 void Background::on_button2_clicked()
 {
-
+    qDebug()<<"On button click";
     setScene("south");
 }
 void Background::on_button3_clicked()
 {
-
+    qDebug()<<"On button click";
     setScene("east");
 }
 void Background::on_button4_clicked()
 {
-
+    qDebug()<<"On button click";
     setScene("west");
 }
 
@@ -361,7 +366,7 @@ void Background::clearBackground(){
     RoomH->setBrush(Qt::white);
     RoomI->setBrush(Qt::white);
     RoomJ->setBrush(Qt::white);
-
+    qDebug()<<"clear background 1";
     if(delB1)
     {
         button1->deleteLater();
@@ -383,21 +388,34 @@ void Background::clearBackground(){
         delB4=0;
     }
 
-
-    this->removeItem(vampire);
+    qDebug()<<"clear background 2";
+    if(currentRoom->monsterInRoom()){
+        this->removeItem(vampire);
+    }
+    else if(currentRoom->bossInRoom()){
+        this->removeItem(dragon);
+    }
+    else if(currentRoom->princessInRoom()){
+        this->removeItem(princess);
+    }
+    qDebug()<<"clear background 3";
     this->removeItem(rect);
-    this->removeItem(dragon);
-    this->removeItem(princess);
-
-
+    qDebug()<<"clear background 4";
     if(currentRoom->itemInRoom()){
         this->removeItem(item);
     }
-
+    qDebug()<<"clear background 5";
     vampire->resetHealth();
+    qDebug()<<"clear background 7";
     dragon->resetHealth();
+    qDebug()<<"clear background 8";
+    if(currentRoom->bossInRoom() || currentRoom->monsterInRoom()){
+        timer->stopTimer();
+        qDebug()<<"clear background 9";
+        timer->deleteLater();
+        qDebug()<<"clear background 10";
+    }
 
-    delete timer;
 }
 
 void Background::keyPressEvent(QKeyEvent *event)
@@ -427,6 +445,12 @@ void Background::keyPressEvent(QKeyEvent *event)
                 }
         }
     }
+    else if(currentRoom->princessInRoom()){
+        if(event->key()==Qt::Key_X)
+        {
+            exit(1);
+        }
+    }
 
 
 
@@ -442,6 +466,10 @@ void Background::keyPressEvent(QKeyEvent *event)
                 inventoryContString = item->getDescription();
                 qDebug()<<inventoryContString;
                 inventoryComboBox->addItem(inventoryContString);
+                if(typeid(item)==typeid(Potion)){
+                    player->increaseHealth(50);
+                    potion->setDescription("Used Potion");
+                }
             }
 
     }
@@ -468,23 +496,6 @@ void Background::keyPressEvent(QKeyEvent *event)
         exit(1);
         }
     }
-
-    if(event->key()==Qt::Key_X){
-        if(currentRoom->princessInRoom()){
-        qDebug()<<"You killed the princess, you bastard!";
-        exit(1);
-        }
-    }
 }
-
-
-
-/*template<class T>
-QString &T::operator++(T object)
-{
-    QString description= object.getDescription();
-    qDebug()<<description;
-}*/
-
 
 

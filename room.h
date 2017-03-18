@@ -19,11 +19,11 @@ private:
     bool princess;
     bool itemPresent=false;
     string description;
-    vector<Item*> itemsInRoom;
-    Item *item;
 
 public:
     Room(string description);
+    vector<Item*> itemsInRoom;
+    Item *item;
     void setExits(Room *north, Room *east, Room *south, Room *west);
     void setMonster(bool);
     void setItem(bool i);

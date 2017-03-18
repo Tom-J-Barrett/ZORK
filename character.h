@@ -17,10 +17,10 @@ public:
     virtual QString getImage()=0;
     void decreaseHealthByAttack(int damage);
     void operator +(Character* c1);
+    int z=0;
 
 private:
     int health=100;
-    int z=0;
 };
 
 #endif // CHARACTER_H
