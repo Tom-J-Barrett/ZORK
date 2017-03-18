@@ -7,7 +7,6 @@
 #include <QPlainTextEdit>
 #include <QDebug>
 #include <QObject>
-#include "buttonaction.h"
 #include "mytimer.h"
 #include "background.h"
 #include "player.h"
@@ -18,13 +17,53 @@
 #include "treasure.h"
 #include "weapon.h"
 #include "potion.h"
-#include "addobjects.h"
 
 
 //constructor that sets blank window and creates rooms
 Background::Background(Player * play){
     player=play;
     inventoryContString = "";
+}
+
+Background::~Background()
+{
+    delete player;
+    delete vampire;
+    delete dragon;
+    delete princess;
+    delete a;
+    delete b;
+    delete c;
+    delete d;
+    delete e;
+    delete f;
+    delete g;
+    delete h;
+    delete i;
+    delete j;
+    delete key;
+    delete treasure;
+    delete potion;
+    delete weapon;
+    delete button1;
+    delete button2;
+    delete button3;
+    delete button4;
+    delete rect;
+    delete button1;
+    delete smallEditor;
+    delete RoomA;
+    delete RoomB;
+    delete RoomC;
+    delete RoomD;
+    delete RoomE;
+    delete RoomF;
+    delete RoomG;
+    delete RoomH;
+    delete RoomI;
+    delete RoomJ;
+    delete inventoryComboBox;
+    delete timer;
 }
 
 //Sets a new scne when you move rooms
@@ -77,10 +116,6 @@ Room * Background::createRooms(){
     treasure=new Treasure("Gold and jewels",50);
     d->addItem(treasure);
     d->setItem(true);
-
-    //AddObjects<int> addRoomObjects(1,2);
-   // addRoomObjects.test();
-
 
     e= new Room("e");
     f= new Room("f");
@@ -310,18 +345,6 @@ void Background::addToScene(){
         this->addItem(princess);
     }
 
-    /*if(!(currentRoom->monsterInRoom()))
-        vampire->setVisible(false);
-
-    if(!(currentRoom->princessInRoom())){
-        princess->setVisible(false);
-        qDebug()<<"Princess invisible";
-     }
-
-    if(!(currentRoom->bossInRoom())){
-        dragon->setVisible(false);
-    }*/
-
     this->addItem(rect);
 
     if(currentRoom->itemInRoom()){
@@ -335,23 +358,19 @@ void Background::addToScene(){
 
 void Background::on_button1_clicked()
 {
-    qDebug()<<"On button click";
     setScene("north");
 }
 
 void Background::on_button2_clicked()
 {
-    qDebug()<<"On button click";
     setScene("south");
 }
 void Background::on_button3_clicked()
 {
-    qDebug()<<"On button click";
     setScene("east");
 }
 void Background::on_button4_clicked()
 {
-    qDebug()<<"On button click";
     setScene("west");
 }
 
@@ -366,7 +385,7 @@ void Background::clearBackground(){
     RoomH->setBrush(Qt::white);
     RoomI->setBrush(Qt::white);
     RoomJ->setBrush(Qt::white);
-    qDebug()<<"clear background 1";
+
     if(delB1)
     {
         button1->deleteLater();
@@ -388,7 +407,6 @@ void Background::clearBackground(){
         delB4=0;
     }
 
-    qDebug()<<"clear background 2";
     if(currentRoom->monsterInRoom()){
         this->removeItem(vampire);
     }
@@ -398,22 +416,19 @@ void Background::clearBackground(){
     else if(currentRoom->princessInRoom()){
         this->removeItem(princess);
     }
-    qDebug()<<"clear background 3";
+
     this->removeItem(rect);
-    qDebug()<<"clear background 4";
+
     if(currentRoom->itemInRoom()){
         this->removeItem(item);
     }
-    qDebug()<<"clear background 5";
+
     vampire->resetHealth();
-    qDebug()<<"clear background 7";
     dragon->resetHealth();
-    qDebug()<<"clear background 8";
+
     if(currentRoom->bossInRoom() || currentRoom->monsterInRoom()){
         timer->stopTimer();
-        qDebug()<<"clear background 9";
         timer->deleteLater();
-        qDebug()<<"clear background 10";
     }
 
 }
@@ -477,10 +492,8 @@ void Background::keyPressEvent(QKeyEvent *event)
     if(event->key()==Qt::Key_D)
     {
         if(currentRoom->itemInRoom()==false){
-            qDebug()<<"Can drop";
             itemsInInventory=player->getInventory()->getInventoryList();
             itemToDrop=itemsInInventory.back();
-            qDebug()<<itemToDrop->getDescription()<<"Yawwwwwww";
             itemsInInventory.pop_back();
             currentRoom->addItem(itemToDrop);
             currentRoom->setItem(true);

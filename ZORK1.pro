@@ -41,7 +41,7 @@ SOURCES += main.cpp \
     attack.cpp \
     inventory.cpp \
     treasure.cpp \
-    addobjects.cpp
+    myvector.cpp
 
 HEADERS  += \
     boss.h \
@@ -61,7 +61,7 @@ HEADERS  += \
     attack.h \
     inventory.h \
     treasure.h \
-    addobjects.h
+    myvector.h
 
 FORMS    += mainwindow.ui
 

@@ -4,7 +4,6 @@
 #include <string>
 #include <vector>
 #include "item.h"
-#include "addobjects.h"
 
 using namespace std;
 using std::vector;

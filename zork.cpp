@@ -14,6 +14,12 @@ Zork::Zork(QWidget *parent)
     show();
 }
 
+Zork::~Zork()
+{
+    delete player;
+    delete backg;
+}
+
 void Zork:: play(){
     player = new Player();
     player->setDamage(25);

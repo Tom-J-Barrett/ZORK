@@ -29,6 +29,7 @@ class Background : public QGraphicsScene
     Q_OBJECT
 public:
     explicit Background(Player * play);
+    ~Background();
     void setScene(string direction);
     void refreshScene();
     void createExits();
