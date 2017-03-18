@@ -23,6 +23,7 @@
 #include "character.h"
 #include <vector>
 #include <QComboBox>
+#include "myvector.h"
 
 class Background : public QGraphicsScene
 {
@@ -87,6 +88,7 @@ private:
     vector<QGraphicsPixmapItem> mapRooms;
     QGraphicsRectItem *RoomA,*RoomB,*RoomC,*RoomD,*RoomE,*RoomF,*RoomG,*RoomH,*RoomI,*RoomJ;
     QComboBox *inventoryComboBox;
+    myVector<char> vec;
 };
 
 #endif // BACKGROUND_H

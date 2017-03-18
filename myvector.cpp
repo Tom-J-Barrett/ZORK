@@ -1,4 +1,4 @@
-#include "myvector.h"
+/*#include "myvector.h"
 
 template<class T>
 myVector<T>::myVector(){
@@ -88,3 +88,4 @@ void myVector<T>::alloc_new(){
     delete[] array;
     array=tmp;
 }
+*/
