@@ -15,8 +15,9 @@ public:
     myVector(const myVector&);
     ~myVector();
     void push_back(const T&);
-    void pop();
+    void pop_back();
     int size();
+    T back();
     T operator[](int);
     myVector& operator=(const myVector&);
     myVector& operator+=(const T&);
@@ -61,13 +62,19 @@ void myVector<T>::push_back(const T& i){
 }
 
 template<class T>
-void myVector<T>::pop(){
-
+void myVector<T>::pop_back(){
+    array[vsize]=NULL;
+    vsize--;
 }
 
 template<class T>
 int myVector<T>::size(){
     return vsize;
+}
+
+template<class T>
+T myVector<T>::back(){
+    return array[vsize-1];
 }
 
 template<class T>

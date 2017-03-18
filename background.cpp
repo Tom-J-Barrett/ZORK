@@ -1,30 +1,9 @@
-#include "monster.h"
-#include "room.h"
-#include <QGraphicsPixmapItem>
-#include <QGraphicsRectItem>
-#include <QMessageBox>
-#include <QPushButton>
-#include <QPlainTextEdit>
-#include <QDebug>
-#include <QObject>
-#include "mytimer.h"
 #include "background.h"
-#include "player.h"
-#include <QString>
-#include <string>
-#include <key.h>
-#include "boss.h"
-#include "treasure.h"
-#include "weapon.h"
-#include "potion.h"
-#include "myvector.h"
-
 
 //constructor that sets blank window and creates rooms
 Background::Background(Player * play){
     player=play;
     inventoryContString = "";
-    vec.push_back('a');
 }
 
 Background::~Background()

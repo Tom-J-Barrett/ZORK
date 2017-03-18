@@ -24,6 +24,11 @@
 #include <vector>
 #include <QComboBox>
 #include "myvector.h"
+#include <QGraphicsPixmapItem>
+#include <QMessageBox>
+#include <QPlainTextEdit>
+#include <QDebug>
+#include <QObject>
 
 class Background : public QGraphicsScene
 {
@@ -85,10 +90,9 @@ private:
     Potion * potion;
     Weapon * weapon;
     vector<Item*> itemsInInventory;
-    vector<QGraphicsPixmapItem> mapRooms;
+    myVector<QGraphicsPixmapItem> mapRooms;
     QGraphicsRectItem *RoomA,*RoomB,*RoomC,*RoomD,*RoomE,*RoomF,*RoomG,*RoomH,*RoomI,*RoomJ;
     QComboBox *inventoryComboBox;
-    myVector<char> vec;
 };
 
 #endif // BACKGROUND_H
