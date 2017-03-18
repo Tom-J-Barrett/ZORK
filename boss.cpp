@@ -6,7 +6,6 @@
 #include <QKeyEvent>
 #include <QGraphicsScene>
 #include <QDebug>
-#include "attack.h"
 
 Boss::Boss()
 {

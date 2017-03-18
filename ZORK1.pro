@@ -36,9 +36,7 @@ SOURCES += main.cpp \
     potion.cpp \
     key.cpp \
     background.cpp \
-    buttonaction.cpp \
     mytimer.cpp \
-    attack.cpp \
     inventory.cpp \
     treasure.cpp \
     myvector.cpp
@@ -56,9 +54,7 @@ HEADERS  += \
     room.h \
     weapon.h \
     zork.h \
-    buttonaction.h \
     mytimer.h \
-    attack.h \
     inventory.h \
     treasure.h \
     myvector.h
