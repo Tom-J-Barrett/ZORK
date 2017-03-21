@@ -9,7 +9,6 @@ Zork::Zork(QWidget *parent)
     this->setAttribute(Qt::WA_DeleteOnClose);
 
     play();
-
     setScene(backg);
     show();
 }

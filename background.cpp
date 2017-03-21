@@ -304,6 +304,16 @@ void Background::inventoryBox()
     this->addWidget(inventoryComboBox);
 }
 
+void Background::controlsBox()
+{
+    controlsComboBox=new QComboBox();
+    controlsComboBox->move(600,475);
+    controlsComboBox->setSizeAdjustPolicy(QComboBox::AdjustToContents);
+    controlsComboBox->addItem("Controls");
+
+    this->addWidget(controlsComboBox);
+}
+
 
 //adds monster and rectangle to scene
 void Background::addToScene(){

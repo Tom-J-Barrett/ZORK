@@ -7,6 +7,7 @@
 #include "monster.h"
 #include "background.h"
 #include "player.h"
+#include "myvector.h"
 
 class Zork : public QGraphicsView
 {
@@ -19,5 +20,6 @@ private:
     Background * backg;
     Room * currentRoom;
     Player * player;
+    myVector<QString> * controls;
 };
 #endif // ZORK_H

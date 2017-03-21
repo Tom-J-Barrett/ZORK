@@ -48,7 +48,8 @@ public:
     void clearBackground();
     void addText();
     void inventoryBox();
-    void createInventoryBox(QString inventoryString);
+    void controlsBox();
+   // void createInventoryBox(QString inventoryString);
     Room * createRooms();
     void keyPressEvent(QKeyEvent *event);
 
@@ -91,6 +92,7 @@ private:
     myVector<QGraphicsPixmapItem> mapRooms;
     QGraphicsRectItem *RoomA,*RoomB,*RoomC,*RoomD,*RoomE,*RoomF,*RoomG,*RoomH,*RoomI,*RoomJ;
     QComboBox *inventoryComboBox;
+    QComboBox *controlsComboBox;
 };
 
 #endif // BACKGROUND_H
