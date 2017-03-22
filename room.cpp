@@ -61,6 +61,7 @@ vector<string> Room::exitString()
 
 bool Room::monsterInRoom()
 {
+    qDebug()<<"Is monster in room";
     return monster;
 }
 

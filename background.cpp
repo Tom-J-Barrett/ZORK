@@ -26,12 +26,12 @@ Background::~Background()
     delete treasure;
     delete potion;
     delete weapon;
-    delete button1;
-    delete button2;
-    delete button3;
-    delete button4;
+    //delete button1;
+    //delete button2;
+    //delete button3;
+    //delete button4;
     delete rect;
-    delete button1;
+    //delete button1;
     delete smallEditor;
     delete RoomA;
     delete RoomB;
@@ -400,6 +400,7 @@ void Background::clearBackground(){
 
     if(currentRoom->monsterInRoom()){
         this->removeItem(vampire);
+        qDebug() << "Vampire Removed";
     }
     else if(currentRoom->bossInRoom()){
         this->removeItem(dragon);
@@ -418,6 +419,7 @@ void Background::clearBackground(){
     dragon->resetHealth();
 
     if(currentRoom->bossInRoom() || currentRoom->monsterInRoom()){
+        qDebug() << "Stop reading my code Robbie";
         timer->stopTimer();
         timer->deleteLater();
     }
@@ -472,9 +474,10 @@ void Background::keyPressEvent(QKeyEvent *event)
                 inventoryContString = item->getDescription();
                 qDebug()<<inventoryContString;
                 inventoryComboBox->addItem(inventoryContString);
-                if(typeid(item)==typeid(Potion)){
+                if(item->getDescription()==potion->getDescription()){
+                    qDebug()<<"Used Potion";
                     player->increaseHealth(50);
-                    potion->setDescription("Used Potion");
+                    qDebug() << player->getHealth();
                 }
             }
 
@@ -483,12 +486,13 @@ void Background::keyPressEvent(QKeyEvent *event)
     if(event->key()==Qt::Key_D)
     {
         if(currentRoom->itemInRoom()==false){
+            int currentItem = inventoryComboBox->currentIndex();
             itemsInInventory=player->getInventory()->getInventoryList();
-            itemToDrop=itemsInInventory.back();
-            itemsInInventory.pop_back();
+            itemToDrop=itemsInInventory.operator [](currentItem);
+            itemsInInventory.erase(itemsInInventory.begin() + currentItem);
             currentRoom->addItem(itemToDrop);
             currentRoom->setItem(true);
-            inventoryComboBox->removeItem(inventoryComboBox->count()-1);
+            inventoryComboBox->removeItem(currentItem);
             player->getInventory()->setInventoryList(itemsInInventory);
             refreshScene();
         }
@@ -499,6 +503,10 @@ void Background::keyPressEvent(QKeyEvent *event)
         qDebug()<<"Kissed";
         exit(1);
         }
+    }
+
+    if(event->key()==Qt::Key_H){
+        controlsBox();
     }
 }
 

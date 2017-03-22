@@ -10,6 +10,7 @@ class Player{
 
 public:
     Player();
+    ~Player();
     int getHealth();
     void decreaseHealth();
     void increaseHealth(int x);
