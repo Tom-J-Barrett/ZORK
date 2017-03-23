@@ -27,12 +27,13 @@
 #include <QPlainTextEdit>
 #include <QDebug>
 #include <QObject>
+#include "zork.h"
 
 class Background : public QGraphicsScene
 {
     Q_OBJECT
 public:
-    explicit Background(Player * play);
+    explicit Background(Zork* zork);
     ~Background();
     void setScene(string direction);
     void refreshScene();

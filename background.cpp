@@ -1,9 +1,22 @@
 #include "background.h"
 
 //constructor that sets blank window and creates rooms
-Background::Background(Player * play){
-    player=play;
+Background::Background(Zork* zork1){
+    player=zork1->play();
     inventoryContString = "";
+    currentRoom=createRooms();
+    createExits();
+    setRoomExits(currentRoom);
+    setSceneRect(0,0,1000,500);
+    createCave();
+    createMapGUI();
+    createMonster();
+    createPrincess();
+    createBoss();
+    createTextBox();
+    inventoryBox();
+    addText();
+    addToScene();
 }
 
 Background::~Background()
