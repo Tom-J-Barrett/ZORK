@@ -10,6 +10,7 @@ public:
 private:
     QString description;
     int weight;
+
 };
 
 #endif // TREASURE_H

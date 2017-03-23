@@ -19,7 +19,7 @@ private:
     bool itemPresent=false;
     string description;
     bool bossIsDead=false;
-    bool canEnter=true;
+    bool canEnter;
 
 public:
     Room(string description);
