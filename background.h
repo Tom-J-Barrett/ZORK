@@ -86,7 +86,7 @@ private:
     Item * item;
     Item * itemToDrop;
     vector<Item*> itemsInInventory;
-    myVector<QGraphicsPixmapItem> mapRooms;
+    myVector<QString> controls;
     QGraphicsRectItem *RoomA,*RoomB,*RoomC,*RoomD,*RoomE,*RoomF,*RoomG,*RoomH,*RoomI,*RoomJ;
     QComboBox *inventoryComboBox;
     QComboBox *controlsComboBox;

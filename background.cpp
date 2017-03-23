@@ -15,6 +15,7 @@ Background::Background(Zork* zork1){
 //    createBoss();
     createTextBox();
     inventoryBox();
+    controlsBox();
     addText();
     addToScene();
 }
@@ -63,10 +64,14 @@ Background::~Background()
 //Sets a new scne when you move rooms
 void Background::setScene(string direction)
 {
+    //nextRoom = currentRoom->nextRoom(direction);
+    if(nextRoom->getCanEnter()==true){
     qDebug()<<"Problem 0";
     clearBackground();
     qDebug()<<"Problem 1";
+
     nextRoom = zork1->currentRoom->nextRoom(direction);
+
     qDebug()<<"Problem 2";
     zork1->currentRoom=nextRoom;
     qDebug()<<"Problem 3";
@@ -78,6 +83,9 @@ void Background::setScene(string direction)
     qDebug()<<"Problem 6";
     addText();
     qDebug()<<"Problem 7";
+    }
+    else
+        qDebug()<<"Can't enter";
 }
 
 void Background::refreshScene(){
@@ -89,6 +97,7 @@ void Background::refreshScene(){
 
 //Room * Background::createRooms(){
 
+
 //    a= new Room("a");
 //    zork1->key=new Key("Rusty Key",20);
 //    a->addItem(zork1->key);
@@ -99,6 +108,7 @@ void Background::refreshScene(){
 //    zork1->potion= new Potion("Potion capable of restoring 20 hearts!",10);
 //    b->addItem(zork1->potion);
 //    b->setItem(true);
+
 
 //    c= new Room("c");
 //    zork1->weapon=new Weapon("Hero's sword",30);
@@ -117,40 +127,63 @@ void Background::refreshScene(){
 //    i= new Room("i");
 //    j= new Room("j");
 
-//    return j;
+
+//     e= new Room("e");
+//     f= new Room("f");
+//     g= new Room("g");
+
+
+
+//     h= new Room("h");
+//     i= new Room("i");
+//     j= new Room("j");
+//     return j;
 
 //}
 
-//void Background::createExits(){
+// //void Background::createExits(){
 
-//    //         (N, E, S, W)
-//    a->setExits(f, b, d, c);
-//    a->setMonster(true);
+// //    //         (N, E, S, W)
+// //    a->setExits(f, b, d, c);
+// //    a->setMonster(true);
 
-//    b->setExits(NULL, NULL, NULL, a);
-//    b->setBoss(true);
+// <<<<<<< miky
+// //    b->setExits(NULL, NULL, NULL, a);
+// //    b->setBoss(true);
+// =======
+//     b->setExits(NULL, NULL, NULL, a);
+// >>>>>>> testMerge
 
-//    c->setExits(NULL, a, NULL, NULL);
-//    c->setMonster(true);
+// //    c->setExits(NULL, a, NULL, NULL);
+// //    c->setMonster(true);
 
-//    d->setExits(a, e, NULL, i);
+// //    d->setExits(a, e, NULL, i);
 
-//    e->setExits(NULL, NULL, NULL, d);
-//    e->setMonster(true);
+// //    e->setExits(NULL, NULL, NULL, d);
+// //    e->setMonster(true);
 
-//    f->setExits(NULL, g, a, h);
-//    f->setPrincess(true);
+// <<<<<<< miky
+// //    f->setExits(NULL, g, a, h);
+// //    f->setPrincess(true);
 
-//    g->setExits(NULL, NULL, NULL, f);
-//    g->setMonster(true);
+// //    g->setExits(NULL, NULL, NULL, f);
+// //    g->setMonster(true);
+// =======
+//     f->setExits(NULL, g, a, h);
+//     f->setBoss(true);
 
-//    h->setExits(NULL, f, NULL, NULL);
+//     g->setExits(NULL, NULL, NULL, f);
+//     g->setPrincess(true);
+//     g->setCanEnter(false);
+// >>>>>>> testMerge
 
-//    i->setExits(NULL, d, j, NULL);
-//    i->setMonster(true);
+// //    h->setExits(NULL, f, NULL, NULL);
 
-//    j->setExits(i, NULL, NULL, NULL);
-//}
+// //    i->setExits(NULL, d, j, NULL);
+// //    i->setMonster(true);
+
+// //    j->setExits(i, NULL, NULL, NULL);
+// //}
 
 //creates buttons depending on room exits
 void Background::setRoomExits(Room * r){
@@ -161,7 +194,7 @@ void Background::setRoomExits(Room * r){
     {
         if(listOfExits[i]=="north"){
             button1= new QPushButton();
-            button1->move(450,50);
+            button1->move(450,25);
             button1->raise();
             button1->setText("North");
             delB1=1;
@@ -171,7 +204,7 @@ void Background::setRoomExits(Room * r){
         }
         else if(listOfExits[i]=="south"){
             button2= new QPushButton();
-            button2->move(450,435);
+            button2->move(450,410);
             button2->setText("South");
             button2->raise();
             delB2=1;
@@ -180,7 +213,7 @@ void Background::setRoomExits(Room * r){
         }
         else if(listOfExits.at(i)=="east"){
             button3= new QPushButton();
-            button3->move(750,225);
+            button3->move(750,200);
             button3->setText("East");
             button3->raise();
             delB3=1;
@@ -189,7 +222,7 @@ void Background::setRoomExits(Room * r){
         }
         else if(listOfExits.at(i)=="west"){
             button4= new QPushButton();
-            button4->move(175,225);
+            button4->move(175,200);
             button4->setText("West");
             button4->raise();
             delB4=1;
@@ -201,7 +234,7 @@ void Background::setRoomExits(Room * r){
 }
 void Background::createCave(){
     rect= new QGraphicsPixmapItem();
-    rect->setPos(50,25);
+    rect->setPos(50,0);
     rect->setPixmap(QPixmap(":/Images/cave.jpg"));
     rect->setZValue(-1);
 
@@ -219,7 +252,7 @@ void Background::createCave(){
 
 void Background:: createTextBox(){
     smallEditor = new QTextEdit;
-    smallEditor->move(250,475);
+    smallEditor->move(250,450);
     smallEditor->setReadOnly(true);
     this->addWidget(smallEditor);
 }
@@ -301,14 +334,14 @@ void Background::createMapGUI()
 }
 
 void Background:: addText(){
-     string x="You are in Room "+zork1->currentRoom->getDescription();
+     string x="You are in Room "+zork1->currentRoom->getDescription()+ " and you have health of: "+ to_string(zork1->player->getHealth());
      smallEditor->setPlainText(QString::fromStdString(x));
 }
 
 void Background::inventoryBox()
 {
     inventoryComboBox=new QComboBox();
-    inventoryComboBox->move(550,475);
+    inventoryComboBox->move(550,450);
     inventoryComboBox->setSizeAdjustPolicy(QComboBox::AdjustToContents);
     this->addWidget(inventoryComboBox);
 }
@@ -316,9 +349,17 @@ void Background::inventoryBox()
 void Background::controlsBox()
 {
     controlsComboBox=new QComboBox();
-    controlsComboBox->move(600,475);
+    controlsComboBox->move(600,450);
     controlsComboBox->setSizeAdjustPolicy(QComboBox::AdjustToContents);
     controlsComboBox->addItem("Controls");
+
+    controls+=("Attack: X");
+    controls+=("Pick up item: P");
+    controls+=("Drop selected item: D");
+    controls+=("Kiss: K");
+
+    for(int i=0; i<controls.size();i++)
+       controlsComboBox->addItem(controls.get(i));
 
     this->addWidget(controlsComboBox);
 }
@@ -441,13 +482,25 @@ void Background::keyPressEvent(QKeyEvent *event)
     if(zork1->currentRoom->monsterInRoom()){
         if(event->key()==Qt::Key_X)
         {
-                if(zork1->vampire->scenePos()==QPointF(470,200)){
+
+                /*if(zork1->vampire->scenePos()==QPointF(470,200)){
                     player->setDamage(10);
                     zork1->vampire->decreaseHealthByAttack(10);
                     zork1->vampire->setPixmap(QPixmap(":/Images/vampireAttacked.png"));
                     zork1->vampire->z=1;
                     int x=player->getDamage();
-                    qDebug()<<x<<"damage";
+                    qDebug()<<x<<"damage";*/
+
+                if(zork1->vampire->scenePos()==QPointF(470,200)){
+                    if(find((zork1->player->getInventory()->getInventoryList()).begin(), (zork1->player->getInventory()->getInventoryList()).end(), zork1->weapon) != (zork1->player->getInventory()->getInventoryList()).end()){
+                        zork1->vampire->decreaseHealthByAttack(50);
+                    }
+                    else{
+                        zork1->vampire->decreaseHealthByAttack(10);
+                    }
+                    zork1->vampire->setPixmap(QPixmap(":/Images/vampireAttacked.png"));
+                    zork1->vampire->z=1;
+
                 }
 
         }
@@ -455,10 +508,21 @@ void Background::keyPressEvent(QKeyEvent *event)
     else if(zork1->currentRoom->bossInRoom()){
         if(event->key()==Qt::Key_X)
         {
+
                 if(zork1->dragon->scenePos()==QPointF(470,200)){
-                    zork1->dragon->decreaseHealthByAttack(player->getDamage());
-                    zork1->dragon->setPixmap(QPixmap(":/Images/dragon.png"));
+                    if(find((zork1->player->getInventory()->getInventoryList()).begin(), (zork1->player->getInventory()->getInventoryList()).end(), zork1->weapon) != (zork1->player->getInventory()->getInventoryList()).end()){
+                        zork1->dragon->decreaseHealthByAttack(50);
+                    }
+                    else{
+                        zork1->dragon->decreaseHealthByAttack(10);
+                    }
+                    //dragon->setPixmap(QPixmap(":/Images/dragon.png"));
                     zork1->dragon->z=1;
+                    if(zork1->dragon->getHealth()<=0){
+                        qDebug()<<"dragon is dead";
+                        zork1->currentRoom->addItem(zork1->key);
+                        zork1->currentRoom->setItem(true);
+                    }
 
                 }
         }
@@ -486,8 +550,10 @@ void Background::keyPressEvent(QKeyEvent *event)
                 inventoryComboBox->addItem(inventoryContString);
                 if(item->getDescription()==zork1->potion->getDescription()){
                     qDebug()<<"Used Potion";
-                    player->increaseHealth(50);
-                    qDebug() << player->getHealth();
+                    zork1->player->increaseHealth(50);
+                }
+                if(item->getDescription()==zork1->key->getDescription()){
+                    zork1->g->setCanEnter(true);
                 }
             }
 
@@ -503,7 +569,7 @@ void Background::keyPressEvent(QKeyEvent *event)
             zork1->currentRoom->addItem(itemToDrop);
             zork1->currentRoom->setItem(true);
             inventoryComboBox->removeItem(currentItem);
-            player->getInventory()->setInventoryList(itemsInInventory);
+            zork1->player->getInventory()->setInventoryList(itemsInInventory);
             refreshScene();
         }
     }
