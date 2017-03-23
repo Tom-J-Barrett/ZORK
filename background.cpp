@@ -64,10 +64,12 @@ Background::~Background()
 //Sets a new scne when you move rooms
 void Background::setScene(string direction)
 {
+    nextRoom = currentRoom->nextRoom(direction);
+    if(nextRoom->getCanEnter()==true){
     qDebug()<<"Problem 0";
     clearBackground();
     qDebug()<<"Problem 1";
-    nextRoom = currentRoom->nextRoom(direction);
+
     qDebug()<<"Problem 2";
     currentRoom=nextRoom;
     qDebug()<<"Problem 3";
@@ -79,6 +81,9 @@ void Background::setScene(string direction)
     qDebug()<<"Problem 6";
     addText();
     qDebug()<<"Problem 7";
+    }
+    else
+        qDebug()<<"Can't enter";
 }
 
 void Background::refreshScene(){
@@ -91,11 +96,6 @@ void Background::refreshScene(){
 Room * Background::createRooms(){
 
     a= new Room("a");
-    key=new Key("Rusty Key",20);
-    a->addItem(key);
-    a->setItem(true);
-    qDebug()<<key->getDescription();
-
 
     b= new Room("b");
     potion= new Potion("Potion capable of restoring 20 hearts!",10);
@@ -115,6 +115,9 @@ Room * Background::createRooms(){
     e= new Room("e");
     f= new Room("f");
     g= new Room("g");
+    key=new Key("Rusty Key",20);
+
+
     h= new Room("h");
     i= new Room("i");
     j= new Room("j");
@@ -130,7 +133,6 @@ void Background::createExits(){
     a->setMonster(true);
 
     b->setExits(NULL, NULL, NULL, a);
-    b->setBoss(true);
 
     c->setExits(NULL, a, NULL, NULL);
     c->setMonster(true);
@@ -141,10 +143,11 @@ void Background::createExits(){
     e->setMonster(true);
 
     f->setExits(NULL, g, a, h);
-    f->setPrincess(true);
+    f->setBoss(true);
 
     g->setExits(NULL, NULL, NULL, f);
-    g->setMonster(true);
+    g->setPrincess(true);
+    g->setCanEnter(false);
 
     h->setExits(NULL, f, NULL, NULL);
 
@@ -454,12 +457,14 @@ void Background::keyPressEvent(QKeyEvent *event)
         if(event->key()==Qt::Key_X)
         {
                 if(vampire->scenePos()==QPointF(470,200)){
-                    player->setDamage(10);
-                    vampire->decreaseHealthByAttack(10);
+                    if(find((player->getInventory()->getInventoryList()).begin(), (player->getInventory()->getInventoryList()).end(), weapon) != (player->getInventory()->getInventoryList()).end()){
+                        vampire->decreaseHealthByAttack(50);
+                    }
+                    else{
+                        vampire->decreaseHealthByAttack(10);
+                    }
                     vampire->setPixmap(QPixmap(":/Images/vampireAttacked.png"));
                     vampire->z=1;
-                    int x=player->getDamage();
-                    qDebug()<<x<<"damage";
                 }
 
         }
@@ -468,9 +473,19 @@ void Background::keyPressEvent(QKeyEvent *event)
         if(event->key()==Qt::Key_X)
         {
                 if(dragon->scenePos()==QPointF(470,200)){
-                    dragon->decreaseHealthByAttack(player->getDamage());
-                    dragon->setPixmap(QPixmap(":/Images/dragon.png"));
+                    if(find((player->getInventory()->getInventoryList()).begin(), (player->getInventory()->getInventoryList()).end(), weapon) != (player->getInventory()->getInventoryList()).end()){
+                        dragon->decreaseHealthByAttack(50);
+                    }
+                    else{
+                        dragon->decreaseHealthByAttack(10);
+                    }
+                    //dragon->setPixmap(QPixmap(":/Images/dragon.png"));
                     dragon->z=1;
+                    if(dragon->getHealth()<=0){
+                        qDebug()<<"dragon is dead";
+                        currentRoom->addItem(key);
+                        currentRoom->setItem(true);
+                    }
 
                 }
         }
@@ -500,6 +515,9 @@ void Background::keyPressEvent(QKeyEvent *event)
                     qDebug()<<"Used Potion";
                     player->increaseHealth(50);
                     qDebug() << player->getHealth();
+                }
+                if(item->getDescription()==key->getDescription()){
+                    g->setCanEnter(true);
                 }
             }
 

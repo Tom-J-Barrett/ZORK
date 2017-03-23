@@ -117,3 +117,23 @@ int Room::numberOfItems() {
     return itemsInRoom.size();
 }
 
+bool Room::getBossIsDead()
+{
+    return bossIsDead;
+}
+
+void Room::setbossIsDead(bool dead)
+{
+    this->bossIsDead=dead;
+}
+
+bool Room::getCanEnter()
+{
+    return canEnter;
+}
+
+void Room::setCanEnter(bool enter)
+{
+    this->canEnter=enter;
+}
+

@@ -18,6 +18,8 @@ private:
     bool princess = false;
     bool itemPresent=false;
     string description;
+    bool bossIsDead=false;
+    bool canEnter=true;
 
 public:
     Room(string description);
@@ -39,6 +41,10 @@ public:
     void addItem(Item *inItem);
     void addItemToRoom(Room *room);
     int numberOfItems();
+    bool getBossIsDead();
+    void setbossIsDead(bool dead);
+    bool getCanEnter();
+    void setCanEnter(bool);
 };
 
 #endif // ROOM_H
