@@ -90,7 +90,7 @@ private:
     Potion * potion;
     Weapon * weapon;
     vector<Item*> itemsInInventory;
-    myVector<QGraphicsPixmapItem> mapRooms;
+    myVector<QString> controls;
     QGraphicsRectItem *RoomA,*RoomB,*RoomC,*RoomD,*RoomE,*RoomF,*RoomG,*RoomH,*RoomI,*RoomJ;
     QComboBox *inventoryComboBox;
     QComboBox *controlsComboBox;

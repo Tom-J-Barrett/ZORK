@@ -22,6 +22,7 @@ public:
     myVector& operator=(const myVector&);
     myVector& operator+=(const T&);
     int at(T&);
+    T get(int i);
 
 };
 
@@ -95,6 +96,8 @@ myVector<T>& myVector<T>::operator=(const myVector& v){
    return  *this;
 }
 
+
+
 template<class T>
 myVector<T>& myVector<T>::operator+=(const T& i)
 {
@@ -108,6 +111,12 @@ int myVector<T>::at(T& i)
     if(i<vsize)
         return array[i];
     throw 10;
+}
+
+template<class T>
+T myVector<T>::get(int i)
+{
+    return array[i];
 }
 
 template<class T>

@@ -15,6 +15,7 @@ Background::Background(Zork* zork1){
     createBoss();
     createTextBox();
     inventoryBox();
+    controlsBox();
     addText();
     addToScene();
 }
@@ -323,6 +324,14 @@ void Background::controlsBox()
     controlsComboBox->move(600,475);
     controlsComboBox->setSizeAdjustPolicy(QComboBox::AdjustToContents);
     controlsComboBox->addItem("Controls");
+
+    controls+=("Attack: X");
+    controls+=("Pick up item: P");
+    controls+=("Drop selected item: D");
+    controls+=("Kiss: K");
+
+    for(int i=0; i<controls.size();i++)
+       controlsComboBox->addItem(controls.get(i));
 
     this->addWidget(controlsComboBox);
 }
