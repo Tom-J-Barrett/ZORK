@@ -37,12 +37,12 @@ public:
     ~Background();
     void setScene(string direction);
     void refreshScene();
-    void createExits();
+    //void createExits();
     void setRoomExits(Room * r);
-    void createCave();
-    void createMonster();
-    void createBoss();
-    void createPrincess();
+    void createCave();/*
+    void createMonster();*/
+    //void createBoss();
+//    void createPrincess();
     void createTextBox();
     void createMapGUI();
     void addToScene();
@@ -51,7 +51,7 @@ public:
     void inventoryBox();
     void controlsBox();
    // void createInventoryBox(QString inventoryString);
-    Room * createRooms();
+//    Room * createRooms();
     void keyPressEvent(QKeyEvent *event);
 
 public slots:
@@ -62,21 +62,21 @@ public slots:
 
 private:
     QString inventoryContString;
+    Zork* zork1;
     QGraphicsPixmapItem *rect;
-    Monster* vampire;
-    Boss * dragon;
-    Character * princess;
+//    Monster* vampire;
+//    Boss * dragon;
+    /*Character * princess;*/
     QString inventoryString;
     QTextEdit * smallEditor;
     QTextEdit * inventoryEditor;
-    Room *currentRoom;
     Room * nextRoom;
     Player * player;
     int delB1=0;
     int delB2=0;
     int delB3=0;
     int delB4=0;
-    Room *a, *b, *c, *d, *e, *f, *g, *h, *i, *j;
+//    Room *a, *b, *c, *d, *e, *f, *g, *h, *i, *j;
     QPushButton * button1;
     QPushButton * button2;
     QPushButton * button3;
@@ -85,10 +85,6 @@ private:
     Inventory * inventory;
     Item * item;
     Item * itemToDrop;
-    Key * key;
-    Treasure * treasure;
-    Potion * potion;
-    Weapon * weapon;
     vector<Item*> itemsInInventory;
     myVector<QGraphicsPixmapItem> mapRooms;
     QGraphicsRectItem *RoomA,*RoomB,*RoomC,*RoomD,*RoomE,*RoomF,*RoomG,*RoomH,*RoomI,*RoomJ;
