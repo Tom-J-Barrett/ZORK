@@ -5,6 +5,7 @@
 
 class Key: public Item
 {
+    friend class Background;
 public:
     Key(QString description, int inWeight);
     QString getDescription();

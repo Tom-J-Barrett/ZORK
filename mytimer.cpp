@@ -34,10 +34,18 @@ void MyTimer::villianSlot()
     villian->setPixmap(QPixmap(villian->getImage()));
     if(villian)
         health=villian->getHealth();
-
+    qDebug()<<"ljarfraiejrgbaerhga;ohgeilahenblaktnbahltkha"<<"      "<< health;
     if(health<=0){
+        qDebug()<<"ljarfraiejrgbaerhga;ohgeilahenblaktnbahltkha";
         villian->setVisible(false);
-        room->setMonster(false);
+        if(room->monsterInRoom()==true){
+            room->setMonster(false);
+        }
+        if(room->bossInRoom()==true){
+            qDebug()<<"ljarfraiejrgbaerhga;ohgeilahenblaktnbahltkha";
+            room->setBoss(false);
+            room->setbossIsDead(true);
+        }
     }
     else{
         qDebug()<<"MOOOOOOVe";
