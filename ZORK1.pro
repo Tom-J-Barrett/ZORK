@@ -38,8 +38,7 @@ SOURCES += main.cpp \
     background.cpp \
     mytimer.cpp \
     inventory.cpp \
-    treasure.cpp \
-    myvector.cpp
+    treasure.cpp
 
 HEADERS  += \
     boss.h \

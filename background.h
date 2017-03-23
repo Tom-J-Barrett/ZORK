@@ -35,23 +35,18 @@ class Background : public QGraphicsScene
 public:
     explicit Background(Zork* zork);
     ~Background();
-    void setScene(string direction);
+    void setScene(const string direction);
     void refreshScene();
     //void createExits();
     void setRoomExits(Room * r);
-    void createCave();/*
-    void createMonster();*/
-    //void createBoss();
-//    void createPrincess();
+    void createCave();
     void createTextBox();
     void createMapGUI();
     void addToScene();
-    void clearBackground();
+    inline void clearBackground();
     void addText();
     void inventoryBox();
     void controlsBox();
-   // void createInventoryBox(QString inventoryString);
-//    Room * createRooms();
     void keyPressEvent(QKeyEvent *event);
 
 public slots:
@@ -64,9 +59,6 @@ private:
     QString inventoryContString;
     Zork* zork1;
     QGraphicsPixmapItem *rect;
-//    Monster* vampire;
-//    Boss * dragon;
-    /*Character * princess;*/
     QString inventoryString;
     QTextEdit * smallEditor;
     QTextEdit * inventoryEditor;

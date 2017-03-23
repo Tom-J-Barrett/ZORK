@@ -2,7 +2,7 @@
 #include <string>
 #include <QDebug>
 
-Potion::Potion(QString description, int inWeight)
+Potion::Potion(const QString description, const int inWeight)
 {
     this->description = description;
     this->weight=inWeight;
@@ -17,9 +17,5 @@ QString Potion:: getDescription(){
     return description;
 }
 
-QString Potion::setDescription(QString description)
-{
-    this->description=description;
-}
 
 

@@ -6,9 +6,8 @@
 class Potion: public Item
 {
 public:
-    Potion(QString description, int inWeight);
+    Potion(const QString description, const int inWeight);
     QString getDescription();
-    QString setDescription(QString);
 private:
     QString description;
     int weight;

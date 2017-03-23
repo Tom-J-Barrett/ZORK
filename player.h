@@ -13,10 +13,10 @@ public:
     ~Player();
     int getHealth();
     void decreaseHealth();
-    void increaseHealth(int x);
+    void increaseHealth(const int x);
     Inventory * getInventory();
     int getDamage();
-    void setDamage(int damage);
+    void setDamage(const int damage);
 
 private:
     Inventory* inventory;

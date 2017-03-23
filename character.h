@@ -15,8 +15,7 @@ public:
     void resetHealth();
     void increaseHealth();
     virtual QString getImage()=0;
-    void decreaseHealthByAttack(int damage);
-    void operator +(Character* c1);
+    void decreaseHealthByAttack(const int damage);
     int z=0;
 
 private:

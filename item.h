@@ -12,11 +12,10 @@ private:
 
 public:
     Item();
-    Item(QString description, int inWeight);
-    Item(QString description);
+    Item(const QString description, const int inWeight);
+    Item(const QString description);
     int getWeight();
     virtual QString getDescription();
-    void setWeight(int inWeight);
 };
 
 #endif // ITEM_H

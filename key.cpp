@@ -1,7 +1,7 @@
 #include "key.h"
 #include <QDebug>
 
-Key::Key(QString description, int inWeight)
+Key::Key(const QString description, const int inWeight)
 {
     this->description = description;
     this->weight=inWeight;
