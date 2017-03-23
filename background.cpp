@@ -166,7 +166,7 @@ void Background::setRoomExits(Room * r){
     {
         if(listOfExits[i]=="north"){
             button1= new QPushButton();
-            button1->move(450,50);
+            button1->move(450,25);
             button1->raise();
             button1->setText("North");
             delB1=1;
@@ -176,7 +176,7 @@ void Background::setRoomExits(Room * r){
         }
         else if(listOfExits[i]=="south"){
             button2= new QPushButton();
-            button2->move(450,435);
+            button2->move(450,410);
             button2->setText("South");
             button2->raise();
             delB2=1;
@@ -185,7 +185,7 @@ void Background::setRoomExits(Room * r){
         }
         else if(listOfExits.at(i)=="east"){
             button3= new QPushButton();
-            button3->move(750,225);
+            button3->move(750,200);
             button3->setText("East");
             button3->raise();
             delB3=1;
@@ -194,7 +194,7 @@ void Background::setRoomExits(Room * r){
         }
         else if(listOfExits.at(i)=="west"){
             button4= new QPushButton();
-            button4->move(175,225);
+            button4->move(175,200);
             button4->setText("West");
             button4->raise();
             delB4=1;
@@ -206,7 +206,7 @@ void Background::setRoomExits(Room * r){
 }
 void Background::createCave(){
     rect= new QGraphicsPixmapItem();
-    rect->setPos(50,25);
+    rect->setPos(50,0);
     rect->setPixmap(QPixmap(":/Images/cave.jpg"));
     rect->setZValue(-1);
 
@@ -227,7 +227,7 @@ void Background::createPrincess()
 
 void Background:: createTextBox(){
     smallEditor = new QTextEdit;
-    smallEditor->move(250,475);
+    smallEditor->move(250,450);
     smallEditor->setReadOnly(true);
     this->addWidget(smallEditor);
 }
@@ -309,14 +309,14 @@ void Background::createMapGUI()
 }
 
 void Background:: addText(){
-     string x="You are in Room "+currentRoom->getDescription();
+     string x="You are in Room "+currentRoom->getDescription()+ " and you have health of: "+ to_string(player->getHealth());
      smallEditor->setPlainText(QString::fromStdString(x));
 }
 
 void Background::inventoryBox()
 {
     inventoryComboBox=new QComboBox();
-    inventoryComboBox->move(550,475);
+    inventoryComboBox->move(550,450);
     inventoryComboBox->setSizeAdjustPolicy(QComboBox::AdjustToContents);
     this->addWidget(inventoryComboBox);
 }
@@ -324,7 +324,7 @@ void Background::inventoryBox()
 void Background::controlsBox()
 {
     controlsComboBox=new QComboBox();
-    controlsComboBox->move(600,475);
+    controlsComboBox->move(600,450);
     controlsComboBox->setSizeAdjustPolicy(QComboBox::AdjustToContents);
     controlsComboBox->addItem("Controls");
 
