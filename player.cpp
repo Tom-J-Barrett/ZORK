@@ -11,6 +11,10 @@ Player::Player()
     damage=25;
 }
 
+Player::~Player(){
+    delete inventory;
+}
+
 
 int Player::getHealth()
 {

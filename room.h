@@ -13,9 +13,9 @@ class Room {
 private:
 
     map<string, Room*> exits;
-    bool monster;
-    bool bossMonster;
-    bool princess;
+    bool monster = false;
+    bool bossMonster = false;
+    bool princess = false;
     bool itemPresent=false;
     string description;
 
