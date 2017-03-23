@@ -3,6 +3,7 @@
 
 Room::Room(string description) {
     this->description = description;
+    canEnter=true;
 }
 
 void Room::setExits(Room *north, Room *east, Room *south, Room *west) {

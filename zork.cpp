@@ -41,10 +41,6 @@ void Zork::createBoss(){
 Room * Zork::createRooms(){
 
     a= new Room("a");
-    key=new Key("Rusty Key",20);
-    a->addItem(key);
-    a->setItem(true);
-    qDebug()<<key->getDescription()<<" friend";
 
     b= new Room("b");
     potion= new Potion("Potion capable of restoring 20 hearts!",10);
@@ -63,6 +59,8 @@ Room * Zork::createRooms(){
 
     e= new Room("e");
     f= new Room("f");
+    key=new Key("Rusty Key",20);
+
     g= new Room("g");
     h= new Room("h");
     i= new Room("i");
@@ -90,10 +88,11 @@ void Zork::createExits(){
     e->setMonster(true);
 
     f->setExits(NULL, g, a, h);
-    f->setPrincess(true);
+    f->setBoss(true);
 
     g->setExits(NULL, NULL, NULL, f);
-    g->setMonster(true);
+    g->setPrincess(true);
+    g->setCanEnter(false);
 
     h->setExits(NULL, f, NULL, NULL);
 
