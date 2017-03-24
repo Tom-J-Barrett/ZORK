@@ -4,14 +4,11 @@
 Background::Background(Zork* zork1){
     this->zork1 = zork1;
     player=zork1->play();
-    inventoryContString = "";/*
-    createExits();*/
+    inventoryContString = "";
     setRoomExits(zork1->currentRoom);
     setSceneRect(0,0,1000,500);
     createCave();
     createMapGUI();
-//    createMonster();
-
     createTextBox();
     inventoryBox();
     controlsBox();
@@ -139,16 +136,6 @@ void Background::createCave(){
     rect->setZValue(-1);
 
 }
-
-//void Background::createMonster(){
-//    vampire = new Monster();
-//}
-
-//void Background::createBoss(){
-//    dragon = new Boss();
-//}
-
-
 
 void Background:: createTextBox(){
     smallEditor = new QTextEdit;
@@ -398,61 +385,50 @@ void Background::keyPressEvent(QKeyEvent *event)
     if(zork1->currentRoom->monsterInRoom()){
         if(event->key()==Qt::Key_X)
         {
-
-                /*if(zork1->vampire->scenePos()==QPointF(470,200)){
-                    player->setDamage(10);
-                    zork1->vampire->decreaseHealthByAttack(10);
-                    zork1->vampire->setPixmap(QPixmap(":/Images/vampireAttacked.png"));
-                    zork1->vampire->z=1;
-                    int x=player->getDamage();
-                    qDebug()<<x<<"damage";*/
-
-                if(zork1->vampire->scenePos()==QPointF(470,200)){
-                    if(find((zork1->player->getInventory()->getInventoryList()).begin(), (zork1->player->getInventory()->getInventoryList()).end(), zork1->weapon) != (zork1->player->getInventory()->getInventoryList()).end()){
-                        zork1->vampire->decreaseHealthByAttack(50);
-                    }
-                    else{
-                        zork1->vampire->decreaseHealthByAttack(10);
-                    }
-                    zork1->vampire->setPixmap(QPixmap(":/Images/vampireAttacked.png"));
-                    zork1->vampire->z=1;
-
+            if(zork1->vampire->scenePos()==QPointF(470,200)){
+                if(find((zork1->player->getInventory()->getInventoryList()).begin(), (zork1->player->getInventory()->getInventoryList()).end(), zork1->weapon) != (zork1->player->getInventory()->getInventoryList()).end()){
+                    zork1->vampire->decreaseHealthByAttack(50);
                 }
+                else{
+                    zork1->vampire->decreaseHealthByAttack(10);
+                }
+                zork1->vampire->setPixmap(QPixmap(":/Images/vampireAttacked.png"));
+                zork1->vampire->z=1;
+
+            }
 
         }
     }
     else if(zork1->currentRoom->bossInRoom()){
         if(event->key()==Qt::Key_X)
         {
-
-                if(zork1->dragon->scenePos()==QPointF(470,200)){
-                    if(find((zork1->player->getInventory()->getInventoryList()).begin(), (zork1->player->getInventory()->getInventoryList()).end(), zork1->weapon) != (zork1->player->getInventory()->getInventoryList()).end()){
-                        zork1->dragon->decreaseHealthByAttack(50);
-                    }
-                    else{
-                        zork1->dragon->decreaseHealthByAttack(10);
-                    }
-                    zork1->dragon->setPixmap(QPixmap(":/Images/dragonAttack.png"));
-
-                    zork1->dragon->z=1;
-                    if(zork1->dragon->getHealth()<=0){
-                        zork1->currentRoom->setBoss(false);
-                        zork1->currentRoom->addItem(zork1->key);
-                        zork1->currentRoom->setItem(true);
-                        addToScene();
-                    }
-
+            if(zork1->dragon->scenePos()==QPointF(470,200)){
+                if(find((zork1->player->getInventory()->getInventoryList()).begin(), (zork1->player->getInventory()->getInventoryList()).end(), zork1->weapon) != (zork1->player->getInventory()->getInventoryList()).end()){
+                    zork1->dragon->decreaseHealthByAttack(50);
                 }
+                else{
+                    zork1->dragon->decreaseHealthByAttack(10);
+                }
+                zork1->dragon->setPixmap(QPixmap(":/Images/dragonAttack.png"));
+
+                zork1->dragon->z=1;
+                if(zork1->dragon->getHealth()<=0){
+                    zork1->currentRoom->setBoss(false);
+                    zork1->currentRoom->addItem(zork1->key);
+                    zork1->currentRoom->setItem(true);
+                    addToScene();
+                }
+
+            }
         }
     }
+
     else if(zork1->currentRoom->princessInRoom()){
         if(event->key()==Qt::Key_X)
         {
             exit(1);
         }
     }
-
-
 
     if(event->key()==Qt::Key_P)
     {
