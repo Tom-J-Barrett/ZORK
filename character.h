@@ -16,7 +16,7 @@ public:
     void increaseHealth();
     virtual QString getImage()=0;
     void decreaseHealthByAttack(const int damage);
-    int z=0;
+    int z;
 
 private:
     int health=100;

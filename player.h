@@ -5,6 +5,7 @@
 #include <QKeyEvent>
 #include <QGraphicsPixmapItem>
 #include "inventory.h"
+#include <QMessageBox>
 
 class Player{
 
@@ -22,6 +23,7 @@ private:
     Inventory* inventory;
     int health;
     int damage;
+    QMessageBox msgBox;
 };
 
 #endif // PLAYER_H
