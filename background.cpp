@@ -433,6 +433,7 @@ void Background::keyPressEvent(QKeyEvent *event)
                     else{
                         zork1->dragon->decreaseHealthByAttack(10);
                     }
+                    zork1->dragon->setPixmap(QPixmap(":/Images/dragonAttack.png"));
 
                     zork1->dragon->z=1;
                     if(zork1->dragon->getHealth()<=0){

@@ -14,6 +14,7 @@
         <file>cave.jpg</file>
         <file>potion.jpg</file>
         <file>princess.jpg</file>
+        <file>dragonAttack.png</file>
     </qresource>
     <qresource prefix="/">
         <file>sword.jpg</file>
