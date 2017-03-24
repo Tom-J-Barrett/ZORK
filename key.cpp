@@ -9,7 +9,6 @@ Key::Key(const QString desc, const int inW)
     this->setPos(470,100);
     this->setZValue(4);
     this->setScale(.1);
-    qDebug()<<"Key created"<<description;
     invFlag = true;
 }
 

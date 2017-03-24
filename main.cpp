@@ -8,11 +8,6 @@
 #include <QDebug>
 #include "background.h"
 
-template<class FIRST, class SECOND>
-FIRST smaller(FIRST a, SECOND b){
-    qDebug()<<"Template";
-}
-
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
@@ -20,5 +15,6 @@ int main(int argc, char *argv[])
     Background *bg = new Background(zork1);
     zork1->setScene(bg);
     zork1->show();
+    zork1->setAttribute(Qt::WA_DeleteOnClose);
     return app.exec();
 }

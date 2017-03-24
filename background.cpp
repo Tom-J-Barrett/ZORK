@@ -18,7 +18,9 @@ Background::Background(Zork* zork1){
 
 Background::~Background()
 {
-    delete player;
+    clearBackground();
+    player=nullptr;
+    delete button5;
     delete rect;
     delete smallEditor;
     delete RoomA;
@@ -32,6 +34,7 @@ Background::~Background()
     delete RoomI;
     delete RoomJ;
     delete inventoryComboBox;
+    delete controlsComboBox;
     delete timer;
 }
 
