@@ -17,6 +17,7 @@ Background::Background(Zork* zork1){
 
 Background::~Background()
 {
+    clearBackground();
     delete player;
     delete rect;
     delete smallEditor;
