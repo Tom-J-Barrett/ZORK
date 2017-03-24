@@ -1,8 +1,8 @@
 #include "key.h"
 #include <QDebug>
 
-Key::Key(QString desc, int inW)
-    : description(desc),
+Key::Key(const QString desc, const int inW)
+  : description(desc),
       weight(inW)
 {
     this->setPixmap(QPixmap(":/Images/key.png"));

@@ -5,9 +5,8 @@
 
 class Key: public Item
 {
-    friend class Background;
 public:
-    Key(QString description, int inWeight);
+    Key(const QString description, const int inWeight);
     QString getDescription();
     bool getInvFlag();
 private:

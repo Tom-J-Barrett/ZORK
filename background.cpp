@@ -62,7 +62,7 @@ Background::~Background()
 }
 
 //Sets a new scne when you move rooms
-void Background::setScene(string direction)
+void Background::setScene(const string direction)
 {
     nextRoom = zork1->currentRoom->nextRoom(direction);
     if(nextRoom->getCanEnter()==true){

@@ -37,7 +37,7 @@ void Player::decreaseHealth()
 
 }
 
-void Player::increaseHealth(int x)
+void Player::increaseHealth(const int x)
 {
     health+=x;
 }
@@ -46,7 +46,7 @@ int Player::getDamage(){
     return damage;
 }
 
-void Player::setDamage(int damage){
+void Player::setDamage(const int damage){
     this->damage=damage;
 }
 

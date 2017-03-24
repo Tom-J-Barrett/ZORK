@@ -15,8 +15,8 @@ protected:
 
 public:
     Item();
-    Item(QString description, int inWeight);
-    Item(QString description);
+    Item(const QString desc, const int inW);
+    Item(const QString description);
     int getWeight();
     virtual QString getDescription();
     void setWeight(int inWeight);

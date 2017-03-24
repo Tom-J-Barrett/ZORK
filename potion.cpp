@@ -2,7 +2,7 @@
 #include <string>
 #include <QDebug>
 
-Potion::Potion(QString desc, int inW)
+Potion::Potion(const QString desc, const int inW)
     :description(desc),
       weight(inW)
 {

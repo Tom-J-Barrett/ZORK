@@ -8,7 +8,7 @@ Item::Item(){
     qDebug()<<"Item created3";
 }
 
-Item::Item (QString description, int inWeight) {
+Item::Item (const QString description, const int inWeight) {
 
     this->description = description;
     this->weight=inWeight;
@@ -16,17 +16,9 @@ Item::Item (QString description, int inWeight) {
     qDebug()<<description;
 }
 
-Item::Item(QString description) {
+Item::Item(const QString description) {
     this->description = description;
     qDebug()<<"Item created2";
-}
-
-void Item::setWeight(int inWeight)
-{
-    if (inWeight > 9999 || inWeight < 0)
-       cout << "weight invalid, must be 0<weight<9999" ;
-    else
-       weight = inWeight;
 }
 
 int Item::getWeight()
