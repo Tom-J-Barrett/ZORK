@@ -10,9 +10,14 @@ Weapon::Weapon(QString description, int inWeight)
     this->setZValue(4);
     this->setScale(.4);
     qDebug()<<"Weapon created";
+    invFlag = true;
 }
 
 QString Weapon::getDescription()
 {
     return description;
+}
+
+bool Weapon:: getInvFlag(){
+    return this->invFlag;
 }

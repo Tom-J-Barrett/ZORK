@@ -23,23 +23,23 @@ Background::Background(Zork* zork1){
 Background::~Background()
 {
     delete player;
-    delete zork1->vampire;
-    delete zork1->dragon;
-    delete zork1->princess;
-    delete zork1->a;
-    delete zork1->b;
-    delete zork1->c;
-    delete zork1->d;
-    delete zork1->e;
-    delete zork1->f;
-    delete zork1->g;
-    delete zork1->h;
-    delete zork1->i;
-    delete zork1->j;
-    delete zork1->key;
-    delete zork1->treasure;
-    delete zork1->potion;
-    delete zork1->weapon;
+//    delete zork1->vampire;
+//    delete zork1->dragon;
+//    delete zork1->princess;
+//    delete zork1->a;
+//    delete zork1->b;
+//    delete zork1->c;
+//    delete zork1->d;
+//    delete zork1->e;
+//    delete zork1->f;
+//    delete zork1->g;
+//    delete zork1->h;
+//    delete zork1->i;
+//    delete zork1->j;
+//    delete zork1->key;
+//    delete zork1->treasure;
+//    delete zork1->potion;
+//    delete zork1->weapon;
     //delete button1;
     //delete button2;
     //delete button3;
@@ -229,6 +229,13 @@ void Background::setRoomExits(Room * r){
             this->addWidget(button4);
             connect(button4,SIGNAL(released()),this, SLOT(on_button4_clicked()));
         }
+        button5= new QPushButton();
+        button5->move(750,25);
+        button5->setText("Teleport");
+        button5->raise();
+        delB5=1;
+        this->addWidget(button5);
+        connect(button5,SIGNAL(released()),this, SLOT(on_button5_clicked()));
 
     }
 }
@@ -416,6 +423,22 @@ void Background::on_button4_clicked()
     setScene("west");
 }
 
+void Background::on_button5_clicked(){
+    qDebug()<<zork1->rooms.size();
+    int randNum = rand() % zork1->rooms.size();
+    nextRoom = zork1->rooms[randNum];
+    if(nextRoom->getCanEnter()==true){
+    clearBackground();
+    zork1->currentRoom=nextRoom;
+    setRoomExits(zork1->currentRoom);
+    addToScene();
+    createMapGUI();
+    addText();
+    }
+    else
+        qDebug()<<"Can't enter";
+}
+
 void Background::clearBackground(){
     RoomA->setBrush(Qt::white);
     RoomB->setBrush(Qt::white);
@@ -540,6 +563,7 @@ void Background::keyPressEvent(QKeyEvent *event)
     {
             if(zork1->currentRoom->itemsInRoom.size() > 0)
             {
+                if(zork1->currentRoom->item->getInvFlag()){
                 inventory=player->getInventory();
                 inventory->addToInventory(zork1->currentRoom->item);
                 item->setVisible(false);
@@ -548,9 +572,13 @@ void Background::keyPressEvent(QKeyEvent *event)
                 inventoryContString = item->getDescription();
                 qDebug()<<inventoryContString;
                 inventoryComboBox->addItem(inventoryContString);
-                if(item->getDescription()==zork1->potion->getDescription()){
+                }
+                if(item->getDescription()==zork1->potion->getDescription() && !zork1->potion->getUsed()){
                     qDebug()<<"Used Potion";
                     zork1->player->increaseHealth(50);
+                    item->setVisible(false);
+                    zork1->currentRoom->setItem(false);
+                    zork1->potion->setUsed();
                 }
                 if(item->getDescription()==zork1->key->getDescription()){
                     zork1->g->setCanEnter(true);
@@ -561,7 +589,7 @@ void Background::keyPressEvent(QKeyEvent *event)
 
     if(event->key()==Qt::Key_D)
     {
-        if(zork1->currentRoom->itemInRoom()==false){
+        if(zork1->currentRoom->itemInRoom()==false && player->getInventory()->inventoryQty() > 0){
             int currentItem = inventoryComboBox->currentIndex();
             itemsInInventory=player->getInventory()->getInventoryList();
             itemToDrop=itemsInInventory.operator [](currentItem);

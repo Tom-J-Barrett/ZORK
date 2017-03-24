@@ -8,9 +8,10 @@ class Key: public Item
 public:
     Key(const QString description, const int inWeight);
     QString getDescription();
+    bool getInvFlag();
 private:
-    QString description;
-    int weight;
+    const QString description;
+    const int weight;
 };
 
 #endif // KEY_H

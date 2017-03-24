@@ -10,12 +10,17 @@ private:
     QString description;
     int weight;
 
+protected:
+    bool invFlag;
+
 public:
     Item();
-    Item(const QString description, const int inWeight);
+    Item(const QString desc, const int inW);
     Item(const QString description);
     int getWeight();
     virtual QString getDescription();
+    void setWeight(int inWeight);
+    bool getInvFlag();
 };
 
 #endif // ITEM_H

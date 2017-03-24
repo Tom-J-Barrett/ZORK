@@ -16,6 +16,23 @@ Zork::Zork(QWidget *parent)
 Zork::~Zork()
 {
     delete player;
+    delete vampire;
+    delete dragon;
+    delete princess;
+    delete a;
+    delete b;
+    delete c;
+    delete d;
+    delete e;
+    delete f;
+    delete g;
+    delete h;
+    delete i;
+    delete j;
+    delete key;
+    delete treasure;
+    delete potion;
+    delete weapon;
 }
 
 Player* Zork::play(){
@@ -66,8 +83,20 @@ Room * Zork::createRooms(){
     i= new Room("i");
     j= new Room("j");
 
-    return j;
+    rooms+=a;
+    rooms+=b;
+    rooms+=c;
+    rooms+=d;
+    rooms+=e;
+    rooms+=f;
+    rooms+=g;
+    rooms+=h;
+    rooms+=i;
+    rooms+=j;
 
+    qDebug()<<rooms.size()<<"YUP";
+
+    return j;
 }
 
 void Zork::createExits(){
