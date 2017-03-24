@@ -1,13 +1,17 @@
 #include "background.h"
 
+//constructor that sets blank window and creates rooms
 Background::Background(Zork* zork1){
     this->zork1 = zork1;
     player=zork1->play();
-    inventoryContString = "";
+    inventoryContString = "";/*
+    createExits();*/
     setRoomExits(zork1->currentRoom);
     setSceneRect(0,0,1000,500);
     createCave();
     createMapGUI();
+//    createMonster();
+
     createTextBox();
     inventoryBox();
     controlsBox();
@@ -17,7 +21,6 @@ Background::Background(Zork* zork1){
 
 Background::~Background()
 {
-    clearBackground();
     delete player;
     delete rect;
     delete smallEditor;
@@ -246,7 +249,7 @@ void Background::inventoryBox()
 void Background::controlsBox()
 {
     controlsComboBox=new QComboBox();
-    controlsComboBox->move(750,450);
+    controlsComboBox->move(600,450);
     controlsComboBox->setSizeAdjustPolicy(QComboBox::AdjustToContents);
     controlsComboBox->addItem("Controls");
 

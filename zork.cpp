@@ -83,7 +83,6 @@ Room * Zork::createRooms(){
     i= new Room("i");
     j= new Room("j");
 
-    // ask robbie
     rooms+=a;
     rooms+=b;
     rooms+=c;
@@ -94,6 +93,8 @@ Room * Zork::createRooms(){
     rooms+=h;
     rooms+=i;
     rooms+=j;
+
+    qDebug()<<rooms.size()<<"YUP";
 
     return j;
 }

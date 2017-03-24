@@ -9,6 +9,7 @@ Treasure::Treasure(QString desc, int inWeight)
     this->setPos(470,100);
     this->setZValue(4);
     this->setScale(.2);
+    qDebug()<<"Treasure created"<<description;
     invFlag = false;
 }
 
