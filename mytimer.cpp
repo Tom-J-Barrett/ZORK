@@ -45,7 +45,6 @@ void MyTimer::villianSlot()
         }
     }
     else{
-        qDebug()<<"MOOOOOOVe";
         x=villian->move(x);
     }
     if(-1==x)

@@ -10,7 +10,7 @@ Treasure::Treasure(QString desc, int inWeight)
     this->setZValue(4);
     this->setScale(.2);
     qDebug()<<"Treasure created"<<description;
-    invFlag = false;
+    invFlag = true;
 }
 
 QString Treasure:: getDescription(){
