@@ -23,29 +23,7 @@ Background::Background(Zork* zork1){
 Background::~Background()
 {
     delete player;
-//    delete zork1->vampire;
-//    delete zork1->dragon;
-//    delete zork1->princess;
-//    delete zork1->a;
-//    delete zork1->b;
-//    delete zork1->c;
-//    delete zork1->d;
-//    delete zork1->e;
-//    delete zork1->f;
-//    delete zork1->g;
-//    delete zork1->h;
-//    delete zork1->i;
-//    delete zork1->j;
-//    delete zork1->key;
-//    delete zork1->treasure;
-//    delete zork1->potion;
-//    delete zork1->weapon;
-    //delete button1;
-    //delete button2;
-    //delete button3;
-    //delete button4;
     delete rect;
-    //delete button1;
     delete smallEditor;
     delete RoomA;
     delete RoomB;
@@ -89,101 +67,17 @@ void Background::setScene(const string direction)
 }
 
 void Background::refreshScene(){
+    qDebug()<<"Crash 1";
     clearBackground();
+    qDebug()<<"Crash 2";
     setRoomExits(zork1->currentRoom);
+    qDebug()<<"Crash 3";
     addToScene();
+    qDebug()<<"Crash 4";
     createMapGUI();
+    qDebug()<<"Crash 5";
 }
 
-//Room * Background::createRooms(){
-
-
-//    a= new Room("a");
-//    zork1->key=new Key("Rusty Key",20);
-//    a->addItem(zork1->key);
-//    a->setItem(true);
-//    qDebug()<<zork1->key->description<<" friend";
-
-//    b= new Room("b");
-//    zork1->potion= new Potion("Potion capable of restoring 20 hearts!",10);
-//    b->addItem(zork1->potion);
-//    b->setItem(true);
-
-
-//    c= new Room("c");
-//    zork1->weapon=new Weapon("Hero's sword",30);
-//    c->addItem(zork1->weapon);
-//    c->setItem(true);
-
-//    d= new Room("d");
-//    zork1->treasure=new Treasure("Gold and jewels",50);
-//    d->addItem(zork1->treasure);
-//    d->setItem(true);
-
-//    e= new Room("e");
-//    f= new Room("f");
-//    g= new Room("g");
-//    h= new Room("h");
-//    i= new Room("i");
-//    j= new Room("j");
-
-
-//     e= new Room("e");
-//     f= new Room("f");
-//     g= new Room("g");
-
-
-
-//     h= new Room("h");
-//     i= new Room("i");
-//     j= new Room("j");
-//     return j;
-
-//}
-
-// //void Background::createExits(){
-
-// //    //         (N, E, S, W)
-// //    a->setExits(f, b, d, c);
-// //    a->setMonster(true);
-
-// <<<<<<< miky
-// //    b->setExits(NULL, NULL, NULL, a);
-// //    b->setBoss(true);
-// =======
-//     b->setExits(NULL, NULL, NULL, a);
-// >>>>>>> testMerge
-
-// //    c->setExits(NULL, a, NULL, NULL);
-// //    c->setMonster(true);
-
-// //    d->setExits(a, e, NULL, i);
-
-// //    e->setExits(NULL, NULL, NULL, d);
-// //    e->setMonster(true);
-
-// <<<<<<< miky
-// //    f->setExits(NULL, g, a, h);
-// //    f->setPrincess(true);
-
-// //    g->setExits(NULL, NULL, NULL, f);
-// //    g->setMonster(true);
-// =======
-//     f->setExits(NULL, g, a, h);
-//     f->setBoss(true);
-
-//     g->setExits(NULL, NULL, NULL, f);
-//     g->setPrincess(true);
-//     g->setCanEnter(false);
-// >>>>>>> testMerge
-
-// //    h->setExits(NULL, f, NULL, NULL);
-
-// //    i->setExits(NULL, d, j, NULL);
-// //    i->setMonster(true);
-
-// //    j->setExits(i, NULL, NULL, NULL);
-// //}
 
 //creates buttons depending on room exits
 void Background::setRoomExits(Room * r){
@@ -539,12 +433,13 @@ void Background::keyPressEvent(QKeyEvent *event)
                     else{
                         zork1->dragon->decreaseHealthByAttack(10);
                     }
-                    //dragon->setPixmap(QPixmap(":/Images/dragon.png"));
+
                     zork1->dragon->z=1;
                     if(zork1->dragon->getHealth()<=0){
-                        qDebug()<<"dragon is dead";
+                        zork1->currentRoom->setBoss(false);
                         zork1->currentRoom->addItem(zork1->key);
                         zork1->currentRoom->setItem(true);
+                        addToScene();
                     }
 
                 }
