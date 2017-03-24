@@ -39,4 +39,6 @@ QString Item::getDescription()
     return description;
 }
 
-
+bool Item::getInvFlag(){
+    return invFlag;
+}

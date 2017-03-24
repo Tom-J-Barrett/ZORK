@@ -40,5 +40,6 @@ private:
     Weapon * weapon;
     Room *a, *b, *c, *d, *e, *f, *g, *h, *i, *j;
     Room *currentRoom;
+    myVector<Room*> rooms;
 };
 #endif // ZORK_H

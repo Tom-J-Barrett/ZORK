@@ -59,6 +59,8 @@ public slots:
     void on_button2_clicked();
     void on_button3_clicked();
     void on_button4_clicked();
+    void on_button5_clicked();
+
 
 private:
     QString inventoryContString;
@@ -76,11 +78,13 @@ private:
     int delB2=0;
     int delB3=0;
     int delB4=0;
+    int delB5=0;
 //    Room *a, *b, *c, *d, *e, *f, *g, *h, *i, *j;
     QPushButton * button1;
     QPushButton * button2;
     QPushButton * button3;
     QPushButton * button4;
+    QPushButton * button5;
     MyTimer * timer;
     Inventory * inventory;
     Item * item;

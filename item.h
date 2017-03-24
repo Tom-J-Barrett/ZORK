@@ -10,6 +10,9 @@ private:
     QString description;
     int weight;
 
+protected:
+    bool invFlag;
+
 public:
     Item();
     Item(QString description, int inWeight);
@@ -17,6 +20,7 @@ public:
     int getWeight();
     virtual QString getDescription();
     void setWeight(int inWeight);
+    bool getInvFlag();
 };
 
 #endif // ITEM_H

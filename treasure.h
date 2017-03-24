@@ -7,9 +7,10 @@ class Treasure: public Item
 public:
     Treasure(QString description, int inWeight);
     QString getDescription();
+    bool getInvFlag();
 private:
-    QString description;
-    int weight;
+    const QString description;
+    const int weight;
 
 };
 
