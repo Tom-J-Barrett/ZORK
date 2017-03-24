@@ -119,6 +119,7 @@ void Background::setRoomExits(Room * r){
             this->addWidget(button4);
             connect(button4,SIGNAL(released()),this, SLOT(on_button4_clicked()));
         }
+        if(binary_search(zork1->player->getInventory()->getInventoryList().begin(), zork1->player->getInventory()->getInventoryList().end(), zork1->treasure)){
         button5= new QPushButton();
         button5->move(750,25);
         button5->setText("Teleport");
@@ -126,6 +127,7 @@ void Background::setRoomExits(Room * r){
         delB5=1;
         this->addWidget(button5);
         connect(button5,SIGNAL(released()),this, SLOT(on_button5_clicked()));
+        }
 
     }
 }
@@ -453,6 +455,12 @@ void Background::keyPressEvent(QKeyEvent *event)
                 }
                 if(item->getDescription()==zork1->key->getDescription()){
                     zork1->g->setCanEnter(true);
+                }
+                if(item->getDescription()==zork1->treasure->getDescription()){
+
+                    clearBackground();
+                    setRoomExits(zork1->currentRoom);
+                    addToScene();
                 }
             }
 
