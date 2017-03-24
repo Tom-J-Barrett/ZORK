@@ -33,7 +33,7 @@ class Background : public QGraphicsScene
 {
     Q_OBJECT
 public:
-    explicit Background(Zork* zork);
+    Background(Zork* zork);
     ~Background();
     void setScene(const string direction);
     void refreshScene();
