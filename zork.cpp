@@ -30,7 +30,7 @@ Zork::~Zork()
     delete i;
     delete j;
     delete key;
-    delete treasure;
+    delete teleporter;
     delete potion;
     delete weapon;
 }
@@ -70,8 +70,8 @@ Room * Zork::createRooms(){
     c->setItem(true);
 
     d= new Room("d");
-    treasure=new Treasure("Gold and jewels",50);
-    d->addItem(treasure);
+    teleporter=new Teleporter("Gold and jewels",50);
+    d->addItem(teleporter);
     d->setItem(true);
 
     e= new Room("e");

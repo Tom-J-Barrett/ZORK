@@ -21,14 +21,12 @@ MyTimer::MyTimer(Character * enemy, Player * p, Room* r)
 MyTimer::~MyTimer()
 {
     timer->deleteLater();
-    villian=nullptr;
-    room=nullptr;
-    play=nullptr;
 }
 
 void MyTimer::stopTimer()
 {
     timer->stop();
+    qDebug()<<"Timer stopped";
 }
 
 void MyTimer::villianSlot()

@@ -13,7 +13,7 @@
 #include "princess.h"
 #include "key.h"
 #include "weapon.h"
-#include "treasure.h"
+#include "teleporter.h"
 #include "potion.h"
 #include <QtCore>
 #include <string>
@@ -28,7 +28,6 @@
 #include <QDebug>
 #include <QObject>
 #include "zork.h"
-#include <QMessageBox>
 
 class Background : public QGraphicsScene
 {
@@ -37,18 +36,20 @@ public:
     explicit Background(Zork* zork);
     ~Background();
     void setScene(const string direction);
-    inline void refreshScene();
+    void refreshScene();
+    //void createExits();
     void setRoomExits(Room * r);
     void createCave();
     void createTextBox();
     void createMapGUI();
-    inline void addToScene();
+    void addToScene();
     inline void clearBackground();
     void addText();
     void inventoryBox();
     void controlsBox();
     void keyPressEvent(QKeyEvent *event);
 
+    int delB5=0;
 public slots:
     void on_button1_clicked();
     void on_button2_clicked();
@@ -58,10 +59,9 @@ public slots:
 
 
 private:
-    QMessageBox msgBox;
     QString inventoryContString;
     Zork* zork1;
-    QGraphicsPixmapItem *cave;
+    QGraphicsPixmapItem *rect;
     QString inventoryString;
     QTextEdit * smallEditor;
     QTextEdit * inventoryEditor;
@@ -71,7 +71,7 @@ private:
     int delB2=0;
     int delB3=0;
     int delB4=0;
-    int delB5=0;
+//    Room *a, *b, *c, *d, *e, *f, *g, *h, *i, *j;
     QPushButton * button1;
     QPushButton * button2;
     QPushButton * button3;
