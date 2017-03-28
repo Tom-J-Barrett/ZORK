@@ -14,6 +14,7 @@ Boss::Boss()
     this->setFocus();
     this->setPos(470,200);
     this->setZValue(2);
+    health=200;
 }
 
 QString Boss::getImage()

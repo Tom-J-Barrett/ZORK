@@ -28,11 +28,22 @@ Inventory * Player::getInventory(){
 void Player::decreaseHealth()
 {
     if(health>=1)
-        health--;
+        health=health-5;
     else
     {
-        qDebug()<<"You're dead";
-        exit(EXIT_FAILURE);
+        msgBox.setText("You are dead. Game Over.");
+        msgBox.setInformativeText("");
+        int ret = msgBox.exec();
+        switch (ret) {
+            case QMessageBox::Ok:
+                exit(1);
+                break;
+            case QMessageBox::Cancel:
+                exit(1);
+                break;
+            default:
+                break;
+        }
     }
 
 }

@@ -1,5 +1,11 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
+#ifdef z
+    #define z=0;
+#endif
+#ifdef health
+    #define health=100;
+#endif
 
 #include <QGraphicsPixmapItem>
 #include <string>
@@ -10,16 +16,16 @@ class Character: public QGraphicsPixmapItem{
 public:
     Character();
     virtual int move(int x);
-    int getHealth();
-    void decreaseHealth();
-    void resetHealth();
-    void increaseHealth();
+    virtual int getHealth();
+    virtual void decreaseHealth();
+    virtual void resetHealth();
+    virtual void increaseHealth();
     virtual QString getImage()=0;
-    void decreaseHealthByAttack(const int damage);
-    int z=0;
+    virtual void decreaseHealthByAttack(const int damage);
+    int z;
 
 private:
-    int health=100;
+    int health;
 };
 
 #endif // CHARACTER_H

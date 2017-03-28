@@ -28,6 +28,7 @@
 #include <QDebug>
 #include <QObject>
 #include "zork.h"
+#include <QMessageBox>
 
 class Background : public QGraphicsScene
 {
@@ -36,13 +37,12 @@ public:
     explicit Background(Zork* zork);
     ~Background();
     void setScene(const string direction);
-    void refreshScene();
-    //void createExits();
+    inline void refreshScene();
     void setRoomExits(Room * r);
     void createCave();
     void createTextBox();
     void createMapGUI();
-    void addToScene();
+    inline void addToScene();
     inline void clearBackground();
     void addText();
     void inventoryBox();
@@ -59,9 +59,10 @@ public slots:
 
 
 private:
+    QMessageBox msgBox;
     QString inventoryContString;
     Zork* zork1;
-    QGraphicsPixmapItem *rect;
+    QGraphicsPixmapItem *cave;
     QString inventoryString;
     QTextEdit * smallEditor;
     QTextEdit * inventoryEditor;
@@ -71,7 +72,6 @@ private:
     int delB2=0;
     int delB3=0;
     int delB4=0;
-//    Room *a, *b, *c, *d, *e, *f, *g, *h, *i, *j;
     QPushButton * button1;
     QPushButton * button2;
     QPushButton * button3;

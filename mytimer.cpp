@@ -26,7 +26,6 @@ MyTimer::~MyTimer()
 void MyTimer::stopTimer()
 {
     timer->stop();
-    qDebug()<<"Timer stopped";
 }
 
 void MyTimer::villianSlot()

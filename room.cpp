@@ -62,7 +62,6 @@ vector<string> Room::exitString()
 
 bool Room::monsterInRoom()
 {
-    qDebug()<<"Is monster in room";
     return monster;
 }
 
@@ -109,7 +108,6 @@ Room* Room::nextRoom(string direction) {
 }
 
 void Room::addItem(Item *inItem) {
-    qDebug()<<"Received item";
     this->item =inItem;
     itemsInRoom.push_back(inItem);
 }

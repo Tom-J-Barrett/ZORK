@@ -63,12 +63,6 @@ void myVector<T>::push_back(const T& i){
 }
 
 template<class T>
-void myVector<T>::pop_back(){
-    array[vsize]=NULL;
-    vsize--;
-}
-
-template<class T>
 int myVector<T>::size(){
     return vsize;
 }
@@ -95,8 +89,6 @@ myVector<T>& myVector<T>::operator=(const myVector& v){
     }
    return  *this;
 }
-
-
 
 template<class T>
 myVector<T>& myVector<T>::operator+=(const T& i)

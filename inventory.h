@@ -1,6 +1,6 @@
 #ifndef INVENTORY_H
 #define INVENTORY_H
-#endif // INVENTORY_H
+
 #include "item.h"
 class Inventory{
 private:
@@ -14,3 +14,4 @@ public:
     vector<Item *> getInventoryList();
     void setInventoryList(vector<Item *> InventoryList);
 };
+#endif // INVENTORY_H

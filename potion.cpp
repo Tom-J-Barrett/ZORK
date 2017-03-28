@@ -10,7 +10,6 @@ Potion::Potion(const QString desc, const int inW)
     this->setPos(470,100);
     this->setZValue(4);
     this->setScale(.5);
-    qDebug()<<"Potion created";
     invFlag = false;
     used = false;
 }

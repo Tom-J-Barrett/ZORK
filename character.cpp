@@ -9,11 +9,6 @@ Character::Character(){
 
 }
 
-
-QString Character::getImage(){
-    return "";
-}
-
 void Character::decreaseHealth(){
     health=health-25;
 }
@@ -34,7 +29,6 @@ void Character::increaseHealth(){
 int Character::getHealth(){
     return health;
 }
-
 
 int Character::move(int x)
 {

@@ -9,7 +9,6 @@ Teleporter::Teleporter(QString desc, int inWeight)
     this->setPos(470,100);
     this->setZValue(4);
     this->setScale(.05);
-    qDebug()<<"Teleporter created"<<description;
     invFlag = true;
 }
 

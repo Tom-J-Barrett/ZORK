@@ -94,8 +94,6 @@ Room * Zork::createRooms(){
     rooms+=i;
     rooms+=j;
 
-    qDebug()<<rooms.size()<<"YUP";
-
     return j;
 }
 
@@ -106,7 +104,7 @@ void Zork::createExits(){
     a->setMonster(true);
 
     b->setExits(NULL, NULL, NULL, a);
-    b->setBoss(true);
+    b->setMonster(true);
 
     c->setExits(NULL, a, NULL, NULL);
     c->setMonster(true);

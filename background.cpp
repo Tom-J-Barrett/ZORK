@@ -4,15 +4,11 @@
 Background::Background(Zork* zork1){
     this->zork1 = zork1;
     player=zork1->play();
-    inventoryContString = "";/*
-    createExits();*/
+    inventoryContString = "";
     setRoomExits(zork1->currentRoom);
     setSceneRect(0,0,1000,500);
     createCave();
     createMapGUI();
-//    createMonster();
-//    createPrincess();
-//    createBoss();
     createTextBox();
     inventoryBox();
     controlsBox();
@@ -23,7 +19,7 @@ Background::Background(Zork* zork1){
 Background::~Background()
 {
     delete player;
-    delete rect;
+    delete cave;
     delete smallEditor;
     delete RoomA;
     delete RoomB;
@@ -44,38 +40,23 @@ void Background::setScene(const string direction)
 {
     nextRoom = zork1->currentRoom->nextRoom(direction);
     if(nextRoom->getCanEnter()==true){
-    qDebug()<<"Problem 0";
-    clearBackground();
-    qDebug()<<"Problem 1";
+        clearBackground();
 
-    nextRoom = zork1->currentRoom->nextRoom(direction);
+        nextRoom = zork1->currentRoom->nextRoom(direction);
+        zork1->currentRoom=nextRoom;
 
-    qDebug()<<"Problem 2";
-    zork1->currentRoom=nextRoom;
-    qDebug()<<"Problem 3";
-    setRoomExits(zork1->currentRoom);
-    qDebug()<<"Problem 4";
-    addToScene();
-    qDebug()<<"Problem 5";
-    createMapGUI();
-    qDebug()<<"Problem 6";
-    addText();
-    qDebug()<<"Problem 7";
+        setRoomExits(zork1->currentRoom);
+        addToScene();
+        createMapGUI();
+        addText();
     }
-    else
-        qDebug()<<"Can't enter";
 }
 
 void Background::refreshScene(){
-    qDebug()<<"Crash 1";
     clearBackground();
-    qDebug()<<"Crash 2";
     setRoomExits(zork1->currentRoom);
-    qDebug()<<"Crash 3";
     addToScene();
-    qDebug()<<"Crash 4";
     createMapGUI();
-    qDebug()<<"Crash 5";
 }
 
 
@@ -126,7 +107,6 @@ void Background::setRoomExits(Room * r){
 
     }
     if(find(zork1->player->getInventory()->getInventoryList().begin(), zork1->player->getInventory()->getInventoryList().end(), zork1->teleporter) != zork1->player->getInventory()->getInventoryList().end()){
-        qDebug() << "Teleporter found";
         button5= new QPushButton();
         button5->move(750,25);
         button5->setText("Teleport");
@@ -138,22 +118,11 @@ void Background::setRoomExits(Room * r){
 
 }
 void Background::createCave(){
-    rect= new QGraphicsPixmapItem();
-    rect->setPos(50,0);
-    rect->setPixmap(QPixmap(":/Images/cave.jpg"));
-    rect->setZValue(-1);
-
+    cave= new QGraphicsPixmapItem();
+    cave->setPos(50,0);
+    cave->setPixmap(QPixmap(":/Images/cave.jpg"));
+    cave->setZValue(-1);
 }
-
-//void Background::createMonster(){
-//    vampire = new Monster();
-//}
-
-//void Background::createBoss(){
-//    dragon = new Boss();
-//}
-
-
 
 void Background:: createTextBox(){
     smallEditor = new QTextEdit;
@@ -177,31 +146,24 @@ void Background::createMapGUI()
     RoomJ= new QGraphicsRectItem();
 
     RoomA->setRect(10,10,10,10);
-    RoomA->setZValue(4);
     this->addItem(RoomA);
 
     RoomB->setRect(20,10,10,10);
-    RoomB->setZValue(5);
     this->addItem(RoomB);
 
     RoomC->setRect(0,10,10,10);
-    RoomC->setZValue(5);
     this->addItem(RoomC);
 
     RoomD->setRect(10,20,10,10);
-    RoomD->setZValue(5);
     this->addItem(RoomD);
 
     RoomE->setRect(20,20,10,10);
-    RoomE->setZValue(5);
     this->addItem(RoomE);
 
     RoomF->setRect(10,0,10,10);
-    RoomF->setZValue(5);
     this->addItem(RoomF);
 
     RoomG->setRect(20,0,10,10);
-    RoomG->setZValue(5);
     this->addItem(RoomG);
 
     RoomH->setRect(0,0,10,10);
@@ -209,11 +171,9 @@ void Background::createMapGUI()
     this->addItem(RoomH);
 
     RoomI->setRect(0,20,10,10);
-    RoomI->setZValue(5);
     this->addItem(RoomI);
 
     RoomJ->setRect(0,30,10,10);
-    RoomJ->setZValue(5);
     this->addItem(RoomJ);
 
     if(zork1->currentRoom->getDescription()=="a")
@@ -254,7 +214,7 @@ void Background::inventoryBox()
 void Background::controlsBox()
 {
     controlsComboBox=new QComboBox();
-    controlsComboBox->move(600,450);
+    controlsComboBox->move(700,450);
     controlsComboBox->setSizeAdjustPolicy(QComboBox::AdjustToContents);
     controlsComboBox->addItem("Controls");
 
@@ -268,7 +228,6 @@ void Background::controlsBox()
 
     this->addWidget(controlsComboBox);
 }
-
 
 //adds monster and rectangle to scene
 void Background::addToScene(){
@@ -285,21 +244,18 @@ void Background::addToScene(){
         this->addItem(zork1->dragon);
     }
     else if(zork1->currentRoom->princessInRoom()){
-        qDebug()<<"Princessinroom";
         zork1->princess->setVisible(true);
         zork1->princess->setFocus();
-        qDebug()<<"Princess in room";
         this->addItem(zork1->princess);
     }
 
-    this->addItem(rect);
+    this->addItem(cave);
 
     if(zork1->currentRoom->itemInRoom()){
         item=zork1->currentRoom->item;
         item->setVisible(true);
         this->addItem(item);
     }
-
 }
 
 
@@ -322,7 +278,6 @@ void Background::on_button4_clicked()
 }
 
 void Background::on_button5_clicked(){
-    qDebug()<<zork1->rooms.size();
     int randNum = rand() % zork1->rooms.size();
     nextRoom = zork1->rooms[randNum];
     if(nextRoom->getCanEnter()==true){
@@ -375,7 +330,6 @@ void Background::clearBackground(){
 
     if(zork1->currentRoom->monsterInRoom()){
         this->removeItem(zork1->vampire);
-        qDebug() << "Vampire Removed";
     }
     else if(zork1->currentRoom->bossInRoom()){
         this->removeItem(zork1->dragon);
@@ -384,7 +338,7 @@ void Background::clearBackground(){
         this->removeItem(zork1->princess);
     }
 
-    this->removeItem(rect);
+    this->removeItem(cave);
 
     if(zork1->currentRoom->itemInRoom()){
         this->removeItem(item);
@@ -394,11 +348,9 @@ void Background::clearBackground(){
     zork1->dragon->resetHealth();
 
     if(zork1->currentRoom->bossInRoom() || zork1->currentRoom->monsterInRoom()){
-        qDebug() << "Stop reading my code Robbie";
         timer->stopTimer();
         timer->deleteLater();
     }
-
 }
 
 void Background::keyPressEvent(QKeyEvent *event)
@@ -406,15 +358,6 @@ void Background::keyPressEvent(QKeyEvent *event)
     if(zork1->currentRoom->monsterInRoom()){
         if(event->key()==Qt::Key_X)
         {
-
-                /*if(zork1->vampire->scenePos()==QPointF(470,200)){
-                    player->setDamage(10);
-                    zork1->vampire->decreaseHealthByAttack(10);
-                    zork1->vampire->setPixmap(QPixmap(":/Images/vampireAttacked.png"));
-                    zork1->vampire->z=1;
-                    int x=player->getDamage();
-                    qDebug()<<x<<"damage";*/
-
                 if(zork1->vampire->scenePos()==QPointF(470,200)){
                     if(find((zork1->player->getInventory()->getInventoryList()).begin(), (zork1->player->getInventory()->getInventoryList()).end(), zork1->weapon) != (zork1->player->getInventory()->getInventoryList()).end()){
                         zork1->vampire->decreaseHealthByAttack(50);
@@ -424,9 +367,7 @@ void Background::keyPressEvent(QKeyEvent *event)
                     }
                     zork1->vampire->setPixmap(QPixmap(":/Images/vampireAttacked.png"));
                     zork1->vampire->z=1;
-
                 }
-
         }
     }
     else if(zork1->currentRoom->bossInRoom()){
@@ -440,7 +381,7 @@ void Background::keyPressEvent(QKeyEvent *event)
                     else{
                         zork1->dragon->decreaseHealthByAttack(10);
                     }
-
+                    zork1->dragon->setPixmap(QPixmap(":/Images/dragonAttack.png"));
                     zork1->dragon->z=1;
                     if(zork1->dragon->getHealth()<=0){
                         zork1->currentRoom->setBoss(false);
@@ -448,18 +389,27 @@ void Background::keyPressEvent(QKeyEvent *event)
                         zork1->currentRoom->setItem(true);
                         addToScene();
                     }
-
                 }
         }
     }
     else if(zork1->currentRoom->princessInRoom()){
         if(event->key()==Qt::Key_X)
         {
-            exit(1);
+            msgBox.setText("You killed the princess! Game Over.");
+            msgBox.setInformativeText("");
+            int ret = msgBox.exec();
+            switch(ret){
+                case QMessageBox::Ok:
+                    exit(1);
+                    break;
+                case QMessageBox::Cancel:
+                    exit(1);
+                    break;
+                default:
+                    break;
+            }
         }
     }
-
-
 
     if(event->key()==Qt::Key_P)
     {
@@ -475,7 +425,6 @@ void Background::keyPressEvent(QKeyEvent *event)
                 inventoryComboBox->addItem(inventoryContString);
                 }
                 if(item->getDescription()==zork1->potion->getDescription() && !zork1->potion->getUsed()){
-                    qDebug()<<"Used Potion";
                     zork1->player->increaseHealth(50);
                     item->setVisible(false);
                     zork1->currentRoom->setItem(false);
@@ -485,32 +434,24 @@ void Background::keyPressEvent(QKeyEvent *event)
                     zork1->g->setCanEnter(true);
                 }
                 if(item->getDescription()==zork1->teleporter->getDescription()){
-                    qDebug()<<"Description match";
                     item->setVisible(false);
                     zork1->currentRoom->setItem(false);
-
-                    //setRoomExits(zork1->currentRoom);
-                    //clearBackground();
                     refreshScene();
                 }
             }
-
     }
 
     if(event->key()==Qt::Key_D)
     {
         if(zork1->currentRoom->itemInRoom()==false && player->getInventory()->inventoryQty() > 0){
-            qDebug()<<"Yurt";
             int currentItem = inventoryComboBox->currentIndex();
             itemsInInventory=player->getInventory()->getInventoryList();
             itemToDrop=itemsInInventory.operator [](currentItem);
-            qDebug()<<("Yeat");
             itemsInInventory.erase(itemsInInventory.begin() + currentItem);
             zork1->currentRoom->addItem(itemToDrop);
             zork1->currentRoom->setItem(true);
             inventoryComboBox->removeItem(currentItem);
             zork1->player->getInventory()->setInventoryList(itemsInInventory);
-            qDebug() << "Yup" << itemToDrop;
             button5->setVisible(false);
             refreshScene();
         }
@@ -518,8 +459,20 @@ void Background::keyPressEvent(QKeyEvent *event)
 
     if(event->key()==Qt::Key_K){
         if(zork1->currentRoom->princessInRoom()){
-        qDebug()<<"Kissed";
-        exit(1);
+            //exit(1);
+            msgBox.setText("You Win!!!! Game Over.");
+            msgBox.setInformativeText("");
+            int ret = msgBox.exec();
+            switch(ret){
+                case QMessageBox::Ok:
+                    exit(1);
+                    break;
+                case QMessageBox::Cancel:
+                    exit(1);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 

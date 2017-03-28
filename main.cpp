@@ -8,11 +8,6 @@
 #include <QDebug>
 #include "background.h"
 
-template<class FIRST, class SECOND>
-FIRST smaller(FIRST a, SECOND b){
-    qDebug()<<"Template";
-}
-
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);

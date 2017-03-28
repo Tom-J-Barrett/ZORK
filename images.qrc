@@ -15,7 +15,7 @@
         <file>potion.jpg</file>
         <file>princess.jpg</file>
         <file>teleporter.png</file>
-        <file>rightArrow.png</file>
+        <file>dragonAttack.png</file>
     </qresource>
     <qresource prefix="/">
         <file>sword.jpg</file>

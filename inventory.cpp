@@ -31,10 +31,6 @@ void Inventory::setInventoryList(vector<Item *> InventoryList)
     this->itemsInInventory=InventoryList;
 }
 
-void Inventory::removeFromInventory(Item item){
-
-}
-
 int Inventory::inventoryQty(){
     return itemsInInventory.size();
 }
