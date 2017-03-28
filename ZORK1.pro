@@ -38,7 +38,7 @@ SOURCES += main.cpp \
     background.cpp \
     mytimer.cpp \
     inventory.cpp \
-    treasure.cpp
+    teleporter.cpp
 
 HEADERS  += \
     boss.h \
@@ -55,8 +55,8 @@ HEADERS  += \
     zork.h \
     mytimer.h \
     inventory.h \
-    treasure.h \
-    myvector.h
+    myvector.h \
+    teleporter.h
 
 FORMS    += mainwindow.ui
 

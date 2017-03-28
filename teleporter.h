@@ -1,11 +1,11 @@
-#ifndef TREASURE_H
-#define TREASURE_H
+#ifndef TELEPORTER_H
+#define TELEPORTER_H
 #include "item.h"
 
-class Treasure: public Item
+class Teleporter: public Item
 {
 public:
-    Treasure(QString description, int inWeight);
+    Teleporter(QString description, int inWeight);
     QString getDescription();
     bool getInvFlag();
 private:
@@ -14,4 +14,4 @@ private:
 
 };
 
-#endif // TREASURE_H
+#endif // TELEPORTER_H

@@ -9,6 +9,7 @@ Weapon::Weapon(QString description, int inWeight)
     this->setPos(470,100);
     this->setZValue(4);
     this->setScale(.4);
+    qDebug()<<"Weapon created";
     invFlag = true;
 }
 

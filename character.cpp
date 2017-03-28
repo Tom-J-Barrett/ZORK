@@ -3,9 +3,6 @@
 #include <QGraphicsScene>
 #include <QDebug>
 #include <QGraphicsPixmapItem>
-#ifndef z
-   #define z 0
-#endif
 
 
 Character::Character(){

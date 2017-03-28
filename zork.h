@@ -10,7 +10,7 @@
 #include "player.h"
 #include "myvector.h"
 #include "key.h"
-#include "treasure.h"
+#include "teleporter.h"
 #include "potion.h"
 #include "weapon.h"
 #include "room.h"
@@ -35,7 +35,7 @@ private:
     Character * princess;
     Boss * dragon;
     Key * key;
-    Treasure * treasure;
+    Teleporter *teleporter;
     Potion * potion;
     Weapon * weapon;
     Room *a, *b, *c, *d, *e, *f, *g, *h, *i, *j;
