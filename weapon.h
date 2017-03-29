@@ -6,12 +6,12 @@
 class Weapon: public Item
 {
 public:
-    Weapon(QString description, int inWeight);
+    Weapon(QString desc,int inW);
     QString getDescription();
     bool getInvFlag();
 private:
-    QString description;
-    int weight;
+    const QString description;
+    const int weight;
 };
 
 #endif // WEAPON_H

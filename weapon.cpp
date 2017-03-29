@@ -1,10 +1,10 @@
 #include "weapon.h"
 #include <QDebug>
 
-Weapon::Weapon(QString description, int inWeight)
+Weapon::Weapon(QString desc, int inW)
+    : description(desc),
+        weight(inW)
 {
-    this->description = description;
-    this->weight=inWeight;
     this->setPixmap(QPixmap(":/Images/sword2.jpg"));
     this->setPos(470,100);
     this->setZValue(4);
