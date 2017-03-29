@@ -21,6 +21,9 @@ MyTimer::MyTimer(Character * enemy, Player * p, Room* r)
 MyTimer::~MyTimer()
 {
     timer->deleteLater();
+    room=nullptr;
+    play=nullptr;
+    villian=nullptr;
 }
 
 void MyTimer::stopTimer()

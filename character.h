@@ -22,7 +22,7 @@ public:
     virtual void increaseHealth();
     virtual QString getImage()=0;
     virtual void decreaseHealthByAttack(const int damage);
-    double z;
+    int z;
 
 protected:
     int health;

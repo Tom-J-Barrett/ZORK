@@ -70,7 +70,7 @@ Room * Zork::createRooms(){
     c->setItem(true);
 
     d= new Room("d");
-    teleporter=new Teleporter("Gold and jewels",50);
+    teleporter=new Teleporter("Teleporter",50);
     d->addItem(teleporter);
     d->setItem(true);
 

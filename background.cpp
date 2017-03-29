@@ -32,6 +32,7 @@ Background::~Background()
     delete RoomI;
     delete RoomJ;
     delete inventoryComboBox;
+    delete controlsComboBox;
     delete timer;
 }
 
