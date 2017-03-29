@@ -18,7 +18,9 @@ Background::Background(Zork* zork1){
 
 Background::~Background()
 {
-    delete player;
+    clearBackground();
+    player=nullptr;
+    zork1=nullptr;
     delete cave;
     delete smallEditor;
     delete RoomA;
@@ -33,7 +35,6 @@ Background::~Background()
     delete RoomJ;
     delete inventoryComboBox;
     delete controlsComboBox;
-    delete timer;
 }
 
 //Sets a new scne when you move rooms
@@ -405,10 +406,10 @@ void Background::keyPressEvent(QKeyEvent *event)
             int ret = msgBox.exec();
             switch(ret){
                 case QMessageBox::Ok:
-                    exit(1);
+                    close();
                     break;
                 case QMessageBox::Cancel:
-                    exit(1);
+                    close();
                     break;
                 default:
                     break;
@@ -470,10 +471,10 @@ void Background::keyPressEvent(QKeyEvent *event)
             int ret = msgBox.exec();
             switch(ret){
                 case QMessageBox::Ok:
-                    exit(1);
+                    close();
                     break;
                 case QMessageBox::Cancel:
-                    exit(1);
+                    close();
                     break;
                 default:
                     break;
@@ -485,5 +486,14 @@ void Background::keyPressEvent(QKeyEvent *event)
         controlsBox();
     }
 }
+
+void Background::close()
+{
+    delete this;
+    delete zork1;
+    exit(1);
+}
+
+
 
 

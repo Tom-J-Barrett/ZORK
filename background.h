@@ -48,6 +48,7 @@ public:
     void inventoryBox();
     void controlsBox();
     void keyPressEvent(QKeyEvent *event);
+    void close();
 
     int delB5=0;
 public slots:
