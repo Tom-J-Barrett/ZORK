@@ -279,6 +279,7 @@ void Background::on_button4_clicked()
 }
 
 void Background::on_button5_clicked(){
+    srand(time(0));
     int randNum = rand() % zork1->rooms.size();
     nextRoom = zork1->rooms[randNum];
     if(nextRoom->getCanEnter()==true){
