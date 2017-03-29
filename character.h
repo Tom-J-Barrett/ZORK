@@ -22,9 +22,9 @@ public:
     virtual void increaseHealth();
     virtual QString getImage()=0;
     virtual void decreaseHealthByAttack(const int damage);
-    int z;
+    double z;
 
-private:
+protected:
     int health;
 };
 

@@ -68,3 +68,12 @@ int Boss::move(int x){
     }
     return x;
 }
+
+int Boss::getHealth()
+{
+    return this->health;
+}
+
+void Boss::decreaseHealthByAttack(const int damage){
+    health=health-damage;
+}

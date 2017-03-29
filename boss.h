@@ -12,6 +12,8 @@ public:
     Boss();
     QString getImage();
     int move(int x);
+    int getHealth();
+    void decreaseHealthByAttack(const int);
 private:
     int health=200;
 };
