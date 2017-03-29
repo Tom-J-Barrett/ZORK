@@ -45,6 +45,8 @@ void MyTimer::villianSlot()
             room->setBoss(false);
             room->setbossIsDead(true);
         }
+        stopTimer();
+        this->deleteLater();
     }
     else{
         x=villian->move(x);

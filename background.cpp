@@ -347,8 +347,11 @@ void Background::clearBackground(){
 
     zork1->vampire->resetHealth();
     zork1->dragon->resetHealth();
-
-    if(zork1->currentRoom->bossInRoom() || zork1->currentRoom->monsterInRoom()){
+    if(zork1->currentRoom->bossInRoom()){
+        timer->stopTimer();
+        timer->deleteLater();
+    }
+    else if(zork1->currentRoom->monsterInRoom()){
         timer->stopTimer();
         timer->deleteLater();
     }
